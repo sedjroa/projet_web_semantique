@@ -1,0 +1,30 @@
+PREFIX schema: <http://schema.org/>
+PREFIX ex: <http://example.com/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?year ?country_name (ROUND(?deathAirPollution) as ?deaths)
+
+WHERE {
+
+  # Sous-requête pour obtenir le minimum d'air par année
+        {
+            SELECT ?year (MIN(?deathAirPollution) AS ?minAir)
+            WHERE {
+            ?obs a schema:Observation ;
+                schema:observationAbout ?country ;
+                schema:observationDate ?year ;
+                ex:deathAirPollution ?deathAirPollution .
+            }
+            GROUP BY ?year
+        }
+        ?obs a schema:Observation ;
+            schema:observationAbout ?country ;
+            schema:observationDate ?year ;
+            ex:deathAirPollution ?deathAirPollution .
+        ?country schema:name ?country_name .
+
+        # Filtrer pour ne garder que la valeur maximale
+        FILTER(?deathAirPollution = ?minAir)
+        FILTER(?year >= "1999"^^xsd:gYear && ?year < "2003"^^xsd:gYear )
+}
+ORDER BY ?year
