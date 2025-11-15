@@ -91,3 +91,42 @@ WHERE {
 }
 ORDER BY ?year
 ```
+## Rêquetes Fédérées SPARQL
+
+### Nombre de joueurs parmis les plus chers de 2021 provenant des pays 
+```sh
+PREFIX schema: <http://schema.org/>
+PREFIX ex: <http://example.com/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+SELECT ?countryName
+       (MAX(?deathAir) AS ?maxDeathAir)
+       (MAX(?deathHousehold) AS ?maxDeathHousehold)
+       (MAX(?deathAmbientParticulatePollution) AS ?maxDeathParticulate)
+       (MAX(?deathAmbientOzonePollution) AS ?maxDeathOzone)
+       (COUNT(DISTINCT ?player) AS ?nbPlayers)
+WHERE {
+  GRAPH <http://example.com/graph/pollution> {
+    ?country a schema:Country ;
+             schema:name ?countryName .
+    ?obs a schema:Observation ;
+         schema:observationAbout ?country ;
+         schema:observationDate ?year ;
+         ex:deathAirPollution ?deathAir ;
+         ex:deathHouseholdPollution ?deathHousehold ;
+         ex:deathAmbientParticulatePollution ?deathAmbientParticulatePollution ;
+         ex:deathAmbientOzonePollution ?deathAmbientOzonePollution .
+  }
+  
+  GRAPH <http://example.com/graph/players> {
+    ?player dbo:nationality ?country .
+  }
+}
+GROUP BY ?countryName
+ORDER BY DESC(?maxDeathAir)
+LIMIT 20
+
+```
+### 
+```sh
+```
