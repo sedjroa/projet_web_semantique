@@ -1,0 +1,4880 @@
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix ex: <http://example.com/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+
+### --- Inférences ---
+dbo:Place rdf:type owl:Class .
+dbo:Identifier rdf:type owl:Class .
+dbo:PopulatedPlace rdfs:subClassOf dbo:Place .
+dbo:Continent rdf:type owl:Class ;
+    rdfs:subClassOf dbo:PopulatedPlace .
+    
+dbo:Country rdf:type owl:Class;
+    rdfs:subClassOf dbo:PopulatedPlace;
+    owl:intersectionOf (
+        [ rdf:type owl:Class ]
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dbo:isoCode ;
+          owl:someValuesFrom dbo:Identifier;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger;
+          owl:maxCardinality "1"^^xsd:nonNegativeInteger
+        ]
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dbo:capital ;
+          owl:someValuesFrom dbo:PopulatedPlace;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger;
+          owl:maxCardinality "1"^^xsd:nonNegativeInteger
+        ]
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dbo:continent ;
+          owl:someValuesFrom dbo:Continent;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger;
+          owl:maxCardinality "1"^^xsd:nonNegativeInteger
+        ]
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dbo:populationTotal ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger;
+          owl:maxCardinality "1"^^xsd:nonNegativeInteger
+        ]
+        [ rdf:type owl:Restriction ;
+          owl:onProperty ex:growthRate ;
+          owl:maxCardinality "1"^^xsd:nonNegativeInteger
+        ]
+        [ rdf:type owl:Restriction ;
+          owl:onProperty ex:areaTotal ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger;
+          owl:maxCardinality "1"^^xsd:nonNegativeInteger
+        ]
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dbo:populationDensity ;
+          owl:maxCardinality "1"^^xsd:nonNegativeInteger
+        ]
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dbo:populationShare ;
+          owl:maxCardinality "1"^^xsd:nonNegativeInteger
+        ]
+    ) .
+
+
+dbo:capital rdf:type owl:ObjectProperty ;
+    rdfs:domain dbo:Country ;
+    rdfs:range dbo:PopulatedPlace .
+
+dbo:continent rdf:type owl:ObjectProperty ;
+    rdfs:domain dbo:Country ;
+    rdfs:range dbo:Continent .
+
+dbo:isoCode rdf:type owl:ObjectProperty ;
+    rdfs:domain dbo:Country ;
+    rdfs:range dbo:Identifier .
+
+
+dbo:countryRank rdf:type owl:DatatypeProperty ;
+    rdfs:domain dbo:Country ;
+    rdfs:range xsd:int .
+
+dbo:populationTotal rdf:type owl:DatatypeProperty ;
+    rdfs:domain dbo:Country ;
+    rdfs:range xsd:int .
+
+dbo:areaTotal rdf:type owl:DatatypeProperty ;
+    rdfs:domain dbo:Country ;
+    rdfs:range xsd:int .
+
+dbo:populationDensity rdf:type owl:DatatypeProperty ;
+    rdfs:domain dbo:Country ;
+    rdfs:range xsd:double .
+
+ex:growthRate rdf:type owl:DatatypeProperty ;
+    rdfs:domain dbo:Country ;
+    rdfs:range xsd:double .
+
+ex:populationShare rdf:type owl:DatatypeProperty ;
+    rdfs:domain dbo:Country ;
+    rdfs:range xsd:double .
+
+
+ex:population rdf:type owl:DatatypeProperty ;
+    rdfs:domain dbo:Country ;
+    rdfs:range xsd:int .
+
+ex:population2020 rdf:type owl:DatatypeProperty ;
+    rdfs:subPropertyOf ex:population .
+
+ex:population2015 rdf:type owl:DatatypeProperty ;
+    rdfs:subPropertyOf ex:population .
+
+ex:population2010 rdf:type owl:DatatypeProperty ;
+    rdfs:subPropertyOf ex:population .
+
+ex:population2000 rdf:type owl:DatatypeProperty ;
+    rdfs:subPropertyOf ex:population .
+
+ex:population1990 rdf:type owl:DatatypeProperty ;
+    rdfs:subPropertyOf ex:population .
+
+ex:population1980 rdf:type owl:DatatypeProperty ;
+    rdfs:subPropertyOf ex:population .
+
+ex:population1970 rdf:type owl:DatatypeProperty ;
+    rdfs:subPropertyOf ex:population .
+
+
+
+### ---Pays---
+
+<http://example.org/country/AFG> rdf:type dbo:Country ;
+ dbo:countryRank "36"^^xsd:int;
+dbo:isoCode ex:iso_AFG;
+rdfs:label "Afghanistan";
+dbo:capital ex:Kabul;
+dbo:continent ex:Asia;
+dbo:populationTotal "41128771"^^xsd:int;
+ex:population2020 "38972230"^^xsd:int;
+ex:population2015 "33753499"^^xsd:int;
+ex:population2010 "28189672"^^xsd:int;
+ex:population2000 "19542982"^^xsd:int;
+ex:population1990 "10694796"^^xsd:int;
+ex:population1980 "12486631"^^xsd:int;
+ex:population1970 "10752971"^^xsd:int;
+dbo:areaTotal "652230"^^xsd:int;
+dbo:populationDensity "63.0587"^^xsd:double;
+ex:growthRate "1.0257"^^xsd:double;
+ex:populationShare "0.52"^^xsd:double .
+<http://example.org/country/ALB> rdf:type dbo:Country ;
+ dbo:countryRank "138"^^xsd:int;
+dbo:isoCode ex:iso_ALB;
+rdfs:label "Albania";
+dbo:capital ex:Tirana;
+dbo:continent ex:Europe;
+dbo:populationTotal "2842321"^^xsd:int;
+ex:population2020 "2866849"^^xsd:int;
+ex:population2015 "2882481"^^xsd:int;
+ex:population2010 "2913399"^^xsd:int;
+ex:population2000 "3182021"^^xsd:int;
+ex:population1990 "3295066"^^xsd:int;
+ex:population1980 "2941651"^^xsd:int;
+ex:population1970 "2324731"^^xsd:int;
+dbo:areaTotal "28748"^^xsd:int;
+dbo:populationDensity "98.8702"^^xsd:double;
+ex:growthRate "0.9957"^^xsd:double;
+ex:populationShare "0.04"^^xsd:double .
+<http://example.org/country/DZA> rdf:type dbo:Country ;
+ dbo:countryRank "34"^^xsd:int;
+dbo:isoCode ex:iso_DZA;
+rdfs:label "Algeria";
+dbo:capital ex:Algiers;
+dbo:continent ex:Africa;
+dbo:populationTotal "44903225"^^xsd:int;
+ex:population2020 "43451666"^^xsd:int;
+ex:population2015 "39543154"^^xsd:int;
+ex:population2010 "35856344"^^xsd:int;
+ex:population2000 "30774621"^^xsd:int;
+ex:population1990 "25518074"^^xsd:int;
+ex:population1980 "18739378"^^xsd:int;
+ex:population1970 "13795915"^^xsd:int;
+dbo:areaTotal "2381741"^^xsd:int;
+dbo:populationDensity "18.8531"^^xsd:double;
+ex:growthRate "1.0164"^^xsd:double;
+ex:populationShare "0.56"^^xsd:double .
+<http://example.org/country/ASM> rdf:type dbo:Country ;
+ ex:populationShare "0"^^xsd:double;
+dbo:areaTotal "199"^^xsd:int;
+ex:growthRate "0.9831"^^xsd:double;
+dbo:populationDensity "222.4774"^^xsd:double;
+dbo:countryRank "213"^^xsd:int;
+dbo:isoCode ex:iso_ASM;
+rdfs:label "American Samoa";
+dbo:capital ex:Pago_Pago;
+dbo:continent ex:Oceania;
+dbo:populationTotal "44273"^^xsd:int;
+ex:population2020 "46189"^^xsd:int;
+ex:population2015 "51368"^^xsd:int;
+ex:population2010 "54849"^^xsd:int;
+ex:population2000 "58230"^^xsd:int;
+ex:population1990 "47818"^^xsd:int;
+ex:population1980 "32886"^^xsd:int;
+ex:population1970 "27075"^^xsd:int .
+<http://example.org/country/AND> rdf:type dbo:Country ;
+ dbo:countryRank "203"^^xsd:int;
+dbo:isoCode ex:iso_AND;
+rdfs:label "Andorra";
+dbo:capital ex:Andorra_la_Vella;
+dbo:continent ex:Europe;
+dbo:populationTotal "79824"^^xsd:int;
+ex:population2020 "77700"^^xsd:int;
+ex:population2015 "71746"^^xsd:int;
+ex:population2010 "71519"^^xsd:int;
+ex:population2000 "66097"^^xsd:int;
+ex:population1990 "53569"^^xsd:int;
+ex:population1980 "35611"^^xsd:int;
+ex:population1970 "19860"^^xsd:int;
+dbo:areaTotal "468"^^xsd:int;
+dbo:populationDensity "170.5641"^^xsd:double;
+ex:growthRate "1.01"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/AGO> rdf:type dbo:Country ;
+ dbo:countryRank "42"^^xsd:int;
+dbo:isoCode ex:iso_AGO;
+rdfs:label "Angola";
+dbo:capital ex:Luanda;
+dbo:continent ex:Africa;
+dbo:populationTotal "35588987"^^xsd:int;
+ex:population2020 "33428485"^^xsd:int;
+ex:population2015 "28127721"^^xsd:int;
+ex:population2010 "23364185"^^xsd:int;
+ex:population2000 "16394062"^^xsd:int;
+ex:population1990 "11828638"^^xsd:int;
+ex:population1980 "8330047"^^xsd:int;
+ex:population1970 "6029700"^^xsd:int;
+dbo:areaTotal "1246700"^^xsd:int;
+dbo:populationDensity "28.5466"^^xsd:double;
+ex:growthRate "1.0315"^^xsd:double;
+ex:populationShare "0.45"^^xsd:double .
+<http://example.org/country/AIA> rdf:type dbo:Country ;
+ dbo:isoCode ex:iso_AIA;
+dbo:countryRank "224"^^xsd:int;
+rdfs:label "Anguilla";
+dbo:capital ex:The_Valley;
+dbo:continent ex:North_America;
+dbo:populationTotal "15857"^^xsd:int;
+ex:population2020 "15585"^^xsd:int;
+ex:population2015 "14525"^^xsd:int;
+ex:population2010 "13172"^^xsd:int;
+ex:population2000 "11047"^^xsd:int;
+ex:population1990 "8316"^^xsd:int;
+ex:population1980 "6560"^^xsd:int;
+ex:population1970 "6283"^^xsd:int;
+dbo:areaTotal "91"^^xsd:int;
+dbo:populationDensity "174.2527"^^xsd:double;
+ex:growthRate "1.0066"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/ATG> rdf:type dbo:Country ;
+ dbo:countryRank "201"^^xsd:int;
+dbo:isoCode ex:iso_ATG;
+rdfs:label "Antigua and Barbuda";
+dbo:capital ex:Saint_John;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "93763"^^xsd:int;
+ex:population2020 "92664"^^xsd:int;
+ex:population2015 "89941"^^xsd:int;
+ex:population2010 "85695"^^xsd:int;
+ex:population2000 "75055"^^xsd:int;
+ex:population1990 "63328"^^xsd:int;
+ex:population1980 "64888"^^xsd:int;
+ex:population1970 "64516"^^xsd:int;
+dbo:areaTotal "442"^^xsd:int;
+dbo:populationDensity "212.1335"^^xsd:double;
+ex:growthRate "1.0058"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/ARG> rdf:type dbo:Country ;
+ dbo:countryRank "33"^^xsd:int;
+dbo:isoCode ex:iso_ARG;
+rdfs:label "Argentina";
+dbo:capital ex:Buenos_Aires;
+dbo:continent ex:South_America
+;
+dbo:populationTotal "45510318"^^xsd:int;
+ex:population2020 "45036032"^^xsd:int;
+ex:population2015 "43257065"^^xsd:int;
+ex:population2010 "41100123"^^xsd:int;
+ex:population2000 "37070774"^^xsd:int;
+ex:population1990 "32637657"^^xsd:int;
+ex:population1980 "28024803"^^xsd:int;
+ex:population1970 "23842803"^^xsd:int;
+dbo:areaTotal "2780400"^^xsd:int;
+dbo:populationDensity "16.3683"^^xsd:double;
+ex:growthRate "1.0052"^^xsd:double;
+ex:populationShare "0.57"^^xsd:double .
+<http://example.org/country/ARM> rdf:type dbo:Country ;
+ dbo:countryRank "140"^^xsd:int;
+dbo:isoCode ex:iso_ARM;
+rdfs:label "Armenia";
+dbo:capital ex:Yerevan;
+dbo:continent ex:Asia;
+dbo:populationTotal "2780469"^^xsd:int;
+ex:population2020 "2805608"^^xsd:int;
+ex:population2015 "2878595"^^xsd:int;
+ex:population2010 "2946293"^^xsd:int;
+ex:population2000 "3168523"^^xsd:int;
+ex:population1990 "3556539"^^xsd:int;
+ex:population1980 "3135123"^^xsd:int;
+ex:population1970 "2534377"^^xsd:int;
+dbo:areaTotal "29743"^^xsd:int;
+dbo:populationDensity "93.4831"^^xsd:double;
+ex:growthRate "0.9962"^^xsd:double;
+ex:populationShare "0.03"^^xsd:double .
+<http://example.org/country/ABW> rdf:type dbo:Country ;
+ dbo:countryRank "198"^^xsd:int;
+dbo:isoCode ex:iso_ABW;
+rdfs:label "Aruba";
+dbo:capital ex:Oranjestad;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "106445"^^xsd:int;
+ex:population2020 "106585"^^xsd:int;
+ex:population2015 "104257"^^xsd:int;
+ex:population2010 "100341"^^xsd:int;
+ex:population2000 "89101"^^xsd:int;
+ex:population1990 "65712"^^xsd:int;
+ex:population1980 "62267"^^xsd:int;
+ex:population1970 "59106"^^xsd:int;
+dbo:areaTotal "180"^^xsd:int;
+dbo:populationDensity "591.3611"^^xsd:double;
+ex:growthRate "0.9991"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/AUS> rdf:type dbo:Country ;
+ dbo:countryRank "55"^^xsd:int;
+dbo:isoCode ex:iso_AUS;
+rdfs:label "Australia";
+dbo:capital ex:Canberra;
+dbo:continent ex:Oceania;
+dbo:populationTotal "26177413"^^xsd:int;
+ex:population2020 "25670051"^^xsd:int;
+ex:population2015 "23820236"^^xsd:int;
+ex:population2010 "22019168"^^xsd:int;
+ex:population2000 "19017963"^^xsd:int;
+ex:population1990 "17048003"^^xsd:int;
+ex:population1980 "14706322"^^xsd:int;
+ex:population1970 "12595034"^^xsd:int;
+dbo:areaTotal "7692024"^^xsd:int;
+dbo:populationDensity "3.4032"^^xsd:double;
+ex:growthRate "1.0099"^^xsd:double;
+ex:populationShare "0.33"^^xsd:double .
+<http://example.org/country/AUT> rdf:type dbo:Country ;
+ dbo:areaTotal "83871"^^xsd:int;
+ex:population1980 "7547561"^^xsd:int;
+ex:population2000 "8010428"^^xsd:int;
+ex:population2015 "8642421"^^xsd:int;
+dbo:populationTotal "8939617"^^xsd:int;
+dbo:isoCode ex:iso_AUT;
+dbo:capital ex:Vienna;
+dbo:continent ex:Europe;
+rdfs:label "Austria";
+dbo:countryRank "99"^^xsd:int;
+ex:population2020 "8907777"^^xsd:int;
+ex:population2010 "8362829"^^xsd:int;
+ex:population1990 "7678729"^^xsd:int;
+ex:population1970 "7465301"^^xsd:int;
+dbo:populationDensity "106.5877"^^xsd:double;
+ex:growthRate "1.002"^^xsd:double;
+ex:populationShare "0.11"^^xsd:double .
+<http://example.org/country/AZE> rdf:type dbo:Country ;
+ dbo:countryRank "91"^^xsd:int;
+dbo:isoCode ex:iso_AZE;
+rdfs:label "Azerbaijan";
+dbo:capital ex:Baku;
+dbo:continent ex:Asia;
+dbo:populationTotal "10358074"^^xsd:int;
+ex:population2020 "10284951"^^xsd:int;
+ex:population2015 "9863480"^^xsd:int;
+ex:population2010 "9237202"^^xsd:int;
+ex:population2000 "8190337"^^xsd:int;
+ex:population1990 "7427836"^^xsd:int;
+ex:population1980 "6383060"^^xsd:int;
+ex:population1970 "5425317"^^xsd:int;
+dbo:areaTotal "86600"^^xsd:int;
+dbo:populationDensity "119.6082"^^xsd:double;
+ex:growthRate "1.0044"^^xsd:double;
+ex:populationShare "0.13"^^xsd:double .
+<http://example.org/country/BHS> rdf:type dbo:Country ;
+ ex:growthRate "1.0051"^^xsd:double;
+dbo:populationDensity "29.4043"^^xsd:double;
+dbo:areaTotal "13943"^^xsd:int;
+ex:population1970 "179129"^^xsd:int;
+ex:population2000 "325014"^^xsd:int;
+ex:population1980 "223752"^^xsd:int;
+ex:population1990 "270679"^^xsd:int;
+ex:population2010 "373272"^^xsd:int;
+dbo:continent ex:North_America
+;
+ex:population2015 "392697"^^xsd:int;
+ex:population2020 "406471"^^xsd:int;
+dbo:populationTotal "409984"^^xsd:int;
+dbo:capital ex:Nassau;
+rdfs:label "Bahamas";
+dbo:isoCode ex:iso_BHS;
+dbo:countryRank "176"^^xsd:int;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/BHR> rdf:type dbo:Country ;
+ rdfs:label "Bahrain";
+dbo:capital ex:Manama;
+dbo:continent ex:Asia;
+dbo:populationTotal "1472233"^^xsd:int;
+ex:population1990 "517418"^^xsd:int;
+ex:population2020 "1477469"^^xsd:int;
+ex:population1970 "222555"^^xsd:int;
+ex:population2015 "1362142"^^xsd:int;
+ex:population2000 "711442"^^xsd:int;
+ex:population2010 "1213645"^^xsd:int;
+dbo:countryRank "154"^^xsd:int;
+ex:population1980 "362595"^^xsd:int;
+dbo:isoCode ex:iso_BHR;
+dbo:areaTotal "765"^^xsd:int;
+dbo:populationDensity "1924.4876"^^xsd:double;
+ex:growthRate "1.0061"^^xsd:double;
+ex:populationShare "0.02"^^xsd:double .
+<http://example.org/country/BGD> rdf:type dbo:Country ;
+ dbo:countryRank "8"^^xsd:int;
+dbo:isoCode ex:iso_BGD;
+rdfs:label "Bangladesh";
+dbo:capital ex:Dhaka;
+dbo:continent ex:Asia;
+dbo:populationTotal "171186372"^^xsd:int;
+ex:population2020 "167420951"^^xsd:int;
+ex:population2015 "157830000"^^xsd:int;
+ex:population2010 "148391139"^^xsd:int;
+ex:population2000 "129193327"^^xsd:int;
+ex:population1990 "107147651"^^xsd:int;
+ex:population1980 "83929765"^^xsd:int;
+ex:population1970 "67541860"^^xsd:int;
+dbo:areaTotal "147570"^^xsd:int;
+dbo:populationDensity "1160.035"^^xsd:double;
+ex:growthRate "1.0108"^^xsd:double;
+ex:populationShare "2.15"^^xsd:double .
+<http://example.org/country/BRB> rdf:type dbo:Country ;
+ dbo:countryRank "186"^^xsd:int;
+dbo:isoCode ex:iso_BRB;
+rdfs:label "Barbados";
+dbo:capital ex:Bridgetown;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "281635"^^xsd:int;
+ex:population2020 "280693"^^xsd:int;
+ex:population2015 "278083"^^xsd:int;
+ex:population2010 "274711"^^xsd:int;
+ex:population2000 "264657"^^xsd:int;
+ex:population1990 "258868"^^xsd:int;
+ex:population1980 "253575"^^xsd:int;
+ex:population1970 "241397"^^xsd:int;
+dbo:areaTotal "430"^^xsd:int;
+dbo:populationDensity "654.9651"^^xsd:double;
+ex:growthRate "1.0015"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/BLR> rdf:type dbo:Country ;
+ dbo:countryRank "96"^^xsd:int;
+dbo:isoCode ex:iso_BLR;
+rdfs:label "Belarus";
+dbo:capital ex:Minsk;
+dbo:continent ex:Europe;
+dbo:populationTotal "9534954"^^xsd:int;
+ex:population2020 "9633740"^^xsd:int;
+ex:population2015 "9700609"^^xsd:int;
+ex:population2010 "9731427"^^xsd:int;
+ex:population2000 "10256483"^^xsd:int;
+ex:population1990 "10428525"^^xsd:int;
+ex:population1980 "9817257"^^xsd:int;
+ex:population1970 "9170786"^^xsd:int;
+dbo:areaTotal "207600"^^xsd:int;
+dbo:populationDensity "45.9295"^^xsd:double;
+ex:growthRate "0.9955"^^xsd:double;
+ex:populationShare "0.12"^^xsd:double .
+<http://example.org/country/BEL> rdf:type dbo:Country ;
+ dbo:countryRank "81"^^xsd:int;
+dbo:isoCode ex:iso_BEL;
+rdfs:label "Belgium";
+dbo:capital ex:Brussels;
+dbo:continent ex:Europe;
+dbo:populationTotal "11655930"^^xsd:int;
+ex:population2020 "11561717"^^xsd:int;
+ex:population2015 "11248303"^^xsd:int;
+ex:population2010 "10877947"^^xsd:int;
+ex:population2000 "10264343"^^xsd:int;
+ex:population1990 "9959560"^^xsd:int;
+ex:population1980 "9828986"^^xsd:int;
+ex:population1970 "9629376"^^xsd:int;
+dbo:areaTotal "30528"^^xsd:int;
+dbo:populationDensity "381.8111"^^xsd:double;
+ex:growthRate "1.0038"^^xsd:double;
+ex:populationShare "0.15"^^xsd:double .
+<http://example.org/country/BLZ> rdf:type dbo:Country ;
+ ex:growthRate "1.0131"^^xsd:double;
+ex:population2010 "322106"^^xsd:int;
+ex:population2000 "240406"^^xsd:int;
+ex:population1990 "182589"^^xsd:int;
+ex:population1980 "145133"^^xsd:int;
+ex:population1970 "120905"^^xsd:int;
+dbo:populationDensity "17.6466"^^xsd:double;
+dbo:areaTotal "22966"^^xsd:int;
+dbo:countryRank "177"^^xsd:int;
+dbo:isoCode ex:iso_BLZ;
+rdfs:label "Belize";
+dbo:capital ex:Belmopan;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "405272"^^xsd:int;
+ex:population2015 "359871"^^xsd:int;
+ex:population2020 "394921"^^xsd:int;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/BEN> rdf:type dbo:Country ;
+ dbo:countryRank "77"^^xsd:int;
+dbo:isoCode ex:iso_BEN;
+rdfs:label "Benin";
+dbo:capital ex:Porto_Novo;
+dbo:continent ex:Africa;
+dbo:populationTotal "13352864"^^xsd:int;
+ex:population2020 "12643123"^^xsd:int;
+ex:population2015 "10932783"^^xsd:int;
+ex:population2010 "9445710"^^xsd:int;
+ex:population2000 "6998023"^^xsd:int;
+ex:population1990 "5133419"^^xsd:int;
+ex:population1980 "3833939"^^xsd:int;
+ex:population1970 "3023443"^^xsd:int;
+dbo:areaTotal "112622"^^xsd:int;
+dbo:populationDensity "118.5635"^^xsd:double;
+ex:growthRate "1.0274"^^xsd:double;
+ex:populationShare "0.17"^^xsd:double .
+<http://example.org/country/BMU> rdf:type dbo:Country ;
+ dbo:countryRank "206"^^xsd:int;
+dbo:isoCode ex:iso_BMU;
+rdfs:label "Bermuda";
+dbo:capital ex:Hamilton;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "64184"^^xsd:int;
+ex:population2020 "64031"^^xsd:int;
+ex:population2015 "63144"^^xsd:int;
+ex:population2010 "63447"^^xsd:int;
+ex:population2000 "61371"^^xsd:int;
+ex:population1990 "57470"^^xsd:int;
+ex:population1980 "53565"^^xsd:int;
+ex:population1970 "52019"^^xsd:int;
+dbo:areaTotal "54"^^xsd:int;
+dbo:populationDensity "1188.5926"^^xsd:double;
+ex:growthRate "1"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/BTN> rdf:type dbo:Country ;
+ dbo:countryRank "165"^^xsd:int;
+dbo:isoCode ex:iso_BTN;
+rdfs:label "Bhutan";
+dbo:capital ex:Thimphu;
+dbo:continent ex:Asia;
+dbo:populationTotal "782455"^^xsd:int;
+ex:population2020 "772506"^^xsd:int;
+ex:population2015 "743274"^^xsd:int;
+ex:population2010 "705516"^^xsd:int;
+ex:population2000 "587207"^^xsd:int;
+ex:population1990 "558442"^^xsd:int;
+ex:population1980 "415257"^^xsd:int;
+ex:population1970 "298894"^^xsd:int;
+dbo:areaTotal "38394"^^xsd:int;
+dbo:populationDensity "20.3796"^^xsd:double;
+ex:growthRate "1.0064"^^xsd:double;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/BOL> rdf:type dbo:Country ;
+ dbo:countryRank "80"^^xsd:int;
+dbo:isoCode ex:iso_BOL;
+rdfs:label "Bolivia";
+dbo:capital ex:Sucre;
+dbo:continent ex:South_America
+;
+dbo:populationTotal "12224110"^^xsd:int;
+ex:population2020 "11936162"^^xsd:int;
+ex:population2015 "11090085"^^xsd:int;
+ex:population2010 "10223270"^^xsd:int;
+ex:population2000 "8592656"^^xsd:int;
+ex:population1990 "7096194"^^xsd:int;
+ex:population1980 "5736088"^^xsd:int;
+ex:population1970 "4585693"^^xsd:int;
+dbo:areaTotal "1098581"^^xsd:int;
+dbo:populationDensity "11.1272"^^xsd:double;
+ex:growthRate "1.012"^^xsd:double;
+ex:populationShare "0.15"^^xsd:double .
+<http://example.org/country/BIH> rdf:type dbo:Country ;
+ ex:growthRate "0.9886"^^xsd:double;
+dbo:populationDensity "63.1437"^^xsd:double;
+dbo:areaTotal "51209"^^xsd:int;
+ex:population1970 "3815561"^^xsd:int;
+ex:population1980 "4199820"^^xsd:int;
+ex:population1990 "4494310"^^xsd:int;
+ex:population2010 "3811088"^^xsd:int;
+ex:population2020 "3318407"^^xsd:int;
+dbo:populationTotal "3233526"^^xsd:int;
+dbo:continent ex:Europe;
+rdfs:label "Bosnia and Herzegovina";
+dbo:capital ex:Sarajevo;
+dbo:countryRank "137"^^xsd:int;
+dbo:isoCode ex:iso_BIH;
+ex:population2015 "3524324"^^xsd:int;
+ex:population2000 "4179350"^^xsd:int;
+ex:populationShare "0.04"^^xsd:double .
+<http://example.org/country/BWA> rdf:type dbo:Country ;
+ ex:population2015 "2305171"^^xsd:int;
+ex:population2000 "1726985"^^xsd:int;
+ex:population1970 "592244"^^xsd:int;
+ex:population1980 "938578"^^xsd:int;
+ex:population1990 "1341474"^^xsd:int;
+ex:population2010 "2091664"^^xsd:int;
+dbo:capital ex:Gaborone;
+dbo:populationTotal "2630296"^^xsd:int;
+dbo:continent ex:Africa;
+rdfs:label "Botswana";
+dbo:countryRank "144"^^xsd:int;
+dbo:isoCode ex:iso_BWA;
+ex:population2020 "2546402"^^xsd:int;
+dbo:areaTotal "582000"^^xsd:int;
+dbo:populationDensity "4.5194"^^xsd:double;
+ex:growthRate "1.0162"^^xsd:double;
+ex:populationShare "0.03"^^xsd:double .
+<http://example.org/country/BRA> rdf:type dbo:Country ;
+ dbo:countryRank "7"^^xsd:int;
+dbo:isoCode ex:iso_BRA;
+rdfs:label "Brazil";
+dbo:capital ex:Brasilia;
+dbo:continent ex:South_America
+;
+dbo:populationTotal "215313498"^^xsd:int;
+ex:population2020 "213196304"^^xsd:int;
+ex:population2015 "205188205"^^xsd:int;
+ex:population2010 "196353492"^^xsd:int;
+ex:population2000 "175873720"^^xsd:int;
+ex:population1990 "150706446"^^xsd:int;
+ex:population1980 "122288383"^^xsd:int;
+ex:population1970 "96369875"^^xsd:int;
+dbo:areaTotal "8515767"^^xsd:int;
+dbo:populationDensity "25.2841"^^xsd:double;
+ex:growthRate "1.0046"^^xsd:double;
+ex:populationShare "2.7"^^xsd:double .
+<http://example.org/country/VGB> rdf:type dbo:Country ;
+ dbo:populationTotal "31305"^^xsd:int;
+dbo:continent ex:North_America
+;
+dbo:capital ex:Road_Town;
+rdfs:label "British Virgin Islands";
+dbo:countryRank "221"^^xsd:int;
+dbo:isoCode ex:iso_VGB;
+ex:population2020 "30910"^^xsd:int;
+ex:population2015 "29366"^^xsd:int;
+ex:population2010 "27556"^^xsd:int;
+ex:population2000 "20104"^^xsd:int;
+ex:population1990 "15617"^^xsd:int;
+ex:population1980 "11109"^^xsd:int;
+ex:population1970 "9581"^^xsd:int;
+dbo:areaTotal "151"^^xsd:int;
+dbo:populationDensity "207.3179"^^xsd:double;
+ex:growthRate "1.0059"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/BRN> rdf:type dbo:Country ;
+ dbo:countryRank "175"^^xsd:int;
+dbo:isoCode ex:iso_BRN;
+rdfs:label "Brunei";
+dbo:capital ex:Bandar_Seri_Begawan;
+dbo:continent ex:Asia;
+dbo:populationTotal "449002"^^xsd:int;
+ex:population2020 "441725"^^xsd:int;
+ex:population2015 "421437"^^xsd:int;
+ex:population2010 "396053"^^xsd:int;
+ex:population2000 "333926"^^xsd:int;
+ex:population1990 "261928"^^xsd:int;
+ex:population1980 "187921"^^xsd:int;
+ex:population1970 "133343"^^xsd:int;
+dbo:areaTotal "5765"^^xsd:int;
+dbo:populationDensity "77.8841"^^xsd:double;
+ex:growthRate "1.0081"^^xsd:double;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/BGR> rdf:type dbo:Country ;
+ ex:population2010 "7592273"^^xsd:int;
+ex:population2000 "8097691"^^xsd:int;
+ex:population1970 "8582950"^^xsd:int;
+ex:population1980 "8980606"^^xsd:int;
+ex:population1990 "8767778"^^xsd:int;
+ex:population2020 "6979175"^^xsd:int;
+ex:population2015 "7309253"^^xsd:int;
+dbo:populationTotal "6781953"^^xsd:int;
+dbo:continent ex:Europe;
+rdfs:label "Bulgaria";
+dbo:capital ex:Sofia;
+dbo:isoCode ex:iso_BGR;
+dbo:countryRank "108"^^xsd:int;
+dbo:areaTotal "110879"^^xsd:int;
+dbo:populationDensity "61.1654"^^xsd:double;
+ex:growthRate "0.9849"^^xsd:double;
+ex:populationShare "0.09"^^xsd:double .
+<http://example.org/country/BFA> rdf:type dbo:Country ;
+ dbo:countryRank "58"^^xsd:int;
+dbo:isoCode ex:iso_BFA;
+rdfs:label "Burkina Faso";
+dbo:capital ex:Ouagadougou;
+dbo:continent ex:Africa;
+dbo:populationTotal "22673762"^^xsd:int;
+ex:population2020 "21522626"^^xsd:int;
+ex:population2015 "18718019"^^xsd:int;
+ex:population2010 "16116845"^^xsd:int;
+ex:population2000 "11882888"^^xsd:int;
+ex:population1990 "9131361"^^xsd:int;
+ex:population1980 "6932967"^^xsd:int;
+ex:population1970 "5611666"^^xsd:int;
+dbo:areaTotal "272967"^^xsd:int;
+dbo:populationDensity "83.0641"^^xsd:double;
+ex:growthRate "1.0259"^^xsd:double;
+ex:populationShare "0.28"^^xsd:double .
+<http://example.org/country/BDI> rdf:type dbo:Country ;
+ dbo:countryRank "78"^^xsd:int;
+dbo:isoCode ex:iso_BDI;
+rdfs:label "Burundi";
+dbo:capital ex:Bujumbura;
+dbo:continent ex:Africa;
+dbo:populationTotal "12889576"^^xsd:int;
+ex:population2020 "12220227"^^xsd:int;
+ex:population2015 "10727148"^^xsd:int;
+ex:population2010 "9126605"^^xsd:int;
+ex:population2000 "6307659"^^xsd:int;
+ex:population1990 "5483793"^^xsd:int;
+ex:population1980 "4312834"^^xsd:int;
+ex:population1970 "3497834"^^xsd:int;
+dbo:areaTotal "27834"^^xsd:int;
+dbo:populationDensity "463.0874"^^xsd:double;
+ex:growthRate "1.027"^^xsd:double;
+ex:populationShare "0.16"^^xsd:double .
+<http://example.org/country/KHM> rdf:type dbo:Country ;
+ dbo:countryRank "73"^^xsd:int;
+dbo:isoCode ex:iso_KHM;
+rdfs:label "Cambodia";
+dbo:capital ex:Phnom_Penh;
+dbo:continent ex:Asia;
+dbo:populationTotal "16767842"^^xsd:int;
+ex:population2020 "16396860"^^xsd:int;
+ex:population2015 "15417523"^^xsd:int;
+ex:population2010 "14363532"^^xsd:int;
+ex:population2000 "12118841"^^xsd:int;
+ex:population1990 "8910808"^^xsd:int;
+ex:population1980 "6198959"^^xsd:int;
+ex:population1970 "6708525"^^xsd:int;
+dbo:areaTotal "181035"^^xsd:int;
+dbo:populationDensity "92.6221"^^xsd:double;
+ex:growthRate "1.0108"^^xsd:double;
+ex:populationShare "0.21"^^xsd:double .
+<http://example.org/country/CMR> rdf:type dbo:Country ;
+ ex:growthRate "1.0263"^^xsd:double;
+dbo:countryRank "53"^^xsd:int;
+dbo:isoCode ex:iso_CMR;
+rdfs:label "Cameroon";
+dbo:capital ex:Yaounde;
+dbo:continent ex:Africa;
+dbo:populationTotal "27914536"^^xsd:int;
+ex:population2020 "26491087"^^xsd:int;
+ex:population2015 "23012646"^^xsd:int;
+ex:population2010 "19878036"^^xsd:int;
+ex:population2000 "15091594"^^xsd:int;
+ex:population1990 "11430520"^^xsd:int;
+ex:population1980 "8519891"^^xsd:int;
+ex:population1970 "6452787"^^xsd:int;
+dbo:areaTotal "475442"^^xsd:int;
+dbo:populationDensity "58.7128"^^xsd:double;
+ex:populationShare "0.35"^^xsd:double .
+<http://example.org/country/CAN> rdf:type dbo:Country ;
+ ex:populationShare "0.48"^^xsd:double;
+ex:growthRate "1.0078"^^xsd:double;
+dbo:populationDensity "3.8513"^^xsd:double;
+ex:population1970 "21434577"^^xsd:int;
+ex:population1990 "27657204"^^xsd:int;
+ex:population2010 "33963412"^^xsd:int;
+ex:population2015 "35732126"^^xsd:int;
+dbo:populationTotal "38454327"^^xsd:int;
+dbo:capital ex:Ottawa;
+dbo:countryRank "39"^^xsd:int;
+dbo:isoCode ex:iso_CAN;
+rdfs:label "Canada";
+dbo:continent ex:North_America
+;
+ex:population2020 "37888705"^^xsd:int;
+ex:population2000 "30683313"^^xsd:int;
+ex:population1980 "24511510"^^xsd:int;
+dbo:areaTotal "9984670"^^xsd:int .
+<http://example.org/country/CPV> rdf:type dbo:Country ;
+ dbo:countryRank "171"^^xsd:int;
+dbo:isoCode ex:iso_CPV;
+rdfs:label "Cape Verde";
+dbo:capital ex:Praia;
+dbo:continent ex:Africa;
+dbo:populationTotal "593149"^^xsd:int;
+ex:population2020 "582640"^^xsd:int;
+ex:population2015 "552166"^^xsd:int;
+ex:population2010 "521212"^^xsd:int;
+ex:population2000 "458251"^^xsd:int;
+ex:population1990 "364563"^^xsd:int;
+ex:population1980 "317234"^^xsd:int;
+ex:population1970 "287262"^^xsd:int;
+dbo:areaTotal "4033"^^xsd:int;
+dbo:populationDensity "147.0739"^^xsd:double;
+ex:growthRate "1.0089"^^xsd:double;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/CYM> rdf:type dbo:Country ;
+ dbo:countryRank "205"^^xsd:int;
+dbo:isoCode ex:iso_CYM;
+rdfs:label "Cayman Islands";
+dbo:capital ex:George_Town;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "68706"^^xsd:int;
+ex:population2020 "67311"^^xsd:int;
+ex:population2015 "60911"^^xsd:int;
+ex:population2010 "54074"^^xsd:int;
+ex:population2000 "39658"^^xsd:int;
+ex:population1990 "26027"^^xsd:int;
+ex:population1980 "17100"^^xsd:int;
+ex:population1970 "10533"^^xsd:int;
+dbo:areaTotal "264"^^xsd:int;
+dbo:populationDensity "260.25"^^xsd:double;
+ex:growthRate "1.0084"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/CAF> rdf:type dbo:Country ;
+ dbo:countryRank "117"^^xsd:int;
+dbo:isoCode ex:iso_CAF;
+rdfs:label "Central African Republic";
+dbo:capital ex:Bangui;
+dbo:continent ex:Africa;
+dbo:populationTotal "5579144"^^xsd:int;
+ex:population2020 "5343020"^^xsd:int;
+ex:population2015 "4819333"^^xsd:int;
+ex:population2010 "4660067"^^xsd:int;
+ex:population2000 "3759170"^^xsd:int;
+ex:population1990 "2809221"^^xsd:int;
+ex:population1980 "2415276"^^xsd:int;
+ex:population1970 "2067356"^^xsd:int;
+dbo:areaTotal "622984"^^xsd:int;
+dbo:populationDensity "8.9555"^^xsd:double;
+ex:growthRate "1.0224"^^xsd:double;
+ex:populationShare "0.07"^^xsd:double .
+<http://example.org/country/TCD> rdf:type dbo:Country ;
+ ex:population2015 "14140274"^^xsd:int;
+dbo:countryRank "69"^^xsd:int;
+dbo:isoCode ex:iso_TCD;
+rdfs:label "Chad";
+dbo:capital ex:N_Djamena;
+dbo:continent ex:Africa;
+dbo:populationTotal "17723315"^^xsd:int;
+ex:population2020 "16644701"^^xsd:int;
+ex:population2010 "11894727"^^xsd:int;
+ex:population2000 "8259137"^^xsd:int;
+ex:population1990 "5827069"^^xsd:int;
+ex:population1980 "4408230"^^xsd:int;
+ex:population1970 "3667394"^^xsd:int;
+dbo:areaTotal "1284000"^^xsd:int;
+dbo:populationDensity "13.8032"^^xsd:double;
+ex:growthRate "1.0316"^^xsd:double;
+ex:populationShare "0.22"^^xsd:double .
+<http://example.org/country/CHL> rdf:type dbo:Country ;
+ dbo:countryRank "65"^^xsd:int;
+dbo:isoCode ex:iso_CHL;
+rdfs:label "Chile";
+dbo:capital ex:Santiago;
+dbo:continent ex:South_America
+;
+dbo:populationTotal "19603733"^^xsd:int;
+ex:population2020 "19300315"^^xsd:int;
+ex:population2015 "17870124"^^xsd:int;
+ex:population2010 "17004162"^^xsd:int;
+ex:population2000 "15351799"^^xsd:int;
+ex:population1990 "13342868"^^xsd:int;
+ex:population1980 "11469828"^^xsd:int;
+ex:population1970 "9820481"^^xsd:int;
+dbo:areaTotal "756102"^^xsd:int;
+dbo:populationDensity "25.9274"^^xsd:double;
+ex:growthRate "1.0057"^^xsd:double;
+ex:populationShare "0.25"^^xsd:double .
+<http://example.org/country/CHN> rdf:type dbo:Country ;
+ ex:populationShare "17.88"^^xsd:double;
+ex:growthRate "1"^^xsd:double;
+dbo:capital ex:Beijing;
+dbo:continent ex:Asia;
+dbo:areaTotal "9706961"^^xsd:int;
+dbo:populationTotal "1425887337"^^xsd:int;
+ex:population2020 "1424929781"^^xsd:int;
+ex:population2015 "1393715448"^^xsd:int;
+ex:population2010 "1348191368"^^xsd:int;
+ex:population2000 "1264099069"^^xsd:int;
+ex:population1990 "1153704252"^^xsd:int;
+ex:population1980 "982372466"^^xsd:int;
+dbo:countryRank "1"^^xsd:int;
+ex:population1970 "822534450"^^xsd:int;
+dbo:isoCode ex:iso_CHN;
+rdfs:label "China";
+dbo:populationDensity "146.8933"^^xsd:double .
+<http://example.org/country/COL> rdf:type dbo:Country ;
+ dbo:countryRank "28"^^xsd:int;
+dbo:isoCode ex:iso_COL;
+rdfs:label "Colombia";
+dbo:capital ex:Bogota;
+dbo:continent ex:South_America
+;
+dbo:populationTotal "51874024"^^xsd:int;
+ex:population2020 "50930662"^^xsd:int;
+ex:population2015 "47119728"^^xsd:int;
+ex:population2010 "44816108"^^xsd:int;
+ex:population2000 "39215135"^^xsd:int;
+ex:population1990 "32601393"^^xsd:int;
+ex:population1980 "26176195"^^xsd:int;
+ex:population1970 "20905254"^^xsd:int;
+dbo:areaTotal "1141748"^^xsd:int;
+dbo:populationDensity "45.4339"^^xsd:double;
+ex:growthRate "1.0069"^^xsd:double;
+ex:populationShare "0.65"^^xsd:double .
+<http://example.org/country/COM> rdf:type dbo:Country ;
+ dbo:countryRank "163"^^xsd:int;
+dbo:isoCode ex:iso_COM;
+rdfs:label "Comoros";
+dbo:capital ex:Moroni;
+dbo:continent ex:Africa;
+dbo:populationTotal "836774"^^xsd:int;
+ex:population2020 "806166"^^xsd:int;
+ex:population2015 "730216"^^xsd:int;
+ex:population2010 "656024"^^xsd:int;
+ex:population2000 "536758"^^xsd:int;
+ex:population1990 "431119"^^xsd:int;
+ex:population1980 "328328"^^xsd:int;
+ex:population1970 "242351"^^xsd:int;
+dbo:areaTotal "1862"^^xsd:int;
+dbo:populationDensity "449.3953"^^xsd:double;
+ex:growthRate "1.0184"^^xsd:double;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/COK> rdf:type dbo:Country ;
+ ex:populationShare "0"^^xsd:double;
+ex:growthRate "1.0005"^^xsd:double;
+rdfs:label "Cook Islands";
+dbo:capital ex:Avarua;
+dbo:continent ex:Oceania;
+ex:population1970 "20470"^^xsd:int;
+dbo:populationTotal "17011"^^xsd:int;
+dbo:populationDensity "72.0805"^^xsd:double;
+ex:population2020 "17029"^^xsd:int;
+ex:population2015 "17695"^^xsd:int;
+ex:population2010 "17212"^^xsd:int;
+ex:population2000 "15897"^^xsd:int;
+ex:population1980 "17651"^^xsd:int;
+ex:population1990 "17123"^^xsd:int;
+dbo:areaTotal "236"^^xsd:int;
+dbo:countryRank "223"^^xsd:int;
+dbo:isoCode ex:iso_COK .
+<http://example.org/country/CRI> rdf:type dbo:Country ;
+ dbo:countryRank "124"^^xsd:int;
+dbo:isoCode ex:iso_CRI;
+rdfs:label "Costa Rica";
+dbo:capital ex:San_Jose;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "5180829"^^xsd:int;
+ex:population2020 "5123105"^^xsd:int;
+ex:population2015 "4895242"^^xsd:int;
+ex:population2010 "4622252"^^xsd:int;
+ex:population2000 "3979193"^^xsd:int;
+ex:population1990 "3158253"^^xsd:int;
+ex:population1980 "2414303"^^xsd:int;
+ex:population1970 "1855697"^^xsd:int;
+dbo:areaTotal "51100"^^xsd:int;
+dbo:populationDensity "101.3861"^^xsd:double;
+ex:growthRate "1.0052"^^xsd:double;
+ex:populationShare "0.06"^^xsd:double .
+<http://example.org/country/HRV> rdf:type dbo:Country ;
+ dbo:countryRank "130"^^xsd:int;
+dbo:isoCode ex:iso_HRV;
+rdfs:label "Croatia";
+dbo:capital ex:Zagreb;
+dbo:continent ex:Europe;
+dbo:populationTotal "4030358"^^xsd:int;
+ex:population2020 "4096868"^^xsd:int;
+ex:population2015 "4254815"^^xsd:int;
+ex:population2010 "4368682"^^xsd:int;
+ex:population2000 "4548434"^^xsd:int;
+ex:population1990 "4873707"^^xsd:int;
+ex:population1980 "4680144"^^xsd:int;
+ex:population1970 "4492638"^^xsd:int;
+dbo:areaTotal "56594"^^xsd:int;
+dbo:populationDensity "71.2153"^^xsd:double;
+ex:growthRate "0.9927"^^xsd:double;
+ex:populationShare "0.05"^^xsd:double .
+<http://example.org/country/CUB> rdf:type dbo:Country ;
+ dbo:countryRank "85"^^xsd:int;
+dbo:isoCode ex:iso_CUB;
+rdfs:label "Cuba";
+dbo:capital ex:Havana;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "11212191"^^xsd:int;
+ex:population2020 "11300698"^^xsd:int;
+ex:population2015 "11339894"^^xsd:int;
+ex:population2010 "11290417"^^xsd:int;
+ex:population2000 "11105791"^^xsd:int;
+ex:population1990 "10626680"^^xsd:int;
+ex:population1980 "9809107"^^xsd:int;
+ex:population1970 "8869636"^^xsd:int;
+dbo:areaTotal "109884"^^xsd:int;
+dbo:populationDensity "102.0366"^^xsd:double;
+ex:growthRate "0.9961"^^xsd:double;
+ex:populationShare "0.14"^^xsd:double .
+<http://example.org/country/CUW> rdf:type dbo:Country ;
+ dbo:countryRank "189"^^xsd:int;
+dbo:isoCode ex:iso_CUW;
+rdfs:label "Curacao";
+dbo:capital ex:Willemstad;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "191163"^^xsd:int;
+ex:population2020 "189288"^^xsd:int;
+ex:population2015 "169572"^^xsd:int;
+ex:population2010 "159380"^^xsd:int;
+ex:population2000 "141424"^^xsd:int;
+dbo:populationDensity "430.5473"^^xsd:double;
+dbo:areaTotal "444"^^xsd:int;
+ex:population1970 "150385"^^xsd:int;
+ex:population1980 "156851"^^xsd:int;
+ex:population1990 "155446"^^xsd:int;
+ex:growthRate "1.0043"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/CYP> rdf:type dbo:Country ;
+ dbo:countryRank "158"^^xsd:int;
+dbo:isoCode ex:iso_CYP;
+rdfs:label "Cyprus";
+dbo:capital ex:Nicosia;
+dbo:continent ex:Europe;
+dbo:populationTotal "1251488"^^xsd:int;
+ex:population2020 "1237537"^^xsd:int;
+ex:population2015 "1187280"^^xsd:int;
+ex:population2010 "1129686"^^xsd:int;
+ex:population2000 "948237"^^xsd:int;
+ex:population1990 "788500"^^xsd:int;
+ex:population1980 "679327"^^xsd:int;
+ex:population1970 "640804"^^xsd:int;
+dbo:areaTotal "9251"^^xsd:int;
+dbo:populationDensity "135.2814"^^xsd:double;
+ex:growthRate "1.0059"^^xsd:double;
+ex:populationShare "0.02"^^xsd:double .
+<http://example.org/country/CZE> rdf:type dbo:Country ;
+ dbo:countryRank "88"^^xsd:int;
+dbo:isoCode ex:iso_CZE;
+rdfs:label "Czech Republic";
+dbo:capital ex:Prague;
+dbo:continent ex:Europe;
+dbo:populationTotal "10493986"^^xsd:int;
+ex:population2020 "10530953"^^xsd:int;
+ex:population2015 "10523798"^^xsd:int;
+ex:population2010 "10464749"^^xsd:int;
+ex:population2000 "10234710"^^xsd:int;
+ex:population1990 "10301192"^^xsd:int;
+ex:population1980 "10270060"^^xsd:int;
+ex:population1970 "9795744"^^xsd:int;
+dbo:areaTotal "78865"^^xsd:int;
+dbo:populationDensity "133.0627"^^xsd:double;
+ex:growthRate "0.9984"^^xsd:double;
+ex:populationShare "0.13"^^xsd:double .
+<http://example.org/country/DNK> rdf:type dbo:Country ;
+ ex:population2000 "5340655"^^xsd:int;
+ex:population1990 "5144623"^^xsd:int;
+ex:population1980 "5125392"^^xsd:int;
+ex:population1970 "4922963"^^xsd:int;
+dbo:areaTotal "43094"^^xsd:int;
+dbo:populationDensity "136.4984"^^xsd:double;
+dbo:countryRank "115"^^xsd:int;
+dbo:isoCode ex:iso_DNK;
+rdfs:label "Denmark";
+dbo:capital ex:Copenhagen;
+dbo:continent ex:Europe;
+dbo:populationTotal "5882261"^^xsd:int;
+ex:population2020 "5825641"^^xsd:int;
+ex:population2015 "5677796"^^xsd:int;
+ex:population2010 "5550849"^^xsd:int;
+ex:growthRate "1.0048"^^xsd:double;
+ex:populationShare "0.07"^^xsd:double .
+<http://example.org/country/DJI> rdf:type dbo:Country ;
+ rdfs:label "Djibouti";
+ex:population2015 "1006259"^^xsd:int;
+dbo:populationTotal "1120849"^^xsd:int;
+ex:population2020 "1090156"^^xsd:int;
+dbo:continent ex:Africa;
+dbo:capital ex:Djibouti;
+dbo:isoCode ex:iso_DJI;
+dbo:countryRank "160"^^xsd:int;
+ex:population2010 "919199"^^xsd:int;
+ex:population2000 "742033"^^xsd:int;
+ex:population1990 "577173"^^xsd:int;
+ex:population1980 "324121"^^xsd:int;
+ex:population1970 "144379"^^xsd:int;
+dbo:areaTotal "23200"^^xsd:int;
+dbo:populationDensity "48.3125"^^xsd:double;
+ex:growthRate "1.0138"^^xsd:double;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/DMA> rdf:type dbo:Country ;
+ dbo:countryRank "204"^^xsd:int;
+dbo:isoCode ex:iso_DMA;
+rdfs:label "Dominica";
+dbo:capital ex:Roseau;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "72737"^^xsd:int;
+ex:population2020 "71995"^^xsd:int;
+ex:population2015 "70007"^^xsd:int;
+ex:population2010 "68755"^^xsd:int;
+ex:population2000 "68346"^^xsd:int;
+ex:population1990 "69481"^^xsd:int;
+ex:population1980 "72978"^^xsd:int;
+ex:population1970 "68895"^^xsd:int;
+dbo:areaTotal "751"^^xsd:int;
+dbo:populationDensity "96.8535"^^xsd:double;
+ex:growthRate "1.0045"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/DOM> rdf:type dbo:Country ;
+ rdfs:label "Dominican Republic";
+ex:populationShare "0.14"^^xsd:double;
+ex:growthRate "1.01"^^xsd:double;
+dbo:capital ex:Santo_Domingo;
+ex:population1990 "7129004"^^xsd:int;
+ex:population1970 "4475871"^^xsd:int;
+ex:population1980 "5755800"^^xsd:int;
+dbo:populationDensity "230.7087"^^xsd:double;
+ex:population2015 "10405832"^^xsd:int;
+dbo:populationTotal "11228821"^^xsd:int;
+ex:population2020 "10999664"^^xsd:int;
+ex:population2000 "8540791"^^xsd:int;
+dbo:continent ex:North_America
+;
+dbo:countryRank "84"^^xsd:int;
+ex:population2010 "9775755"^^xsd:int;
+dbo:areaTotal "48671"^^xsd:int;
+dbo:isoCode ex:iso_DOM .
+<http://example.org/country/COD> rdf:type dbo:Country ;
+ ex:population2010 "66391257"^^xsd:int;
+ex:population2015 "78656904"^^xsd:int;
+ex:population2020 "92853164"^^xsd:int;
+dbo:populationTotal "99010212"^^xsd:int;
+dbo:continent ex:Africa;
+rdfs:label "DR Congo";
+dbo:capital ex:Kinshasa;
+dbo:isoCode ex:iso_COD;
+dbo:countryRank "15"^^xsd:int;
+ex:population2000 "48616317"^^xsd:int;
+ex:population1990 "35987541"^^xsd:int;
+ex:population1980 "26708686"^^xsd:int;
+ex:population1970 "20151733"^^xsd:int;
+dbo:areaTotal "2344858"^^xsd:int;
+dbo:populationDensity "42.2244"^^xsd:double;
+ex:growthRate "1.0325"^^xsd:double;
+ex:populationShare "1.24"^^xsd:double .
+<http://example.org/country/ECU> rdf:type dbo:Country ;
+ ex:population2010 "14989585"^^xsd:int;
+ex:population2000 "12626507"^^xsd:int;
+ex:population1990 "10449837"^^xsd:int;
+ex:population1980 "8135845"^^xsd:int;
+dbo:areaTotal "276841"^^xsd:int;
+ex:population1970 "6172215"^^xsd:int;
+dbo:countryRank "67"^^xsd:int;
+dbo:isoCode ex:iso_ECU;
+rdfs:label "Ecuador";
+dbo:capital ex:Quito;
+dbo:continent ex:South_America
+;
+dbo:populationTotal "18001000"^^xsd:int;
+ex:population2020 "17588595"^^xsd:int;
+ex:population2015 "16195902"^^xsd:int;
+dbo:populationDensity "65.0229"^^xsd:double;
+ex:growthRate "1.0114"^^xsd:double;
+ex:populationShare "0.23"^^xsd:double .
+<http://example.org/country/EGY> rdf:type dbo:Country ;
+ dbo:populationTotal "110990103"^^xsd:int;
+ex:population2020 "107465134"^^xsd:int;
+ex:population2015 "97723799"^^xsd:int;
+ex:population2010 "87252413"^^xsd:int;
+ex:population2000 "71371371"^^xsd:int;
+ex:population1990 "57214630"^^xsd:int;
+ex:population1980 "43748556"^^xsd:int;
+ex:population1970 "34781986"^^xsd:int;
+ex:growthRate "1.0158"^^xsd:double;
+dbo:areaTotal "1002450"^^xsd:int;
+dbo:populationDensity "110.7188"^^xsd:double;
+dbo:countryRank "14"^^xsd:int;
+dbo:isoCode ex:iso_EGY;
+rdfs:label "Egypt";
+dbo:capital ex:Cairo;
+dbo:continent ex:Africa;
+ex:populationShare "1.39"^^xsd:double .
+<http://example.org/country/SLV> rdf:type dbo:Country ;
+ dbo:capital ex:San_Salvador;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "6336392"^^xsd:int;
+ex:population2010 "6114034"^^xsd:int;
+ex:population2020 "6292731"^^xsd:int;
+ex:population2015 "6231066"^^xsd:int;
+dbo:countryRank "112"^^xsd:int;
+dbo:isoCode ex:iso_SLV;
+rdfs:label "El Salvador";
+ex:population2000 "5958482"^^xsd:int;
+ex:population1990 "5367179"^^xsd:int;
+ex:population1980 "4508992"^^xsd:int;
+ex:population1970 "3619090"^^xsd:int;
+dbo:areaTotal "21041"^^xsd:int;
+dbo:populationDensity "301.145"^^xsd:double;
+ex:growthRate "1.0035"^^xsd:double;
+ex:populationShare "0.08"^^xsd:double .
+<http://example.org/country/GNQ> rdf:type dbo:Country ;
+ ex:population1980 "282509"^^xsd:int;
+dbo:populationDensity "59.7094"^^xsd:double;
+ex:population1970 "316955"^^xsd:int;
+dbo:areaTotal "28051"^^xsd:int;
+dbo:countryRank "152"^^xsd:int;
+dbo:isoCode ex:iso_GNQ;
+rdfs:label "Equatorial Guinea";
+dbo:capital ex:Malabo;
+dbo:continent ex:Africa;
+dbo:populationTotal "1674908"^^xsd:int;
+ex:population2020 "1596049"^^xsd:int;
+ex:population2015 "1346973"^^xsd:int;
+ex:population2010 "1094524"^^xsd:int;
+ex:population2000 "684977"^^xsd:int;
+ex:population1990 "465549"^^xsd:int;
+ex:growthRate "1.0247"^^xsd:double;
+ex:populationShare "0.02"^^xsd:double .
+<http://example.org/country/ERI> rdf:type dbo:Country ;
+ dbo:countryRank "132"^^xsd:int;
+dbo:isoCode ex:iso_ERI;
+rdfs:label "Eritrea";
+dbo:capital ex:Asmara;
+dbo:continent ex:Africa;
+dbo:populationTotal "3684032"^^xsd:int;
+ex:population2020 "3555868"^^xsd:int;
+ex:population2015 "3340006"^^xsd:int;
+ex:population2010 "3147727"^^xsd:int;
+ex:population2000 "2392880"^^xsd:int;
+ex:population1990 "2149960"^^xsd:int;
+ex:population1980 "1657982"^^xsd:int;
+ex:population1970 "1272748"^^xsd:int;
+dbo:areaTotal "117600"^^xsd:int;
+dbo:populationDensity "31.3268"^^xsd:double;
+ex:growthRate "1.0176"^^xsd:double;
+ex:populationShare "0.05"^^xsd:double .
+<http://example.org/country/EST> rdf:type dbo:Country ;
+ dbo:countryRank "156"^^xsd:int;
+dbo:isoCode ex:iso_EST;
+rdfs:label "Estonia";
+ex:population1970 "1361999"^^xsd:int;
+dbo:capital ex:Tallinn;
+ex:population1980 "1476983"^^xsd:int;
+ex:population1990 "1570674"^^xsd:int;
+dbo:continent ex:Europe;
+dbo:populationTotal "1326062"^^xsd:int;
+ex:population2000 "1396877"^^xsd:int;
+ex:population2020 "1329444"^^xsd:int;
+ex:population2010 "1331535"^^xsd:int;
+ex:population2015 "1314657"^^xsd:int;
+dbo:areaTotal "45227"^^xsd:int;
+dbo:populationDensity "29.3201"^^xsd:double;
+ex:growthRate "0.998"^^xsd:double;
+ex:populationShare "0.02"^^xsd:double .
+<http://example.org/country/SWZ> rdf:type dbo:Country ;
+ ex:populationShare "0.02"^^xsd:double;
+dbo:countryRank "159"^^xsd:int;
+dbo:isoCode ex:iso_SWZ;
+rdfs:label "Eswatini";
+dbo:capital ex:Mbabane;
+dbo:continent ex:Africa;
+dbo:populationTotal "1201670"^^xsd:int;
+ex:population2020 "1180655"^^xsd:int;
+ex:population2015 "1133936"^^xsd:int;
+ex:population2010 "1099920"^^xsd:int;
+ex:population2000 "1030496"^^xsd:int;
+ex:population1990 "854011"^^xsd:int;
+ex:population1980 "598564"^^xsd:int;
+ex:population1970 "442865"^^xsd:int;
+dbo:areaTotal "17364"^^xsd:int;
+dbo:populationDensity "69.2047"^^xsd:double;
+ex:growthRate "1.0079"^^xsd:double .
+<http://example.org/country/ETH> rdf:type dbo:Country ;
+ dbo:countryRank "12"^^xsd:int;
+dbo:populationTotal "123379924"^^xsd:int;
+dbo:continent ex:Africa;
+dbo:capital ex:Addis_Ababa;
+dbo:isoCode ex:iso_ETH;
+rdfs:label "Ethiopia";
+ex:population2020 "117190911"^^xsd:int;
+ex:population2015 "102471895"^^xsd:int;
+ex:population2010 "89237791"^^xsd:int;
+ex:population2000 "67031867"^^xsd:int;
+ex:population1990 "47878073"^^xsd:int;
+ex:population1980 "34945469"^^xsd:int;
+ex:population1970 "28308246"^^xsd:int;
+dbo:areaTotal "1104300"^^xsd:int;
+dbo:populationDensity "111.7268"^^xsd:double;
+ex:growthRate "1.0257"^^xsd:double;
+ex:populationShare "1.55"^^xsd:double .
+<http://example.org/country/FLK> rdf:type dbo:Country ;
+ dbo:countryRank "231"^^xsd:int;
+dbo:isoCode ex:iso_FLK;
+rdfs:label "Falkland Islands";
+dbo:capital ex:Stanley;
+dbo:continent ex:South_America
+;
+dbo:populationTotal "3780"^^xsd:int;
+ex:population2020 "3747"^^xsd:int;
+ex:population2015 "3408"^^xsd:int;
+ex:population2010 "3187"^^xsd:int;
+ex:population2000 "3080"^^xsd:int;
+ex:population1990 "2332"^^xsd:int;
+ex:population1980 "2240"^^xsd:int;
+ex:population1970 "2274"^^xsd:int;
+dbo:areaTotal "12173"^^xsd:int;
+dbo:populationDensity "0.3105"^^xsd:double;
+ex:growthRate "1.0043"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/FRO> rdf:type dbo:Country ;
+ dbo:isoCode ex:iso_FRO;
+rdfs:label "Faroe Islands";
+dbo:countryRank "209"^^xsd:int;
+dbo:capital ex:Toshavn;
+dbo:continent ex:Europe;
+dbo:populationTotal "53090"^^xsd:int;
+ex:population2020 "52415"^^xsd:int;
+ex:population2015 "48816"^^xsd:int;
+ex:population2010 "48410"^^xsd:int;
+ex:population2000 "45660"^^xsd:int;
+ex:population1990 "47479"^^xsd:int;
+ex:population1980 "43054"^^xsd:int;
+ex:population1970 "38416"^^xsd:int;
+dbo:areaTotal "1393"^^xsd:int;
+dbo:populationDensity "38.112"^^xsd:double;
+ex:growthRate "1.0038"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/FJI> rdf:type dbo:Country ;
+ dbo:countryRank "162"^^xsd:int;
+dbo:isoCode ex:iso_FJI;
+rdfs:label "Fiji";
+dbo:capital ex:Suva;
+dbo:continent ex:Oceania;
+dbo:populationTotal "929766"^^xsd:int;
+ex:population2020 "920422"^^xsd:int;
+ex:population2015 "917200"^^xsd:int;
+ex:population2010 "905169"^^xsd:int;
+ex:population2000 "832509"^^xsd:int;
+ex:population1990 "780430"^^xsd:int;
+ex:population1980 "644582"^^xsd:int;
+ex:population1970 "527634"^^xsd:int;
+dbo:areaTotal "18272"^^xsd:int;
+dbo:populationDensity "50.8847"^^xsd:double;
+ex:growthRate "1.0056"^^xsd:double;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/FIN> rdf:type dbo:Country ;
+ ex:growthRate "1.0009"^^xsd:double;
+ex:population2015 "5479461"^^xsd:int;
+ex:population2000 "5176209"^^xsd:int;
+ex:population1980 "4779418"^^xsd:int;
+dbo:populationDensity "16.3722"^^xsd:double;
+dbo:areaTotal "338424"^^xsd:int;
+ex:population1970 "4606621"^^xsd:int;
+ex:population1990 "4986545"^^xsd:int;
+ex:population2010 "5363271"^^xsd:int;
+ex:population2020 "5529468"^^xsd:int;
+rdfs:label "Finland";
+dbo:capital ex:Helsinki;
+dbo:countryRank "118"^^xsd:int;
+dbo:isoCode ex:iso_FIN;
+dbo:continent ex:Europe;
+dbo:populationTotal "5540745"^^xsd:int;
+ex:populationShare "0.07"^^xsd:double .
+<http://example.org/country/FRA> rdf:type dbo:Country ;
+ dbo:countryRank "23"^^xsd:int;
+dbo:isoCode ex:iso_FRA;
+rdfs:label "France";
+dbo:capital ex:Paris;
+dbo:continent ex:Europe;
+dbo:populationTotal "64626628"^^xsd:int;
+ex:population2020 "64480053"^^xsd:int;
+ex:population2015 "63809769"^^xsd:int;
+ex:population2010 "62444567"^^xsd:int;
+ex:population2000 "58665453"^^xsd:int;
+ex:population1990 "56412897"^^xsd:int;
+ex:population1980 "53713830"^^xsd:int;
+ex:population1970 "50523586"^^xsd:int;
+dbo:areaTotal "551695"^^xsd:int;
+dbo:populationDensity "117.1419"^^xsd:double;
+ex:growthRate "1.0015"^^xsd:double;
+ex:populationShare "0.81"^^xsd:double .
+<http://example.org/country/GUF> rdf:type dbo:Country ;
+ dbo:countryRank "184"^^xsd:int;
+dbo:isoCode ex:iso_GUF;
+rdfs:label "French Guiana";
+dbo:capital ex:Cayenne;
+dbo:continent ex:South_America
+;
+dbo:populationTotal "304557"^^xsd:int;
+ex:population2020 "290969"^^xsd:int;
+ex:population2015 "257026"^^xsd:int;
+ex:population2010 "228453"^^xsd:int;
+ex:population2000 "164351"^^xsd:int;
+ex:population1990 "113931"^^xsd:int;
+ex:population1980 "66825"^^xsd:int;
+ex:population1970 "46484"^^xsd:int;
+dbo:areaTotal "83534"^^xsd:int;
+dbo:populationDensity "3.6459"^^xsd:double;
+ex:growthRate "1.0239"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/PYF> rdf:type dbo:Country ;
+ ex:growthRate "1.0074"^^xsd:double;
+dbo:populationDensity "73.5011"^^xsd:double;
+dbo:countryRank "183"^^xsd:int;
+dbo:isoCode ex:iso_PYF;
+rdfs:label "French Polynesia";
+dbo:capital ex:Papeete;
+dbo:continent ex:Oceania;
+dbo:populationTotal "306279"^^xsd:int;
+ex:population2020 "301920"^^xsd:int;
+ex:population2015 "291787"^^xsd:int;
+ex:population2010 "283788"^^xsd:int;
+ex:population2000 "250927"^^xsd:int;
+ex:population1990 "211089"^^xsd:int;
+ex:population1980 "163591"^^xsd:int;
+ex:population1970 "117891"^^xsd:int;
+dbo:areaTotal "4167"^^xsd:int;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/GAB> rdf:type dbo:Country ;
+ ex:populationShare "0.03"^^xsd:double;
+ex:growthRate "1.0204"^^xsd:double;
+ex:population1980 "749078"^^xsd:int;
+ex:population1990 "983028"^^xsd:int;
+ex:population2010 "1711105"^^xsd:int;
+ex:population2020 "2292573"^^xsd:int;
+dbo:continent ex:Africa;
+dbo:capital ex:Libreville;
+dbo:isoCode ex:iso_GAB;
+dbo:countryRank "146"^^xsd:int;
+rdfs:label "Gabon";
+dbo:populationTotal "2388992"^^xsd:int;
+ex:population2015 "2028517"^^xsd:int;
+ex:population2000 "1272935"^^xsd:int;
+ex:population1970 "597192"^^xsd:int;
+dbo:areaTotal "267668"^^xsd:int;
+dbo:populationDensity "8.9252"^^xsd:double .
+<http://example.org/country/GMB> rdf:type dbo:Country ;
+ dbo:capital ex:Banjul;
+rdfs:label "Gambia";
+dbo:populationTotal "2705992"^^xsd:int;
+dbo:countryRank "142"^^xsd:int;
+dbo:continent ex:Africa;
+dbo:isoCode ex:iso_GMB;
+ex:population2020 "2573995"^^xsd:int;
+ex:population2015 "2253133"^^xsd:int;
+ex:population2010 "1937275"^^xsd:int;
+ex:population2000 "1437539"^^xsd:int;
+ex:population1990 "1040616"^^xsd:int;
+ex:population1980 "718586"^^xsd:int;
+ex:population1970 "528731"^^xsd:int;
+dbo:areaTotal "10689"^^xsd:int;
+dbo:populationDensity "253.1567"^^xsd:double;
+ex:growthRate "1.025"^^xsd:double;
+ex:populationShare "0.03"^^xsd:double .
+<http://example.org/country/GEO> rdf:type dbo:Country ;
+ dbo:countryRank "131"^^xsd:int;
+dbo:isoCode ex:iso_GEO;
+rdfs:label "Georgia";
+dbo:capital ex:Tbilisi;
+dbo:continent ex:Asia;
+dbo:populationTotal "3744385"^^xsd:int;
+ex:population2020 "3765912"^^xsd:int;
+ex:population2015 "3771132"^^xsd:int;
+ex:population2010 "3836831"^^xsd:int;
+ex:population2000 "4265172"^^xsd:int;
+ex:population1990 "5391636"^^xsd:int;
+ex:population1980 "5145843"^^xsd:int;
+ex:population1970 "4800426"^^xsd:int;
+dbo:areaTotal "69700"^^xsd:int;
+dbo:populationDensity "53.7214"^^xsd:double;
+ex:growthRate "0.9964"^^xsd:double;
+ex:populationShare "0.05"^^xsd:double .
+<http://example.org/country/DEU> rdf:type dbo:Country ;
+ ex:population2015 "82073226"^^xsd:int;
+dbo:countryRank "19"^^xsd:int;
+dbo:isoCode ex:iso_DEU;
+ex:growthRate "0.9995"^^xsd:double;
+ex:population1990 "79370196"^^xsd:int;
+dbo:populationDensity "233.4544"^^xsd:double;
+rdfs:label "Germany";
+dbo:capital ex:Berlin;
+dbo:continent ex:Europe;
+dbo:populationTotal "83369843"^^xsd:int;
+ex:population2000 "81551677"^^xsd:int;
+ex:population1980 "77786703"^^xsd:int;
+dbo:areaTotal "357114"^^xsd:int;
+ex:population1970 "78294583"^^xsd:int;
+ex:population2010 "81325090"^^xsd:int;
+ex:population2020 "83328988"^^xsd:int;
+ex:populationShare "1.05"^^xsd:double .
+<http://example.org/country/GHA> rdf:type dbo:Country ;
+ dbo:countryRank "47"^^xsd:int;
+dbo:isoCode ex:iso_GHA;
+rdfs:label "Ghana";
+dbo:capital ex:Accra;
+dbo:continent ex:Africa;
+dbo:populationTotal "33475870"^^xsd:int;
+ex:population2020 "32180401"^^xsd:int;
+ex:population2015 "28870939"^^xsd:int;
+ex:population2010 "25574719"^^xsd:int;
+ex:population2000 "19665502"^^xsd:int;
+ex:population1990 "15446982"^^xsd:int;
+ex:population1980 "11865246"^^xsd:int;
+ex:population1970 "8861895"^^xsd:int;
+dbo:areaTotal "238533"^^xsd:int;
+dbo:populationDensity "140.3406"^^xsd:double;
+ex:growthRate "1.0196"^^xsd:double;
+ex:populationShare "0.42"^^xsd:double .
+<http://example.org/country/GIB> rdf:type dbo:Country ;
+ dbo:countryRank "219"^^xsd:int;
+dbo:isoCode ex:iso_GIB;
+rdfs:label "Gibraltar";
+dbo:capital ex:Gibraltar;
+dbo:continent ex:Europe;
+dbo:populationTotal "32649"^^xsd:int;
+ex:population2020 "32709"^^xsd:int;
+ex:population2015 "32520"^^xsd:int;
+ex:population2010 "31262"^^xsd:int;
+ex:population2000 "27741"^^xsd:int;
+ex:population1990 "27317"^^xsd:int;
+ex:population1980 "28734"^^xsd:int;
+ex:population1970 "26685"^^xsd:int;
+dbo:areaTotal "6"^^xsd:int;
+dbo:populationDensity "5441.5"^^xsd:double;
+ex:growthRate "0.9994"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/GRC> rdf:type dbo:Country ;
+ dbo:populationTotal "10384971"^^xsd:int;
+dbo:continent ex:Europe;
+rdfs:label "Greece";
+dbo:capital ex:Athens;
+dbo:isoCode ex:iso_GRC;
+dbo:countryRank "90"^^xsd:int;
+ex:population2020 "10512232"^^xsd:int;
+ex:population2015 "10806641"^^xsd:int;
+ex:population2010 "11033783"^^xsd:int;
+ex:population2000 "11038109"^^xsd:int;
+ex:population1990 "10302255"^^xsd:int;
+ex:population1980 "9307148"^^xsd:int;
+ex:population1970 "8544873"^^xsd:int;
+dbo:areaTotal "131990"^^xsd:int;
+dbo:populationDensity "78.68"^^xsd:double;
+ex:growthRate "0.9942"^^xsd:double;
+ex:populationShare "0.13"^^xsd:double .
+<http://example.org/country/GRL> rdf:type dbo:Country ;
+ dbo:countryRank "208"^^xsd:int;
+dbo:isoCode ex:iso_GRL;
+rdfs:label "Greenland";
+dbo:capital ex:Nuuk;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "56466"^^xsd:int;
+ex:population2020 "56026"^^xsd:int;
+ex:population2015 "55895"^^xsd:int;
+ex:population2010 "56351"^^xsd:int;
+ex:population2000 "56184"^^xsd:int;
+ex:population1990 "55599"^^xsd:int;
+ex:population1980 "50106"^^xsd:int;
+ex:population1970 "45434"^^xsd:int;
+dbo:areaTotal "2166086"^^xsd:int;
+dbo:populationDensity "0.0261"^^xsd:double;
+ex:growthRate "1.004"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/GRD> rdf:type dbo:Country ;
+ ex:population2020 "123663"^^xsd:int;
+dbo:populationTotal "125438"^^xsd:int;
+dbo:continent ex:North_America
+;
+dbo:capital ex:Saint_George;
+rdfs:label "Grenada";
+dbo:countryRank "193"^^xsd:int;
+dbo:isoCode ex:iso_GRD;
+ex:population2015 "118980"^^xsd:int;
+ex:population2010 "114039"^^xsd:int;
+ex:population2000 "107432"^^xsd:int;
+ex:population1990 "99047"^^xsd:int;
+ex:population1980 "94838"^^xsd:int;
+ex:population1970 "98794"^^xsd:int;
+dbo:areaTotal "344"^^xsd:int;
+dbo:populationDensity "364.6453"^^xsd:double;
+ex:growthRate "1.0066"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/GLP> rdf:type dbo:Country ;
+ dbo:countryRank "178"^^xsd:int;
+dbo:isoCode ex:iso_GLP;
+rdfs:label "Guadeloupe";
+dbo:capital ex:Basse_Terre;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "395752"^^xsd:int;
+ex:population2020 "395642"^^xsd:int;
+ex:population2015 "399089"^^xsd:int;
+ex:population2010 "403072"^^xsd:int;
+ex:population2000 "424067"^^xsd:int;
+ex:population1990 "391951"^^xsd:int;
+ex:population1980 "334234"^^xsd:int;
+ex:population1970 "318310"^^xsd:int;
+dbo:areaTotal "1628"^^xsd:int;
+dbo:populationDensity "243.0909"^^xsd:double;
+ex:growthRate "0.9992"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/GUM> rdf:type dbo:Country ;
+ dbo:isoCode ex:iso_GUM;
+dbo:countryRank "191"^^xsd:int;
+rdfs:label "Guam";
+dbo:capital ex:Hagatna;
+dbo:continent ex:Oceania;
+dbo:populationTotal "171774"^^xsd:int;
+ex:population2020 "169231"^^xsd:int;
+ex:population2015 "167978"^^xsd:int;
+ex:population2010 "164905"^^xsd:int;
+ex:population2000 "160188"^^xsd:int;
+ex:population1990 "138263"^^xsd:int;
+ex:population1980 "110286"^^xsd:int;
+ex:population1970 "88300"^^xsd:int;
+dbo:areaTotal "549"^^xsd:int;
+dbo:populationDensity "312.8852"^^xsd:double;
+ex:growthRate "1.0073"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/GTM> rdf:type dbo:Country ;
+ dbo:countryRank "68"^^xsd:int;
+dbo:isoCode ex:iso_GTM;
+rdfs:label "Guatemala";
+dbo:capital ex:Guatemala_City;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "17843908"^^xsd:int;
+ex:population2020 "17362718"^^xsd:int;
+ex:population2015 "16001107"^^xsd:int;
+ex:population2010 "14543121"^^xsd:int;
+ex:population2000 "11735894"^^xsd:int;
+ex:population1990 "9084780"^^xsd:int;
+ex:population1980 "6987767"^^xsd:int;
+ex:population1970 "5453208"^^xsd:int;
+dbo:areaTotal "108889"^^xsd:int;
+dbo:populationDensity "163.8725"^^xsd:double;
+ex:growthRate "1.0134"^^xsd:double;
+ex:populationShare "0.22"^^xsd:double .
+<http://example.org/country/GGY> rdf:type dbo:Country ;
+ dbo:countryRank "207"^^xsd:int;
+dbo:isoCode ex:iso_GGY;
+rdfs:label "Guernsey";
+dbo:capital ex:Saint_Peter_Port;
+dbo:continent ex:Europe;
+dbo:populationTotal "63301"^^xsd:int;
+ex:population2020 "62794"^^xsd:int;
+ex:population2015 "61629"^^xsd:int;
+ex:population2010 "60782"^^xsd:int;
+ex:population2000 "59114"^^xsd:int;
+ex:population1990 "57727"^^xsd:int;
+ex:population1980 "52860"^^xsd:int;
+ex:population1970 "52656"^^xsd:int;
+dbo:areaTotal "78"^^xsd:int;
+dbo:populationDensity "811.5513"^^xsd:double;
+ex:growthRate "1.0037"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/GIN> rdf:type dbo:Country ;
+ dbo:countryRank "75"^^xsd:int;
+dbo:isoCode ex:iso_GIN;
+rdfs:label "Guinea";
+dbo:capital ex:Conakry;
+dbo:continent ex:Africa;
+dbo:populationTotal "13859341"^^xsd:int;
+ex:population2020 "13205153"^^xsd:int;
+ex:population2015 "11625998"^^xsd:int;
+ex:population2010 "10270728"^^xsd:int;
+ex:population2000 "8336967"^^xsd:int;
+ex:population1990 "6354145"^^xsd:int;
+ex:population1980 "4972609"^^xsd:int;
+ex:population1970 "4222374"^^xsd:int;
+dbo:areaTotal "245857"^^xsd:int;
+dbo:populationDensity "56.3716"^^xsd:double;
+ex:growthRate "1.0242"^^xsd:double;
+ex:populationShare "0.17"^^xsd:double .
+<http://example.org/country/GNB> rdf:type dbo:Country ;
+ dbo:populationTotal "2105566"^^xsd:int;
+dbo:continent ex:Africa;
+dbo:isoCode ex:iso_GNB;
+dbo:capital ex:Bissau;
+rdfs:label "Guinea-Bissau";
+dbo:countryRank "149"^^xsd:int;
+ex:population2020 "2015828"^^xsd:int;
+ex:population2015 "1788919"^^xsd:int;
+ex:population2010 "1567220"^^xsd:int;
+ex:population2000 "1230849"^^xsd:int;
+ex:population1990 "973551"^^xsd:int;
+ex:population1980 "831462"^^xsd:int;
+ex:population1970 "591663"^^xsd:int;
+dbo:areaTotal "36125"^^xsd:int;
+dbo:populationDensity "58.2856"^^xsd:double;
+ex:growthRate "1.0218"^^xsd:double;
+ex:populationShare "0.03"^^xsd:double .
+<http://example.org/country/GUY> rdf:type dbo:Country ;
+ dbo:countryRank "164"^^xsd:int;
+dbo:isoCode ex:iso_GUY;
+rdfs:label "Guyana";
+dbo:capital ex:Georgetown;
+dbo:continent ex:South_America
+;
+dbo:populationTotal "808726"^^xsd:int;
+ex:population2020 "797202"^^xsd:int;
+ex:population2015 "755031"^^xsd:int;
+ex:population2010 "747932"^^xsd:int;
+ex:population2000 "759051"^^xsd:int;
+ex:population1990 "747116"^^xsd:int;
+ex:population1980 "778176"^^xsd:int;
+ex:population1970 "705261"^^xsd:int;
+dbo:areaTotal "214969"^^xsd:int;
+dbo:populationDensity "3.7621"^^xsd:double;
+ex:growthRate "1.0052"^^xsd:double;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/HTI> rdf:type dbo:Country ;
+ dbo:countryRank "82"^^xsd:int;
+dbo:isoCode ex:iso_HTI;
+rdfs:label "Haiti";
+dbo:capital ex:Port_au_Prince;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "11584996"^^xsd:int;
+ex:population2020 "11306801"^^xsd:int;
+ex:population2015 "10563757"^^xsd:int;
+ex:population2010 "9842880"^^xsd:int;
+ex:population2000 "8360225"^^xsd:int;
+ex:population1990 "6925331"^^xsd:int;
+ex:population1980 "5646676"^^xsd:int;
+ex:population1970 "4680812"^^xsd:int;
+dbo:areaTotal "27750"^^xsd:int;
+dbo:populationDensity "417.4773"^^xsd:double;
+ex:growthRate "1.012"^^xsd:double;
+ex:populationShare "0.15"^^xsd:double .
+<http://example.org/country/HND> rdf:type dbo:Country ;
+ ex:growthRate "1.015"^^xsd:double;
+dbo:countryRank "89"^^xsd:int;
+dbo:isoCode ex:iso_HND;
+rdfs:label "Honduras";
+dbo:capital ex:Tegucigalpa;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "10432860"^^xsd:int;
+ex:population2020 "10121763"^^xsd:int;
+ex:population2015 "9294505"^^xsd:int;
+ex:population2010 "8450933"^^xsd:int;
+ex:population2000 "6656725"^^xsd:int;
+ex:population1990 "5053234"^^xsd:int;
+ex:population1980 "3777990"^^xsd:int;
+ex:population1970 "2782753"^^xsd:int;
+dbo:areaTotal "112492"^^xsd:int;
+dbo:populationDensity "92.7431"^^xsd:double;
+ex:populationShare "0.13"^^xsd:double .
+<http://example.org/country/HKG> rdf:type dbo:Country ;
+ dbo:countryRank "104"^^xsd:int;
+dbo:isoCode ex:iso_HKG;
+rdfs:label "Hong Kong";
+dbo:capital ex:Hong_Kong;
+dbo:continent ex:Asia;
+dbo:populationTotal "7488865"^^xsd:int;
+ex:population2020 "7500958"^^xsd:int;
+ex:population2015 "7399838"^^xsd:int;
+ex:population2010 "7132438"^^xsd:int;
+ex:population2000 "6731195"^^xsd:int;
+ex:population1990 "5838574"^^xsd:int;
+ex:population1980 "4978544"^^xsd:int;
+ex:population1970 "3955072"^^xsd:int;
+dbo:areaTotal "1104"^^xsd:int;
+dbo:populationDensity "6783.3922"^^xsd:double;
+ex:growthRate "0.9992"^^xsd:double;
+ex:populationShare "0.09"^^xsd:double .
+<http://example.org/country/HUN> rdf:type dbo:Country ;
+ ex:populationShare "0.12"^^xsd:double;
+ex:population2000 "10202055"^^xsd:int;
+ex:population1990 "10375989"^^xsd:int;
+ex:population1980 "10698679"^^xsd:int;
+dbo:areaTotal "93028"^^xsd:int;
+dbo:countryRank "94"^^xsd:int;
+dbo:isoCode ex:iso_HUN;
+rdfs:label "Hungary";
+dbo:capital ex:Budapest;
+dbo:continent ex:Europe;
+dbo:populationTotal "9967308"^^xsd:int;
+ex:population1970 "10315366"^^xsd:int;
+ex:population2020 "9750573"^^xsd:int;
+ex:population2015 "9844246"^^xsd:int;
+ex:population2010 "9986825"^^xsd:int;
+dbo:populationDensity "107.1431"^^xsd:double;
+ex:growthRate "1.0265"^^xsd:double .
+<http://example.org/country/ISL> rdf:type dbo:Country ;
+ dbo:countryRank "179"^^xsd:int;
+dbo:isoCode ex:iso_ISL;
+rdfs:label "Iceland";
+dbo:capital ex:Reykjavik;
+dbo:continent ex:Europe;
+dbo:populationTotal "372899"^^xsd:int;
+ex:population2020 "366669"^^xsd:int;
+ex:population2015 "331060"^^xsd:int;
+ex:population2010 "318333"^^xsd:int;
+ex:population2000 "281462"^^xsd:int;
+ex:population1990 "255019"^^xsd:int;
+ex:population1980 "228263"^^xsd:int;
+ex:population1970 "204468"^^xsd:int;
+dbo:areaTotal "103000"^^xsd:int;
+dbo:populationDensity "3.6204"^^xsd:double;
+ex:growthRate "1.0069"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/IND> rdf:type dbo:Country ;
+ dbo:countryRank "2"^^xsd:int;
+dbo:isoCode ex:iso_IND;
+rdfs:label "India";
+dbo:capital ex:New_Delhi;
+dbo:continent ex:Asia;
+dbo:populationTotal "1417173173"^^xsd:int;
+ex:population2020 "1396387127"^^xsd:int;
+ex:population2015 "1322866505"^^xsd:int;
+ex:population2010 "1240613620"^^xsd:int;
+ex:population2000 "1059633675"^^xsd:int;
+ex:population1990 "870452165"^^xsd:int;
+ex:population1980 "696828385"^^xsd:int;
+ex:population1970 "557501301"^^xsd:int;
+dbo:areaTotal "3287590"^^xsd:int;
+dbo:populationDensity "431.0675"^^xsd:double;
+ex:growthRate "1.0068"^^xsd:double;
+ex:populationShare "17.77"^^xsd:double .
+<http://example.org/country/IDN> rdf:type dbo:Country ;
+ dbo:countryRank "4"^^xsd:int;
+dbo:isoCode ex:iso_IDN;
+rdfs:label "Indonesia";
+dbo:capital ex:Jakarta;
+dbo:continent ex:Asia;
+dbo:populationTotal "275501339"^^xsd:int;
+ex:population2020 "271857970"^^xsd:int;
+ex:population2015 "259091970"^^xsd:int;
+ex:population2010 "244016173"^^xsd:int;
+ex:population2000 "214072421"^^xsd:int;
+ex:population1990 "182159874"^^xsd:int;
+ex:population1980 "148177096"^^xsd:int;
+ex:population1970 "115228394"^^xsd:int;
+dbo:areaTotal "1904569"^^xsd:int;
+dbo:populationDensity "144.6529"^^xsd:double;
+ex:growthRate "1.0064"^^xsd:double;
+ex:populationShare "3.45"^^xsd:double .
+<http://example.org/country/IRN> rdf:type dbo:Country ;
+ ex:growthRate "1.0071"^^xsd:double;
+dbo:populationDensity "53.7258"^^xsd:double;
+dbo:areaTotal "1648195"^^xsd:int;
+ex:population1970 "28449705"^^xsd:int;
+ex:population1980 "38520664"^^xsd:int;
+ex:population1990 "55793629"^^xsd:int;
+dbo:capital ex:Tehran;
+dbo:continent ex:Asia;
+ex:population2020 "87290193"^^xsd:int;
+dbo:populationTotal "88550570"^^xsd:int;
+dbo:countryRank "17"^^xsd:int;
+dbo:isoCode ex:iso_IRN;
+rdfs:label "Iran";
+ex:population2015 "81790841"^^xsd:int;
+ex:population2010 "75373855"^^xsd:int;
+ex:population2000 "65544383"^^xsd:int;
+ex:populationShare "1.11"^^xsd:double .
+<http://example.org/country/IRQ> rdf:type dbo:Country ;
+ ex:population1970 "9811347"^^xsd:int;
+dbo:areaTotal "438317"^^xsd:int;
+ex:population1990 "17658381"^^xsd:int;
+ex:population1980 "13653369"^^xsd:int;
+ex:population2000 "24628858"^^xsd:int;
+ex:population2010 "31264875"^^xsd:int;
+ex:population2015 "37757813"^^xsd:int;
+dbo:countryRank "35"^^xsd:int;
+dbo:isoCode ex:iso_IRQ;
+ex:population2020 "42556984"^^xsd:int;
+dbo:capital ex:Baghdad;
+dbo:populationTotal "44496122"^^xsd:int;
+dbo:continent ex:Asia;
+rdfs:label "Iraq";
+dbo:populationDensity "101.5158"^^xsd:double;
+ex:growthRate "1.0221"^^xsd:double;
+ex:populationShare "0.56"^^xsd:double .
+<http://example.org/country/IRL> rdf:type dbo:Country ;
+ dbo:countryRank "125"^^xsd:int;
+dbo:isoCode ex:iso_IRL;
+rdfs:label "Ireland";
+dbo:capital ex:Dublin;
+dbo:continent ex:Europe;
+dbo:populationTotal "5023109"^^xsd:int;
+ex:population2020 "4946119"^^xsd:int;
+ex:population2015 "4665760"^^xsd:int;
+ex:population2010 "4524585"^^xsd:int;
+ex:population2000 "3768950"^^xsd:int;
+ex:population1990 "3485374"^^xsd:int;
+ex:population1980 "3391387"^^xsd:int;
+ex:population1970 "2937637"^^xsd:int;
+dbo:areaTotal "70273"^^xsd:int;
+dbo:populationDensity "71.4799"^^xsd:double;
+ex:growthRate "1.0073"^^xsd:double;
+ex:populationShare "0.06"^^xsd:double .
+<http://example.org/country/IMN> rdf:type dbo:Country ;
+ dbo:countryRank "202"^^xsd:int;
+dbo:isoCode ex:iso_IMN;
+rdfs:label "Isle of Man";
+dbo:capital ex:Douglas;
+dbo:continent ex:Europe;
+dbo:populationTotal "84519"^^xsd:int;
+ex:population2020 "84046"^^xsd:int;
+ex:population2015 "83593"^^xsd:int;
+ex:population2010 "83828"^^xsd:int;
+ex:population2000 "75562"^^xsd:int;
+ex:population1990 "68865"^^xsd:int;
+ex:population1980 "64022"^^xsd:int;
+ex:population1970 "55298"^^xsd:int;
+dbo:areaTotal "572"^^xsd:int;
+dbo:populationDensity "147.7605"^^xsd:double;
+ex:growthRate "1.003"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/ISR> rdf:type dbo:Country ;
+ dbo:countryRank "98"^^xsd:int;
+dbo:isoCode ex:iso_ISR;
+rdfs:label "Israel";
+dbo:capital ex:Jerusalem;
+dbo:continent ex:Asia;
+dbo:populationTotal "9038309"^^xsd:int;
+ex:population2020 "8757489"^^xsd:int;
+ex:population2015 "8007778"^^xsd:int;
+ex:population2010 "7328445"^^xsd:int;
+ex:population2000 "6116958"^^xsd:int;
+ex:population1990 "4803254"^^xsd:int;
+ex:population1980 "3744608"^^xsd:int;
+ex:population1970 "2907307"^^xsd:int;
+dbo:areaTotal "20770"^^xsd:int;
+dbo:populationDensity "435.1617"^^xsd:double;
+ex:growthRate "1.0155"^^xsd:double;
+ex:populationShare "0.11"^^xsd:double .
+<http://example.org/country/ITA> rdf:type dbo:Country ;
+ dbo:countryRank "25"^^xsd:int;
+dbo:isoCode ex:iso_ITA;
+rdfs:label "Italy";
+dbo:capital ex:Rome;
+dbo:continent ex:Europe;
+dbo:populationTotal "59037474"^^xsd:int;
+ex:population2020 "59500579"^^xsd:int;
+ex:population2015 "60232906"^^xsd:int;
+ex:population2010 "59822450"^^xsd:int;
+ex:population2000 "56966397"^^xsd:int;
+ex:population1990 "56756561"^^xsd:int;
+ex:population1980 "56329482"^^xsd:int;
+ex:population1970 "53324036"^^xsd:int;
+dbo:areaTotal "301336"^^xsd:int;
+dbo:populationDensity "195.9191"^^xsd:double;
+ex:growthRate "0.9966"^^xsd:double;
+ex:populationShare "0.74"^^xsd:double .
+<http://example.org/country/CIV> rdf:type dbo:Country ;
+ dbo:continent ex:Africa;
+dbo:populationTotal "28160542"^^xsd:int;
+ex:population2020 "26811790"^^xsd:int;
+ex:population2015 "23596741"^^xsd:int;
+dbo:countryRank "52"^^xsd:int;
+dbo:isoCode ex:iso_CIV;
+rdfs:label "Ivory Coast";
+dbo:capital ex:Yamoussoukro;
+ex:population2010 "21120042"^^xsd:int;
+ex:population2000 "16799670"^^xsd:int;
+ex:population1990 "11910540"^^xsd:int;
+ex:population1980 "8303809"^^xsd:int;
+ex:population1970 "5477086"^^xsd:int;
+dbo:areaTotal "322463"^^xsd:int;
+dbo:populationDensity "87.3295"^^xsd:double;
+ex:growthRate "1.0248"^^xsd:double;
+ex:populationShare "0.35"^^xsd:double .
+<http://example.org/country/JAM> rdf:type dbo:Country ;
+ dbo:countryRank "139"^^xsd:int;
+dbo:isoCode ex:iso_JAM;
+rdfs:label "Jamaica";
+dbo:capital ex:Kingston;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "2827377"^^xsd:int;
+ex:population2020 "2820436"^^xsd:int;
+ex:population2015 "2794445"^^xsd:int;
+ex:population2010 "2733896"^^xsd:int;
+ex:population2000 "2612205"^^xsd:int;
+ex:population1990 "2392030"^^xsd:int;
+ex:population1980 "2135546"^^xsd:int;
+ex:population1970 "1859091"^^xsd:int;
+dbo:areaTotal "10991"^^xsd:int;
+dbo:populationDensity "257.2447"^^xsd:double;
+ex:growthRate "0.9999"^^xsd:double;
+ex:populationShare "0.04"^^xsd:double .
+<http://example.org/country/JPN> rdf:type dbo:Country ;
+ ex:populationShare "1.55"^^xsd:double;
+dbo:continent ex:Asia;
+ex:population2015 "127250933"^^xsd:int;
+ex:population2020 "125244761"^^xsd:int;
+dbo:populationTotal "123951692"^^xsd:int;
+dbo:countryRank "11"^^xsd:int;
+dbo:isoCode ex:iso_JPN;
+rdfs:label "Japan";
+dbo:capital ex:Tokyo;
+ex:population2010 "128105431"^^xsd:int;
+ex:population2000 "126803861"^^xsd:int;
+ex:population1990 "123686321"^^xsd:int;
+ex:population1980 "117624196"^^xsd:int;
+ex:population1970 "105416839"^^xsd:int;
+dbo:areaTotal "377930"^^xsd:int;
+dbo:populationDensity "327.9753"^^xsd:double;
+ex:growthRate "0.9947"^^xsd:double .
+<http://example.org/country/JEY> rdf:type dbo:Country ;
+ dbo:isoCode ex:iso_JEY;
+rdfs:label "Jersey";
+dbo:capital ex:Saint_Helier;
+dbo:continent ex:Europe;
+dbo:populationTotal "110778"^^xsd:int;
+dbo:countryRank "195"^^xsd:int;
+ex:population2020 "108319"^^xsd:int;
+ex:population2015 "100561"^^xsd:int;
+ex:population2010 "96151"^^xsd:int;
+ex:population2000 "86192"^^xsd:int;
+ex:population1990 "82874"^^xsd:int;
+ex:population1980 "75124"^^xsd:int;
+ex:population1970 "68347"^^xsd:int;
+dbo:areaTotal "116"^^xsd:int;
+dbo:populationDensity "954.9828"^^xsd:double;
+ex:growthRate "1.0106"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/JOR> rdf:type dbo:Country ;
+ dbo:countryRank "83"^^xsd:int;
+dbo:isoCode ex:iso_JOR;
+rdfs:label "Jordan";
+dbo:capital ex:Amman;
+dbo:continent ex:Asia;
+dbo:populationTotal "11285869"^^xsd:int;
+ex:population2020 "10928721"^^xsd:int;
+ex:population2015 "9494246"^^xsd:int;
+ex:population2010 "6931258"^^xsd:int;
+ex:population2000 "5056174"^^xsd:int;
+ex:population1990 "3480587"^^xsd:int;
+ex:population1980 "2216903"^^xsd:int;
+ex:population1970 "1557374"^^xsd:int;
+dbo:areaTotal "89342"^^xsd:int;
+dbo:populationDensity "126.3221"^^xsd:double;
+ex:growthRate "1.0123"^^xsd:double;
+ex:populationShare "0.14"^^xsd:double .
+<http://example.org/country/KAZ> rdf:type dbo:Country ;
+ dbo:countryRank "66"^^xsd:int;
+dbo:isoCode ex:iso_KAZ;
+rdfs:label "Kazakhstan";
+dbo:capital ex:Nursultan;
+dbo:continent ex:Asia;
+dbo:populationTotal "19397998"^^xsd:int;
+ex:population2020 "18979243"^^xsd:int;
+ex:population2015 "17835909"^^xsd:int;
+ex:population2010 "16627837"^^xsd:int;
+ex:population2000 "15236253"^^xsd:int;
+ex:population1990 "16866563"^^xsd:int;
+ex:population1980 "14172710"^^xsd:int;
+ex:population1970 "12265305"^^xsd:int;
+dbo:areaTotal "2724900"^^xsd:int;
+dbo:populationDensity "7.1188"^^xsd:double;
+ex:growthRate "1.0105"^^xsd:double;
+ex:populationShare "0.24"^^xsd:double .
+<http://example.org/country/KEN> rdf:type dbo:Country ;
+ ex:populationShare "0.68"^^xsd:double;
+dbo:countryRank "27"^^xsd:int;
+dbo:isoCode ex:iso_KEN;
+rdfs:label "Kenya";
+dbo:capital ex:Nairobi;
+dbo:continent ex:Africa;
+dbo:populationTotal "54027487"^^xsd:int;
+ex:population2020 "51985780"^^xsd:int;
+ex:population2015 "46851488"^^xsd:int;
+ex:population2010 "41517895"^^xsd:int;
+ex:population2000 "30851606"^^xsd:int;
+ex:population1990 "23162269"^^xsd:int;
+ex:population1980 "16187124"^^xsd:int;
+ex:population1970 "11473087"^^xsd:int;
+ex:growthRate "1.0193"^^xsd:double;
+dbo:areaTotal "580367"^^xsd:int;
+dbo:populationDensity "93.0919"^^xsd:double .
+<http://example.org/country/KIR> rdf:type dbo:Country ;
+ dbo:countryRank "192"^^xsd:int;
+dbo:isoCode ex:iso_KIR;
+rdfs:label "Kiribati";
+dbo:capital ex:Tarawa;
+dbo:continent ex:Oceania;
+dbo:populationTotal "131232"^^xsd:int;
+ex:population2020 "126463"^^xsd:int;
+ex:population2015 "116707"^^xsd:int;
+ex:population2010 "107995"^^xsd:int;
+ex:population2000 "88826"^^xsd:int;
+ex:population1990 "75124"^^xsd:int;
+ex:population1980 "60813"^^xsd:int;
+ex:population1970 "57437"^^xsd:int;
+dbo:areaTotal "811"^^xsd:int;
+dbo:populationDensity "161.815"^^xsd:double;
+ex:growthRate "1.0183"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/KWT> rdf:type dbo:Country ;
+ ex:population2015 "3908743"^^xsd:int;
+rdfs:label "Kuwait";
+dbo:continent ex:Asia;
+ex:population2020 "4360444"^^xsd:int;
+dbo:populationTotal "4268873"^^xsd:int;
+dbo:capital ex:Kuwait_City;
+dbo:isoCode ex:iso_KWT;
+dbo:countryRank "129"^^xsd:int;
+ex:population2010 "2943356"^^xsd:int;
+ex:population2000 "1934901"^^xsd:int;
+ex:population1990 "1674938"^^xsd:int;
+ex:population1980 "1493870"^^xsd:int;
+ex:population1970 "802786"^^xsd:int;
+dbo:areaTotal "17818"^^xsd:int;
+dbo:populationDensity "239.5821"^^xsd:double;
+ex:growthRate "1.0044"^^xsd:double;
+ex:populationShare "0.05"^^xsd:double .
+<http://example.org/country/KGZ> rdf:type dbo:Country ;
+ dbo:countryRank "110"^^xsd:int;
+dbo:isoCode ex:iso_KGZ;
+rdfs:label "Kyrgyzstan";
+dbo:capital ex:Bishkek;
+dbo:continent ex:Asia;
+dbo:populationTotal "6630623"^^xsd:int;
+ex:population2020 "6424874"^^xsd:int;
+ex:population2015 "5914980"^^xsd:int;
+ex:population2010 "5483774"^^xsd:int;
+ex:population2000 "4935182"^^xsd:int;
+ex:population1990 "4394734"^^xsd:int;
+ex:population1980 "3691209"^^xsd:int;
+ex:population1970 "3016384"^^xsd:int;
+dbo:areaTotal "199951"^^xsd:int;
+dbo:populationDensity "33.1612"^^xsd:double;
+ex:growthRate "1.0158"^^xsd:double;
+ex:populationShare "0.08"^^xsd:double .
+<http://example.org/country/LAO> rdf:type dbo:Country ;
+ dbo:countryRank "103"^^xsd:int;
+dbo:isoCode ex:iso_LAO;
+rdfs:label "Laos";
+dbo:capital ex:Vientiane;
+dbo:continent ex:Asia;
+dbo:populationTotal "7529475"^^xsd:int;
+ex:population2020 "7319399"^^xsd:int;
+ex:population2015 "6787419"^^xsd:int;
+ex:population2010 "6323418"^^xsd:int;
+ex:population2000 "5430853"^^xsd:int;
+ex:population1990 "4314443"^^xsd:int;
+ex:population1980 "3297519"^^xsd:int;
+ex:population1970 "2675283"^^xsd:int;
+dbo:areaTotal "236800"^^xsd:int;
+dbo:populationDensity "31.7968"^^xsd:double;
+ex:growthRate "1.0141"^^xsd:double;
+ex:populationShare "0.09"^^xsd:double .
+<http://example.org/country/LVA> rdf:type dbo:Country ;
+ dbo:countryRank "151"^^xsd:int;
+dbo:isoCode ex:iso_LVA;
+rdfs:label "Latvia";
+dbo:capital ex:Riga;
+dbo:continent ex:Europe;
+dbo:populationTotal "1850651"^^xsd:int;
+ex:population2020 "1897052"^^xsd:int;
+ex:population2015 "1991955"^^xsd:int;
+ex:population2010 "2101530"^^xsd:int;
+ex:population2000 "2392530"^^xsd:int;
+ex:population1990 "2689391"^^xsd:int;
+ex:population1980 "2572037"^^xsd:int;
+ex:population1970 "2397414"^^xsd:int;
+dbo:areaTotal "64559"^^xsd:int;
+dbo:populationDensity "28.666"^^xsd:double;
+ex:growthRate "0.9876"^^xsd:double;
+ex:populationShare "0.02"^^xsd:double .
+<http://example.org/country/LBN> rdf:type dbo:Country ;
+ ex:populationShare "0.07"^^xsd:double;
+ex:population2015 "6398940"^^xsd:int;
+ex:population2010 "4995800"^^xsd:int;
+ex:population2000 "4320642"^^xsd:int;
+ex:population1990 "3593700"^^xsd:int;
+ex:population1980 "2963702"^^xsd:int;
+ex:population1970 "2381791"^^xsd:int;
+ex:growthRate "0.9816"^^xsd:double;
+dbo:populationDensity "525.2334"^^xsd:double;
+dbo:areaTotal "10452"^^xsd:int;
+dbo:countryRank "119"^^xsd:int;
+dbo:isoCode ex:iso_LBN;
+rdfs:label "Lebanon";
+dbo:capital ex:Beirut;
+dbo:continent ex:Asia;
+dbo:populationTotal "5489739"^^xsd:int;
+ex:population2020 "5662923"^^xsd:int .
+<http://example.org/country/LSO> rdf:type dbo:Country ;
+ dbo:countryRank "147"^^xsd:int;
+dbo:isoCode ex:iso_LSO;
+rdfs:label "Lesotho";
+dbo:capital ex:Maseru;
+dbo:continent ex:Africa;
+dbo:populationTotal "2305825"^^xsd:int;
+ex:population2020 "2254100"^^xsd:int;
+ex:population2015 "2118521"^^xsd:int;
+ex:population2010 "2022747"^^xsd:int;
+ex:population2000 "1998630"^^xsd:int;
+ex:population1990 "1798997"^^xsd:int;
+ex:population1980 "1407672"^^xsd:int;
+ex:population1970 "1023481"^^xsd:int;
+dbo:areaTotal "30355"^^xsd:int;
+dbo:populationDensity "75.962"^^xsd:double;
+ex:growthRate "1.0107"^^xsd:double;
+ex:populationShare "0.03"^^xsd:double .
+<http://example.org/country/LBR> rdf:type dbo:Country ;
+ dbo:countryRank "121"^^xsd:int;
+dbo:isoCode ex:iso_LBR;
+rdfs:label "Liberia";
+dbo:capital ex:Monrovia;
+dbo:continent ex:Africa;
+dbo:populationTotal "5302681"^^xsd:int;
+ex:population2020 "5087584"^^xsd:int;
+ex:population2015 "4612329"^^xsd:int;
+ex:population2010 "4019956"^^xsd:int;
+ex:population2000 "2895224"^^xsd:int;
+ex:population1990 "2209731"^^xsd:int;
+ex:population1980 "1932169"^^xsd:int;
+ex:population1970 "1463563"^^xsd:int;
+dbo:areaTotal "111369"^^xsd:int;
+dbo:populationDensity "47.6136"^^xsd:double;
+ex:growthRate "1.021"^^xsd:double;
+ex:populationShare "0.07"^^xsd:double .
+<http://example.org/country/LBY> rdf:type dbo:Country ;
+ dbo:countryRank "107"^^xsd:int;
+dbo:isoCode ex:iso_LBY;
+rdfs:label "Libya";
+dbo:capital ex:Tripoli;
+dbo:continent ex:Africa;
+dbo:populationTotal "6812341"^^xsd:int;
+ex:population2020 "6653942"^^xsd:int;
+ex:population2015 "6192235"^^xsd:int;
+ex:population2010 "6491988"^^xsd:int;
+ex:population2000 "5154790"^^xsd:int;
+ex:population1990 "4236983"^^xsd:int;
+ex:population1980 "2962720"^^xsd:int;
+ex:population1970 "1909177"^^xsd:int;
+dbo:areaTotal "1759540"^^xsd:int;
+dbo:populationDensity "3.8717"^^xsd:double;
+ex:growthRate "1.0114"^^xsd:double;
+ex:populationShare "0.09"^^xsd:double .
+<http://example.org/country/LIE> rdf:type dbo:Country ;
+ ex:population2020 "38756"^^xsd:int;
+dbo:continent ex:Europe;
+dbo:populationTotal "39327"^^xsd:int;
+dbo:capital ex:Vaduz;
+rdfs:label "Liechtenstein";
+dbo:countryRank "216"^^xsd:int;
+dbo:isoCode ex:iso_LIE;
+ex:population2015 "37355"^^xsd:int;
+ex:population2010 "35926"^^xsd:int;
+ex:population2000 "33026"^^xsd:int;
+ex:population1990 "28765"^^xsd:int;
+ex:population1980 "25003"^^xsd:int;
+ex:population1970 "21089"^^xsd:int;
+dbo:areaTotal "160"^^xsd:int;
+dbo:populationDensity "245.7937"^^xsd:double;
+ex:growthRate "1.0074"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/LTU> rdf:type dbo:Country ;
+ dbo:countryRank "141"^^xsd:int;
+dbo:isoCode ex:iso_LTU;
+rdfs:label "Lithuania";
+dbo:capital ex:Vilnius;
+dbo:continent ex:Europe;
+dbo:populationTotal "2750055"^^xsd:int;
+ex:population2020 "2820267"^^xsd:int;
+ex:population2015 "2963765"^^xsd:int;
+ex:population2010 "3139019"^^xsd:int;
+ex:population2000 "3599637"^^xsd:int;
+ex:population1990 "3785847"^^xsd:int;
+ex:population1980 "3521206"^^xsd:int;
+ex:population1970 "3210147"^^xsd:int;
+dbo:areaTotal "65300"^^xsd:int;
+dbo:populationDensity "42.1142"^^xsd:double;
+ex:growthRate "0.9869"^^xsd:double;
+ex:populationShare "0.03"^^xsd:double .
+<http://example.org/country/LUX> rdf:type dbo:Country ;
+ dbo:countryRank "168"^^xsd:int;
+dbo:isoCode ex:iso_LUX;
+rdfs:label "Luxembourg";
+dbo:continent ex:Europe;
+dbo:populationTotal "647599"^^xsd:int;
+ex:population2020 "630399"^^xsd:int;
+ex:population2015 "569408"^^xsd:int;
+ex:population2010 "507070"^^xsd:int;
+ex:population2000 "435628"^^xsd:int;
+ex:population1990 "381267"^^xsd:int;
+ex:population1980 "363741"^^xsd:int;
+dbo:areaTotal "2586"^^xsd:int;
+ex:population1970 "339342"^^xsd:int;
+dbo:capital ex:Luxembourg;
+dbo:populationDensity "250.425"^^xsd:double;
+ex:growthRate "1.0129"^^xsd:double;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/MAC> rdf:type dbo:Country ;
+ dbo:countryRank "167"^^xsd:int;
+dbo:isoCode ex:iso_MAC;
+rdfs:label "Macau";
+dbo:capital ex:Concelho_de_Macau;
+dbo:continent ex:Asia;
+dbo:populationTotal "695168"^^xsd:int;
+ex:population2020 "676283"^^xsd:int;
+ex:population2015 "615239"^^xsd:int;
+ex:population2010 "557297"^^xsd:int;
+ex:population2000 "431896"^^xsd:int;
+ex:population1990 "350227"^^xsd:int;
+ex:population1980 "245332"^^xsd:int;
+ex:population1970 "247284"^^xsd:int;
+dbo:areaTotal "30"^^xsd:int;
+dbo:populationDensity "23172.2667"^^xsd:double;
+ex:growthRate "1.0125"^^xsd:double;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/MDG> rdf:type dbo:Country ;
+ dbo:countryRank "50"^^xsd:int;
+dbo:isoCode ex:iso_MDG;
+rdfs:label "Madagascar";
+dbo:capital ex:Antananarivo;
+dbo:continent ex:Africa;
+dbo:populationTotal "29611714"^^xsd:int;
+ex:population2020 "28225177"^^xsd:int;
+ex:population2015 "24850912"^^xsd:int;
+ex:population2010 "21731053"^^xsd:int;
+ex:population2000 "16216431"^^xsd:int;
+ex:population1990 "11882762"^^xsd:int;
+ex:population1980 "8948162"^^xsd:int;
+ex:population1970 "6639751"^^xsd:int;
+dbo:areaTotal "587041"^^xsd:int;
+dbo:populationDensity "50.4423"^^xsd:double;
+ex:growthRate "1.0241"^^xsd:double;
+ex:populationShare "0.37"^^xsd:double .
+<http://example.org/country/MWI> rdf:type dbo:Country ;
+ ex:populationShare "0.26"^^xsd:double;
+rdfs:label "Malawi";
+ex:population1980 "6267369"^^xsd:int;
+ex:population1990 "9539665"^^xsd:int;
+ex:population2000 "11229387"^^xsd:int;
+dbo:capital ex:Lilongwe;
+dbo:continent ex:Africa;
+dbo:populationTotal "20405317"^^xsd:int;
+ex:population2020 "19377061"^^xsd:int;
+ex:population2015 "16938942"^^xsd:int;
+ex:population2010 "14718422"^^xsd:int;
+dbo:countryRank "62"^^xsd:int;
+dbo:isoCode ex:iso_MWI;
+ex:population1970 "4625141"^^xsd:int;
+dbo:areaTotal "118484"^^xsd:int;
+dbo:populationDensity "172.22"^^xsd:double;
+ex:growthRate "1.0259"^^xsd:double .
+<http://example.org/country/MYS> rdf:type dbo:Country ;
+ dbo:countryRank "45"^^xsd:int;
+dbo:isoCode ex:iso_MYS;
+rdfs:label "Malaysia";
+dbo:capital ex:Kuala_Lumpur;
+dbo:continent ex:Asia;
+dbo:populationTotal "33938221"^^xsd:int;
+ex:population2020 "33199993"^^xsd:int;
+ex:population2015 "31068833"^^xsd:int;
+ex:population2010 "28717731"^^xsd:int;
+ex:population2000 "22945150"^^xsd:int;
+ex:population1990 "17517054"^^xsd:int;
+ex:population1980 "13215707"^^xsd:int;
+ex:population1970 "10306508"^^xsd:int;
+dbo:areaTotal "330803"^^xsd:int;
+dbo:populationDensity "102.5934"^^xsd:double;
+ex:growthRate "1.0109"^^xsd:double;
+ex:populationShare "0.43"^^xsd:double .
+<http://example.org/country/MDV> rdf:type dbo:Country ;
+ dbo:countryRank "174"^^xsd:int;
+dbo:isoCode ex:iso_MDV;
+rdfs:label "Maldives";
+dbo:capital ex:Male;
+dbo:continent ex:Asia;
+dbo:populationTotal "523787"^^xsd:int;
+ex:population2020 "514438"^^xsd:int;
+ex:population2015 "435582"^^xsd:int;
+ex:population2010 "361575"^^xsd:int;
+ex:population2000 "282507"^^xsd:int;
+ex:population1990 "224957"^^xsd:int;
+ex:population1980 "164887"^^xsd:int;
+ex:population1970 "123243"^^xsd:int;
+dbo:areaTotal "300"^^xsd:int;
+dbo:populationDensity "1745.9567"^^xsd:double;
+ex:growthRate "1.0045"^^xsd:double;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/MLI> rdf:type dbo:Country ;
+ ex:population2010 "15529181"^^xsd:int;
+ex:population2000 "11239101"^^xsd:int;
+dbo:countryRank "59"^^xsd:int;
+dbo:isoCode ex:iso_MLI;
+rdfs:label "Mali";
+dbo:capital ex:Bamako;
+dbo:continent ex:Africa;
+dbo:populationTotal "22593590"^^xsd:int;
+ex:population2015 "18112907"^^xsd:int;
+ex:population2020 "21224040"^^xsd:int;
+ex:population1990 "8945026"^^xsd:int;
+ex:population1980 "7372581"^^xsd:int;
+ex:population1970 "6153587"^^xsd:int;
+dbo:areaTotal "1240192"^^xsd:int;
+dbo:populationDensity "18.2178"^^xsd:double;
+ex:growthRate "1.0314"^^xsd:double;
+ex:populationShare "0.28"^^xsd:double .
+<http://example.org/country/MLT> rdf:type dbo:Country ;
+ dbo:countryRank "173"^^xsd:int;
+dbo:isoCode ex:iso_MLT;
+rdfs:label "Malta";
+dbo:capital ex:Valletta;
+dbo:continent ex:Europe;
+dbo:populationTotal "533286"^^xsd:int;
+ex:population2020 "515357"^^xsd:int;
+ex:population2015 "456579"^^xsd:int;
+ex:population2010 "418755"^^xsd:int;
+ex:population2000 "399212"^^xsd:int;
+ex:population1990 "365392"^^xsd:int;
+ex:population1980 "333587"^^xsd:int;
+ex:population1970 "315414"^^xsd:int;
+dbo:areaTotal "316"^^xsd:int;
+dbo:populationDensity "1687.6139"^^xsd:double;
+ex:growthRate "1.0124"^^xsd:double;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/MHL> rdf:type dbo:Country ;
+ dbo:countryRank "215"^^xsd:int;
+dbo:isoCode ex:iso_MHL;
+rdfs:label "Marshall Islands";
+dbo:capital ex:Majuro;
+dbo:continent ex:Oceania;
+dbo:populationTotal "41569"^^xsd:int;
+ex:population2020 "43413"^^xsd:int;
+ex:population2015 "49410"^^xsd:int;
+ex:population2010 "53416"^^xsd:int;
+ex:population2000 "54224"^^xsd:int;
+ex:population1990 "46047"^^xsd:int;
+ex:population1980 "31988"^^xsd:int;
+ex:population1970 "23969"^^xsd:int;
+dbo:areaTotal "181"^^xsd:int;
+dbo:populationDensity "229.663"^^xsd:double;
+ex:growthRate "0.9886"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/MTQ> rdf:type dbo:Country ;
+ dbo:countryRank "180"^^xsd:int;
+dbo:isoCode ex:iso_MTQ;
+rdfs:label "Martinique";
+dbo:capital ex:Fort_de_France;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "367507"^^xsd:int;
+ex:population2020 "370391"^^xsd:int;
+ex:population2015 "383515"^^xsd:int;
+ex:population2010 "392181"^^xsd:int;
+ex:population2000 "432543"^^xsd:int;
+ex:population1990 "374271"^^xsd:int;
+ex:population1980 "333786"^^xsd:int;
+ex:population1970 "326428"^^xsd:int;
+dbo:areaTotal "1128"^^xsd:int;
+dbo:populationDensity "325.8041"^^xsd:double;
+ex:growthRate "0.9965"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/MRT> rdf:type dbo:Country ;
+ ex:population1980 "1506694"^^xsd:int;
+rdfs:label "Mauritania";
+ex:population2015 "3946220"^^xsd:int;
+ex:population1990 "2006027"^^xsd:int;
+ex:population2010 "3419461"^^xsd:int;
+ex:population2000 "2695003"^^xsd:int;
+ex:population2020 "4498604"^^xsd:int;
+dbo:continent ex:Africa;
+dbo:populationTotal "4736139"^^xsd:int;
+dbo:capital ex:Nouakchott;
+dbo:isoCode ex:iso_MRT;
+dbo:countryRank "126"^^xsd:int;
+ex:population1970 "1122198"^^xsd:int;
+dbo:areaTotal "1030700"^^xsd:int;
+dbo:populationDensity "4.5951"^^xsd:double;
+ex:growthRate "1.0263"^^xsd:double;
+ex:populationShare "0.06"^^xsd:double .
+<http://example.org/country/MUS> rdf:type dbo:Country ;
+ dbo:countryRank "157"^^xsd:int;
+dbo:isoCode ex:iso_MUS;
+rdfs:label "Mauritius";
+dbo:capital ex:Port_Louis;
+dbo:continent ex:Africa;
+dbo:populationTotal "1299469"^^xsd:int;
+ex:population2020 "1297828"^^xsd:int;
+ex:population2015 "1293153"^^xsd:int;
+ex:population2010 "1283330"^^xsd:int;
+ex:population2000 "1215930"^^xsd:int;
+ex:population1990 "1090290"^^xsd:int;
+ex:population1980 "954865"^^xsd:int;
+ex:population1970 "830115"^^xsd:int;
+dbo:areaTotal "2040"^^xsd:int;
+dbo:populationDensity "636.9946"^^xsd:double;
+ex:growthRate "1.0004"^^xsd:double;
+ex:populationShare "0.02"^^xsd:double .
+<http://example.org/country/MYT> rdf:type dbo:Country ;
+ dbo:countryRank "182"^^xsd:int;
+dbo:populationTotal "326101"^^xsd:int;
+dbo:isoCode ex:iso_MYT;
+dbo:capital ex:Mamoudzou;
+dbo:continent ex:Africa;
+rdfs:label "Mayotte";
+ex:population2020 "305587"^^xsd:int;
+ex:population2015 "249545"^^xsd:int;
+ex:population2010 "211786"^^xsd:int;
+ex:population2000 "159215"^^xsd:int;
+ex:population1990 "92659"^^xsd:int;
+ex:population1980 "52233"^^xsd:int;
+ex:population1970 "35383"^^xsd:int;
+dbo:areaTotal "374"^^xsd:int;
+dbo:populationDensity "871.9278"^^xsd:double;
+ex:growthRate "1.0319"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/MEX> rdf:type dbo:Country ;
+ dbo:countryRank "10"^^xsd:int;
+dbo:isoCode ex:iso_MEX;
+rdfs:label "Mexico";
+dbo:capital ex:Mexico_City;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "127504125"^^xsd:int;
+ex:population2020 "125998302"^^xsd:int;
+ex:population2015 "120149897"^^xsd:int;
+ex:population2010 "112532401"^^xsd:int;
+ex:population2000 "97873442"^^xsd:int;
+ex:population1990 "81720428"^^xsd:int;
+ex:population1980 "67705186"^^xsd:int;
+ex:population1970 "50289306"^^xsd:int;
+dbo:areaTotal "1964375"^^xsd:int;
+dbo:populationDensity "64.9082"^^xsd:double;
+ex:growthRate "1.0063"^^xsd:double;
+ex:populationShare "1.6"^^xsd:double .
+<http://example.org/country/FSM> rdf:type dbo:Country ;
+ dbo:countryRank "194"^^xsd:int;
+dbo:isoCode ex:iso_FSM;
+rdfs:label "Micronesia";
+dbo:capital ex:Palikir;
+dbo:continent ex:Oceania;
+dbo:populationTotal "114164"^^xsd:int;
+ex:population2020 "112106"^^xsd:int;
+ex:population2015 "109462"^^xsd:int;
+ex:population2010 "107588"^^xsd:int;
+ex:population2000 "111709"^^xsd:int;
+ex:population1990 "98603"^^xsd:int;
+ex:population1980 "76299"^^xsd:int;
+ex:population1970 "58989"^^xsd:int;
+dbo:areaTotal "702"^^xsd:int;
+dbo:populationDensity "162.6268"^^xsd:double;
+ex:growthRate "1.0091"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/MDA> rdf:type dbo:Country ;
+ dbo:countryRank "135"^^xsd:int;
+dbo:isoCode ex:iso_MDA;
+rdfs:label "Moldova";
+dbo:capital ex:Chisinau;
+dbo:continent ex:Europe;
+dbo:populationTotal "3272996"^^xsd:int;
+ex:population2020 "3084847"^^xsd:int;
+ex:population2015 "3277388"^^xsd:int;
+ex:population2010 "3678186"^^xsd:int;
+ex:population2000 "4251573"^^xsd:int;
+ex:population1990 "4480199"^^xsd:int;
+ex:population1980 "4103240"^^xsd:int;
+ex:population1970 "3711140"^^xsd:int;
+dbo:areaTotal "33846"^^xsd:int;
+dbo:populationDensity "96.7026"^^xsd:double;
+ex:growthRate "1.0691"^^xsd:double;
+ex:populationShare "0.04"^^xsd:double .
+<http://example.org/country/MCO> rdf:type dbo:Country ;
+ dbo:countryRank "217"^^xsd:int;
+dbo:isoCode ex:iso_MCO;
+rdfs:label "Monaco";
+dbo:capital ex:Monaco;
+dbo:continent ex:Europe;
+dbo:populationTotal "36469"^^xsd:int;
+ex:population2020 "36922"^^xsd:int;
+ex:population2015 "36760"^^xsd:int;
+ex:population2010 "33178"^^xsd:int;
+ex:population2000 "32465"^^xsd:int;
+ex:population1990 "30329"^^xsd:int;
+ex:population1980 "27076"^^xsd:int;
+ex:population1970 "24270"^^xsd:int;
+dbo:areaTotal "2"^^xsd:int;
+dbo:populationDensity "18234.5"^^xsd:double;
+ex:growthRate "0.9941"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/MNG> rdf:type dbo:Country ;
+ dbo:countryRank "134"^^xsd:int;
+dbo:isoCode ex:iso_MNG;
+rdfs:label "Mongolia";
+dbo:capital ex:Ulaanbaatar;
+dbo:continent ex:Asia;
+dbo:populationTotal "3398366"^^xsd:int;
+ex:population2020 "3294335"^^xsd:int;
+ex:population2015 "2964749"^^xsd:int;
+ex:population2010 "2702520"^^xsd:int;
+ex:population2000 "2450979"^^xsd:int;
+ex:population1990 "2161433"^^xsd:int;
+ex:population1980 "1697780"^^xsd:int;
+ex:population1970 "1293880"^^xsd:int;
+dbo:areaTotal "1564110"^^xsd:int;
+dbo:populationDensity "2.1727"^^xsd:double;
+ex:growthRate "1.0151"^^xsd:double;
+ex:populationShare "0.04"^^xsd:double .
+<http://example.org/country/MNE> rdf:type dbo:Country ;
+ ex:population2010 "631044"^^xsd:int;
+ex:population1990 "621442"^^xsd:int;
+dbo:populationDensity "45.4012"^^xsd:double;
+ex:population1980 "589324"^^xsd:int;
+ex:population1970 "530268"^^xsd:int;
+dbo:areaTotal "13812"^^xsd:int;
+ex:population2015 "633966"^^xsd:int;
+dbo:countryRank "169"^^xsd:int;
+dbo:continent ex:Europe;
+rdfs:label "Montenegro";
+dbo:populationTotal "627082"^^xsd:int;
+ex:population2020 "629048"^^xsd:int;
+dbo:capital ex:Podgorica;
+dbo:isoCode ex:iso_MNE;
+ex:population2000 "633324"^^xsd:int;
+ex:growthRate "0.9988"^^xsd:double;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/MSR> rdf:type dbo:Country ;
+ dbo:countryRank "230"^^xsd:int;
+dbo:isoCode ex:iso_MSR;
+rdfs:label "Montserrat";
+dbo:capital ex:Brades;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "4390"^^xsd:int;
+ex:population2020 "4500"^^xsd:int;
+ex:population2015 "5059"^^xsd:int;
+ex:population2010 "4938"^^xsd:int;
+ex:population2000 "5138"^^xsd:int;
+ex:population1990 "10805"^^xsd:int;
+ex:population1980 "11452"^^xsd:int;
+ex:population1970 "11402"^^xsd:int;
+dbo:areaTotal "102"^^xsd:int;
+dbo:populationDensity "43.0392"^^xsd:double;
+ex:growthRate "0.9939"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/MAR> rdf:type dbo:Country ;
+ dbo:countryRank "40"^^xsd:int;
+dbo:isoCode ex:iso_MAR;
+rdfs:label "Morocco";
+dbo:capital ex:Rabat;
+dbo:continent ex:Africa;
+dbo:populationTotal "37457971"^^xsd:int;
+ex:population2020 "36688772"^^xsd:int;
+ex:population2015 "34680458"^^xsd:int;
+ex:population2010 "32464865"^^xsd:int;
+ex:population2000 "28554415"^^xsd:int;
+ex:population1990 "24570814"^^xsd:int;
+ex:population1980 "19678444"^^xsd:int;
+ex:population1970 "15274351"^^xsd:int;
+dbo:areaTotal "446550"^^xsd:int;
+dbo:populationDensity "83.883"^^xsd:double;
+ex:growthRate "1.0103"^^xsd:double;
+ex:populationShare "0.47"^^xsd:double .
+<http://example.org/country/MOZ> rdf:type dbo:Country ;
+ dbo:countryRank "48"^^xsd:int;
+dbo:isoCode ex:iso_MOZ;
+rdfs:label "Mozambique";
+dbo:capital ex:Maputo;
+dbo:continent ex:Africa;
+dbo:populationTotal "32969517"^^xsd:int;
+ex:population2020 "31178239"^^xsd:int;
+ex:population2015 "26843246"^^xsd:int;
+ex:population2010 "23073723"^^xsd:int;
+ex:population2000 "17768505"^^xsd:int;
+ex:population1990 "13303459"^^xsd:int;
+ex:population1980 "11413587"^^xsd:int;
+ex:population1970 "8411676"^^xsd:int;
+dbo:areaTotal "801590"^^xsd:int;
+dbo:populationDensity "41.1302"^^xsd:double;
+ex:growthRate "1.0278"^^xsd:double;
+ex:populationShare "0.41"^^xsd:double .
+<http://example.org/country/MMR> rdf:type dbo:Country ;
+ ex:populationShare "0.68"^^xsd:double;
+dbo:continent ex:Asia;
+dbo:populationTotal "54179306"^^xsd:int;
+dbo:populationDensity "80.0784"^^xsd:double;
+ex:population2020 "53423198"^^xsd:int;
+ex:population2015 "51483949"^^xsd:int;
+ex:population2000 "45538332"^^xsd:int;
+dbo:areaTotal "676578"^^xsd:int;
+ex:population1970 "27284112"^^xsd:int;
+ex:population1980 "33465781"^^xsd:int;
+ex:population2010 "49390988"^^xsd:int;
+dbo:countryRank "26"^^xsd:int;
+dbo:isoCode ex:iso_MMR;
+rdfs:label "Myanmar";
+ex:population1990 "40099553"^^xsd:int;
+dbo:capital ex:Nay_Pyi_Taw;
+ex:growthRate "1.0071"^^xsd:double .
+<http://example.org/country/NAM> rdf:type dbo:Country ;
+ rdfs:label "Namibia";
+dbo:isoCode ex:iso_NAM;
+dbo:countryRank "145"^^xsd:int;
+dbo:capital ex:Windhoek;
+dbo:continent ex:Africa;
+dbo:populationTotal "2567012"^^xsd:int;
+ex:population2020 "2489098"^^xsd:int;
+ex:population2015 "2282704"^^xsd:int;
+ex:population2010 "2099271"^^xsd:int;
+ex:population2000 "1819141"^^xsd:int;
+ex:population1990 "1369011"^^xsd:int;
+ex:population1980 "975994"^^xsd:int;
+ex:population1970 "754467"^^xsd:int;
+dbo:areaTotal "825615"^^xsd:int;
+dbo:populationDensity "3.1092"^^xsd:double;
+ex:growthRate "1.0146"^^xsd:double;
+ex:populationShare "0.03"^^xsd:double .
+<http://example.org/country/NRU> rdf:type dbo:Country ;
+ dbo:countryRank "225"^^xsd:int;
+dbo:isoCode ex:iso_NRU;
+rdfs:label "Nauru";
+dbo:capital ex:Yaren;
+dbo:continent ex:Oceania;
+dbo:populationTotal "12668"^^xsd:int;
+ex:population2020 "12315"^^xsd:int;
+ex:population2015 "11185"^^xsd:int;
+ex:population2010 "10241"^^xsd:int;
+ex:population2000 "10377"^^xsd:int;
+ex:population1990 "9598"^^xsd:int;
+ex:population1980 "7635"^^xsd:int;
+ex:population1970 "6663"^^xsd:int;
+dbo:areaTotal "21"^^xsd:int;
+dbo:populationDensity "603.2381"^^xsd:double;
+ex:growthRate "1.0125"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/NPL> rdf:type dbo:Country ;
+ ex:population2010 "27161567"^^xsd:int;
+dbo:continent ex:Asia;
+dbo:populationTotal "30547580"^^xsd:int;
+ex:population2015 "27610325"^^xsd:int;
+dbo:areaTotal "147181"^^xsd:int;
+ex:population1970 "12501285"^^xsd:int;
+ex:population2020 "29348627"^^xsd:int;
+dbo:countryRank "49"^^xsd:int;
+dbo:isoCode ex:iso_NPL;
+ex:population1990 "19616530"^^xsd:int;
+rdfs:label "Nepal";
+ex:population2000 "24559500"^^xsd:int;
+ex:population1980 "15600442"^^xsd:int;
+dbo:capital ex:Kathmandu;
+dbo:populationDensity "207.5511"^^xsd:double;
+ex:growthRate "1.0171"^^xsd:double;
+ex:populationShare "0.38"^^xsd:double .
+<http://example.org/country/NLD> rdf:type dbo:Country ;
+ dbo:countryRank "71"^^xsd:int;
+dbo:isoCode ex:iso_NLD;
+rdfs:label "Netherlands";
+dbo:capital ex:Amsterdam;
+dbo:continent ex:Europe;
+dbo:populationTotal "17564014"^^xsd:int;
+ex:population2020 "17434557"^^xsd:int;
+ex:population2015 "17041107"^^xsd:int;
+ex:population2010 "16617116"^^xsd:int;
+ex:population2000 "15899135"^^xsd:int;
+ex:population1990 "14944548"^^xsd:int;
+ex:population1980 "14130387"^^xsd:int;
+ex:population1970 "13037686"^^xsd:int;
+dbo:areaTotal "41850"^^xsd:int;
+dbo:populationDensity "419.6897"^^xsd:double;
+ex:growthRate "1.0036"^^xsd:double;
+ex:populationShare "0.22"^^xsd:double .
+<http://example.org/country/NCL> rdf:type dbo:Country ;
+ dbo:countryRank "185"^^xsd:int;
+dbo:isoCode ex:iso_NCL;
+rdfs:label "New Caledonia";
+dbo:capital ex:Noumea;
+dbo:continent ex:Oceania;
+dbo:populationTotal "289950"^^xsd:int;
+ex:population2020 "286403"^^xsd:int;
+ex:population2015 "283032"^^xsd:int;
+ex:population2010 "261426"^^xsd:int;
+ex:population2000 "221537"^^xsd:int;
+ex:population1990 "177264"^^xsd:int;
+ex:population1980 "148599"^^xsd:int;
+ex:population1970 "110982"^^xsd:int;
+dbo:areaTotal "18575"^^xsd:int;
+dbo:populationDensity "15.6097"^^xsd:double;
+ex:growthRate "1.0075"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/NZL> rdf:type dbo:Country ;
+ ex:population1970 "2824061"^^xsd:int;
+ex:population2000 "3855266"^^xsd:int;
+ex:population2015 "4590590"^^xsd:int;
+ex:population2010 "4346338"^^xsd:int;
+ex:population1980 "3147168"^^xsd:int;
+ex:population1990 "3397389"^^xsd:int;
+dbo:countryRank "123"^^xsd:int;
+dbo:isoCode ex:iso_NZL;
+rdfs:label "New Zealand";
+dbo:capital ex:Wellington;
+dbo:continent ex:Oceania;
+dbo:populationTotal "5185288"^^xsd:int;
+ex:population2020 "5061133"^^xsd:int;
+dbo:areaTotal "270467"^^xsd:int;
+dbo:populationDensity "19.1716"^^xsd:double;
+ex:growthRate "1.0108"^^xsd:double;
+ex:populationShare "0.07"^^xsd:double .
+<http://example.org/country/NIC> rdf:type dbo:Country ;
+ dbo:countryRank "106"^^xsd:int;
+dbo:isoCode ex:iso_NIC;
+rdfs:label "Nicaragua";
+dbo:capital ex:Managua;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "6948392"^^xsd:int;
+ex:population2020 "6755895"^^xsd:int;
+ex:population2015 "6298598"^^xsd:int;
+ex:population2010 "5855734"^^xsd:int;
+ex:population2000 "5123222"^^xsd:int;
+ex:population1990 "4227820"^^xsd:int;
+ex:population1980 "3303309"^^xsd:int;
+ex:population1970 "2444767"^^xsd:int;
+dbo:areaTotal "130373"^^xsd:int;
+dbo:populationDensity "53.2962"^^xsd:double;
+ex:growthRate "1.0143"^^xsd:double;
+ex:populationShare "0.09"^^xsd:double .
+<http://example.org/country/NER> rdf:type dbo:Country ;
+ dbo:populationTotal "26207977"^^xsd:int;
+dbo:countryRank "54"^^xsd:int;
+dbo:isoCode ex:iso_NER;
+rdfs:label "Niger";
+dbo:capital ex:Niamey;
+ex:population2015 "20128124"^^xsd:int;
+ex:population2020 "24333639"^^xsd:int;
+dbo:continent ex:Africa;
+ex:population2010 "16647543"^^xsd:int;
+ex:population2000 "11622665"^^xsd:int;
+ex:population1990 "8370647"^^xsd:int;
+ex:population1980 "6173177"^^xsd:int;
+ex:population1970 "4669708"^^xsd:int;
+dbo:areaTotal "1267000"^^xsd:int;
+dbo:populationDensity "20.6851"^^xsd:double;
+ex:growthRate "1.0378"^^xsd:double;
+ex:populationShare "0.33"^^xsd:double .
+<http://example.org/country/NGA> rdf:type dbo:Country ;
+ dbo:countryRank "6"^^xsd:int;
+dbo:isoCode ex:iso_NGA;
+rdfs:label "Nigeria";
+dbo:capital ex:Abuja;
+dbo:continent ex:Africa;
+dbo:populationTotal "218541212"^^xsd:int;
+ex:population2020 "208327405"^^xsd:int;
+ex:population2015 "183995785"^^xsd:int;
+ex:population2010 "160952853"^^xsd:int;
+ex:population2000 "122851984"^^xsd:int;
+ex:population1990 "95214257"^^xsd:int;
+ex:population1980 "72951439"^^xsd:int;
+ex:population1970 "55569264"^^xsd:int;
+dbo:areaTotal "923768"^^xsd:int;
+dbo:populationDensity "236.5759"^^xsd:double;
+ex:growthRate "1.0241"^^xsd:double;
+ex:populationShare "2.74"^^xsd:double .
+<http://example.org/country/NIU> rdf:type dbo:Country ;
+ ex:population2020 "1942"^^xsd:int;
+ex:population2010 "1812"^^xsd:int;
+ex:population2015 "1847"^^xsd:int;
+dbo:isoCode ex:iso_NIU;
+dbo:countryRank "232"^^xsd:int;
+rdfs:label "Niue";
+dbo:capital ex:Alofi;
+dbo:continent ex:Oceania;
+dbo:populationTotal "1934"^^xsd:int;
+ex:population2000 "2074"^^xsd:int;
+ex:population1990 "2533"^^xsd:int;
+ex:population1980 "3637"^^xsd:int;
+ex:population1970 "5185"^^xsd:int;
+dbo:areaTotal "260"^^xsd:int;
+dbo:populationDensity "7.4385"^^xsd:double;
+ex:growthRate "0.9985"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/PRK> rdf:type dbo:Country ;
+ dbo:areaTotal "120538"^^xsd:int;
+ex:population2020 "25867467"^^xsd:int;
+ex:population1980 "17973650"^^xsd:int;
+ex:population1990 "20799523"^^xsd:int;
+ex:population2015 "25258015"^^xsd:int;
+ex:population2010 "24686435"^^xsd:int;
+ex:population2000 "23367059"^^xsd:int;
+dbo:countryRank "56"^^xsd:int;
+dbo:isoCode ex:iso_PRK;
+rdfs:label "North Korea";
+dbo:capital ex:Pyongyang;
+dbo:continent ex:Asia;
+dbo:populationTotal "26069416"^^xsd:int;
+ex:population1970 "14996879"^^xsd:int;
+dbo:populationDensity "216.2755"^^xsd:double;
+ex:growthRate "1.0038"^^xsd:double;
+ex:populationShare "0.33"^^xsd:double .
+<http://example.org/country/MKD> rdf:type dbo:Country ;
+ dbo:areaTotal "25713"^^xsd:int;
+ex:populationShare "0.03"^^xsd:double;
+dbo:populationDensity "81.4218"^^xsd:double;
+ex:growthRate "0.9954"^^xsd:double;
+dbo:countryRank "150"^^xsd:int;
+dbo:isoCode ex:iso_MKD;
+rdfs:label "North Macedonia";
+dbo:capital ex:Skopje;
+dbo:continent ex:Europe;
+dbo:populationTotal "2093599"^^xsd:int;
+ex:population2020 "2111072"^^xsd:int;
+ex:population2015 "2107962"^^xsd:int;
+ex:population2010 "2093828"^^xsd:int;
+ex:population2000 "2037936"^^xsd:int;
+ex:population1990 "2044174"^^xsd:int;
+ex:population1980 "1907023"^^xsd:int;
+ex:population1970 "1656783"^^xsd:int .
+<http://example.org/country/NFK> rdf:type dbo:Country ;
+ dbo:countryRank "210"^^xsd:int;
+dbo:isoCode ex:iso_NFK;
+rdfs:label "Northern Mariana Islands";
+dbo:capital ex:Saipan;
+dbo:continent ex:Oceania;
+dbo:populationTotal "49551"^^xsd:int;
+ex:population2020 "49587"^^xsd:int;
+ex:population2015 "51514"^^xsd:int;
+ex:population2010 "54087"^^xsd:int;
+ex:population2000 "80338"^^xsd:int;
+ex:population1990 "48002"^^xsd:int;
+ex:population1980 "17613"^^xsd:int;
+ex:population1970 "10143"^^xsd:int;
+dbo:areaTotal "464"^^xsd:int;
+dbo:populationDensity "106.7909"^^xsd:double;
+ex:growthRate "1.0014"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/NOR> rdf:type dbo:Country ;
+ dbo:countryRank "120"^^xsd:int;
+dbo:isoCode ex:iso_NOR;
+rdfs:label "Norway";
+dbo:capital ex:Oslo;
+dbo:continent ex:Europe;
+dbo:populationTotal "5434319"^^xsd:int;
+ex:population2020 "5379839"^^xsd:int;
+ex:population2015 "5190356"^^xsd:int;
+ex:population2010 "4889741"^^xsd:int;
+ex:population2000 "4491202"^^xsd:int;
+ex:population1990 "4241636"^^xsd:int;
+ex:population1980 "4085776"^^xsd:int;
+ex:population1970 "3875546"^^xsd:int;
+dbo:areaTotal "323802"^^xsd:int;
+dbo:populationDensity "16.7828"^^xsd:double;
+ex:growthRate "1.0058"^^xsd:double;
+ex:populationShare "0.07"^^xsd:double .
+<http://example.org/country/OMN> rdf:type dbo:Country ;
+ dbo:areaTotal "309500"^^xsd:int;
+ex:populationShare "0.06"^^xsd:double;
+ex:population2010 "2881914"^^xsd:int;
+ex:population2020 "4543399"^^xsd:int;
+dbo:capital ex:Muscat;
+dbo:populationTotal "4576298"^^xsd:int;
+dbo:continent ex:Asia;
+ex:growthRate "1.0123"^^xsd:double;
+dbo:countryRank "127"^^xsd:int;
+rdfs:label "Oman";
+dbo:populationDensity "14.7861"^^xsd:double;
+dbo:isoCode ex:iso_OMN;
+ex:population2015 "4191776"^^xsd:int;
+ex:population2000 "2344253"^^xsd:int;
+ex:population1990 "1804524"^^xsd:int;
+ex:population1970 "670693"^^xsd:int;
+ex:population1980 "1017462"^^xsd:int .
+<http://example.org/country/PAK> rdf:type dbo:Country ;
+ dbo:countryRank "5"^^xsd:int;
+dbo:isoCode ex:iso_PAK;
+rdfs:label "Pakistan";
+dbo:capital ex:Islamabad;
+dbo:continent ex:Asia;
+dbo:populationTotal "235824862"^^xsd:int;
+ex:population2020 "227196741"^^xsd:int;
+ex:population2015 "210969298"^^xsd:int;
+ex:population2010 "194454498"^^xsd:int;
+ex:population2000 "154369924"^^xsd:int;
+ex:population1990 "115414069"^^xsd:int;
+ex:population1980 "80624057"^^xsd:int;
+ex:population1970 "59290872"^^xsd:int;
+dbo:areaTotal "881912"^^xsd:int;
+dbo:populationDensity "267.4018"^^xsd:double;
+ex:growthRate "1.0191"^^xsd:double;
+ex:populationShare "2.96"^^xsd:double .
+<http://example.org/country/PLW> rdf:type dbo:Country ;
+ dbo:countryRank "222"^^xsd:int;
+dbo:isoCode ex:iso_PLW;
+rdfs:label "Palau";
+dbo:capital ex:Ngerulmud;
+dbo:continent ex:Oceania;
+dbo:populationTotal "18055"^^xsd:int;
+ex:population2020 "17972"^^xsd:int;
+ex:population2015 "17794"^^xsd:int;
+ex:population2010 "18540"^^xsd:int;
+ex:population2000 "19726"^^xsd:int;
+ex:population1990 "15293"^^xsd:int;
+ex:population1980 "12252"^^xsd:int;
+ex:population1970 "11366"^^xsd:int;
+dbo:areaTotal "459"^^xsd:int;
+dbo:populationDensity "39.3355"^^xsd:double;
+ex:growthRate "1.0017"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/PSE> rdf:type dbo:Country ;
+ dbo:countryRank "122"^^xsd:int;
+dbo:isoCode ex:iso_PSE;
+rdfs:label "Palestine";
+dbo:capital ex:Ramallah;
+dbo:continent ex:Asia;
+dbo:populationTotal "5250072"^^xsd:int;
+ex:population2020 "5019401"^^xsd:int;
+ex:population2015 "4484614"^^xsd:int;
+ex:population2010 "3992278"^^xsd:int;
+ex:population2000 "3139954"^^xsd:int;
+ex:population1990 "2124609"^^xsd:int;
+ex:population1980 "1453620"^^xsd:int;
+ex:population1970 "1118241"^^xsd:int;
+dbo:areaTotal "6220"^^xsd:int;
+dbo:populationDensity "844.063"^^xsd:double;
+ex:growthRate "1.0227"^^xsd:double;
+ex:populationShare "0.07"^^xsd:double .
+<http://example.org/country/PAN> rdf:type dbo:Country ;
+ dbo:countryRank "128"^^xsd:int;
+dbo:isoCode ex:iso_PAN;
+rdfs:label "Panama";
+dbo:capital ex:Panama_City;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "4408581"^^xsd:int;
+ex:population2020 "4294396"^^xsd:int;
+ex:population2015 "3957099"^^xsd:int;
+ex:population2010 "3623617"^^xsd:int;
+ex:population2000 "3001731"^^xsd:int;
+ex:population1990 "2449968"^^xsd:int;
+ex:population1980 "1956987"^^xsd:int;
+ex:population1970 "1516188"^^xsd:int;
+dbo:areaTotal "75417"^^xsd:int;
+dbo:populationDensity "58.4561"^^xsd:double;
+ex:growthRate "1.0132"^^xsd:double;
+ex:populationShare "0.06"^^xsd:double .
+<http://example.org/country/PNG> rdf:type dbo:Country ;
+ dbo:isoCode ex:iso_PNG;
+dbo:countryRank "93"^^xsd:int;
+rdfs:label "Papua New Guinea";
+dbo:capital ex:Port_Moresby;
+dbo:continent ex:Oceania;
+dbo:populationTotal "10142619"^^xsd:int;
+ex:population2020 "9749640"^^xsd:int;
+ex:population2015 "8682174"^^xsd:int;
+ex:population2010 "7583269"^^xsd:int;
+ex:population2000 "5508297"^^xsd:int;
+ex:population1990 "3864972"^^xsd:int;
+ex:population1980 "3104788"^^xsd:int;
+ex:population1970 "2489059"^^xsd:int;
+dbo:areaTotal "462840"^^xsd:int;
+dbo:populationDensity "21.9139"^^xsd:double;
+ex:growthRate "1.0194"^^xsd:double;
+ex:populationShare "0.13"^^xsd:double .
+<http://example.org/country/PRY> rdf:type dbo:Country ;
+ dbo:countryRank "109"^^xsd:int;
+dbo:isoCode ex:iso_PRY;
+rdfs:label "Paraguay";
+dbo:capital ex:Asuncion;
+dbo:continent ex:South_America
+;
+dbo:populationTotal "6780744"^^xsd:int;
+ex:population2020 "6618695"^^xsd:int;
+ex:population2015 "6177950"^^xsd:int;
+ex:population2010 "5768613"^^xsd:int;
+ex:population2000 "5123819"^^xsd:int;
+ex:population1990 "4059195"^^xsd:int;
+ex:population1980 "3078912"^^xsd:int;
+ex:population1970 "2408787"^^xsd:int;
+dbo:areaTotal "406752"^^xsd:int;
+dbo:populationDensity "16.6705"^^xsd:double;
+ex:growthRate "1.0115"^^xsd:double;
+ex:populationShare "0.09"^^xsd:double .
+<http://example.org/country/PER> rdf:type dbo:Country ;
+ dbo:countryRank "44"^^xsd:int;
+dbo:isoCode ex:iso_PER;
+rdfs:label "Peru";
+dbo:capital ex:Lima;
+dbo:continent ex:South_America
+;
+dbo:populationTotal "34049588"^^xsd:int;
+ex:population2020 "33304756"^^xsd:int;
+ex:population2015 "30711863"^^xsd:int;
+ex:population2010 "29229572"^^xsd:int;
+ex:population2000 "26654439"^^xsd:int;
+ex:population1990 "22109099"^^xsd:int;
+ex:population1980 "17492406"^^xsd:int;
+ex:population1970 "13562371"^^xsd:int;
+dbo:areaTotal "1285216"^^xsd:int;
+dbo:populationDensity "26.4933"^^xsd:double;
+ex:growthRate "1.0099"^^xsd:double;
+ex:populationShare "0.43"^^xsd:double .
+<http://example.org/country/PHL> rdf:type dbo:Country ;
+ dbo:countryRank "13"^^xsd:int;
+dbo:isoCode ex:iso_PHL;
+rdfs:label "Philippines";
+dbo:capital ex:Manila;
+dbo:continent ex:Asia;
+dbo:populationTotal "115559009"^^xsd:int;
+ex:population2020 "112190977"^^xsd:int;
+ex:population2015 "103031365"^^xsd:int;
+ex:population2010 "94636700"^^xsd:int;
+ex:population2000 "77958223"^^xsd:int;
+ex:population1990 "61558898"^^xsd:int;
+ex:population1980 "48419546"^^xsd:int;
+ex:population1970 "37435586"^^xsd:int;
+dbo:areaTotal "342353"^^xsd:int;
+ex:growthRate "1.0147"^^xsd:double;
+dbo:populationDensity "337.5434"^^xsd:double;
+ex:populationShare "1.45"^^xsd:double .
+<http://example.org/country/POL> rdf:type dbo:Country ;
+ dbo:countryRank "37"^^xsd:int;
+dbo:isoCode ex:iso_POL;
+rdfs:label "Poland";
+dbo:capital ex:Warsaw;
+dbo:continent ex:Europe;
+dbo:populationTotal "39857145"^^xsd:int;
+ex:population2020 "38428366"^^xsd:int;
+ex:population2015 "38553146"^^xsd:int;
+ex:population2010 "38597353"^^xsd:int;
+ex:population2000 "38504431"^^xsd:int;
+ex:population1990 "38064255"^^xsd:int;
+ex:population1980 "35521429"^^xsd:int;
+ex:population1970 "32482943"^^xsd:int;
+dbo:areaTotal "312679"^^xsd:int;
+dbo:populationDensity "127.4698"^^xsd:double;
+ex:growthRate "1.0404"^^xsd:double;
+ex:populationShare "0.5"^^xsd:double .
+<http://example.org/country/PRT> rdf:type dbo:Country ;
+ dbo:countryRank "92"^^xsd:int;
+dbo:isoCode ex:iso_PRT;
+rdfs:label "Portugal";
+dbo:capital ex:Lisbon;
+dbo:continent ex:Europe;
+dbo:populationTotal "10270865"^^xsd:int;
+ex:population2020 "10298192"^^xsd:int;
+ex:population2015 "10365435"^^xsd:int;
+ex:population2010 "10588401"^^xsd:int;
+ex:population2000 "10300626"^^xsd:int;
+ex:population1990 "10007346"^^xsd:int;
+ex:population1980 "9785252"^^xsd:int;
+ex:population1970 "8683631"^^xsd:int;
+dbo:areaTotal "92090"^^xsd:int;
+dbo:populationDensity "111.5307"^^xsd:double;
+ex:growthRate "0.9981"^^xsd:double;
+ex:populationShare "0.13"^^xsd:double .
+<http://example.org/country/PRI> rdf:type dbo:Country ;
+ dbo:countryRank "136"^^xsd:int;
+dbo:isoCode ex:iso_PRI;
+rdfs:label "Puerto Rico";
+dbo:capital ex:San_Juan;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "3252407"^^xsd:int;
+ex:population2020 "3271564"^^xsd:int;
+ex:population2015 "3497335"^^xsd:int;
+ex:population2010 "3717922"^^xsd:int;
+ex:population2000 "3827108"^^xsd:int;
+ex:population1990 "3543776"^^xsd:int;
+ex:population1980 "3214568"^^xsd:int;
+ex:population1970 "2737619"^^xsd:int;
+dbo:areaTotal "8870"^^xsd:int;
+dbo:populationDensity "366.675"^^xsd:double;
+ex:growthRate "0.9989"^^xsd:double;
+ex:populationShare "0.04"^^xsd:double .
+<http://example.org/country/QAT> rdf:type dbo:Country ;
+ dbo:countryRank "143"^^xsd:int;
+dbo:isoCode ex:iso_QAT;
+rdfs:label "Qatar";
+dbo:capital ex:Doha;
+dbo:continent ex:Asia;
+dbo:populationTotal "2695122"^^xsd:int;
+ex:population2020 "2760385"^^xsd:int;
+ex:population2015 "2414573"^^xsd:int;
+ex:population2010 "1713504"^^xsd:int;
+ex:population2000 "645937"^^xsd:int;
+ex:population1990 "441675"^^xsd:int;
+ex:population1980 "277450"^^xsd:int;
+ex:population1970 "118007"^^xsd:int;
+dbo:areaTotal "11586"^^xsd:int;
+dbo:populationDensity "232.6189"^^xsd:double;
+ex:growthRate "1.0026"^^xsd:double;
+ex:populationShare "0.03"^^xsd:double .
+<http://example.org/country/COG> rdf:type dbo:Country ;
+ ex:population2000 "3134030"^^xsd:int;
+dbo:countryRank "114"^^xsd:int;
+dbo:isoCode ex:iso_COG;
+rdfs:label "Republic of the Congo";
+dbo:capital ex:Brazzaville;
+dbo:continent ex:Africa;
+ex:population2010 "4437884"^^xsd:int;
+dbo:populationTotal "5970424"^^xsd:int;
+ex:population2020 "5702174"^^xsd:int;
+ex:population2015 "5064386"^^xsd:int;
+ex:population1990 "2385435"^^xsd:int;
+ex:population1980 "1829256"^^xsd:int;
+ex:population1970 "1396989"^^xsd:int;
+dbo:areaTotal "342000"^^xsd:int;
+dbo:populationDensity "17.4574"^^xsd:double;
+ex:growthRate "1.0231"^^xsd:double;
+ex:populationShare "0.07"^^xsd:double .
+<http://example.org/country/REU> rdf:type dbo:Country ;
+ dbo:countryRank "161"^^xsd:int;
+dbo:isoCode ex:iso_REU;
+rdfs:label "Reunion";
+dbo:capital ex:Saint_Denis;
+dbo:continent ex:Africa;
+dbo:populationTotal "974052"^^xsd:int;
+ex:population2020 "957822"^^xsd:int;
+ex:population2015 "922495"^^xsd:int;
+ex:population2010 "890130"^^xsd:int;
+ex:population2000 "785424"^^xsd:int;
+ex:population1990 "658992"^^xsd:int;
+ex:population1980 "551674"^^xsd:int;
+ex:population1970 "473925"^^xsd:int;
+dbo:areaTotal "2511"^^xsd:int;
+dbo:populationDensity "387.914"^^xsd:double;
+ex:growthRate "1.0082"^^xsd:double;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/ROU> rdf:type dbo:Country ;
+ dbo:countryRank "64"^^xsd:int;
+dbo:isoCode ex:iso_ROU;
+rdfs:label "Romania";
+dbo:capital ex:Bucharest;
+dbo:continent ex:Europe;
+dbo:populationTotal "19659267"^^xsd:int;
+ex:population2020 "19442038"^^xsd:int;
+ex:population2015 "19906079"^^xsd:int;
+ex:population2010 "20335211"^^xsd:int;
+ex:population2000 "21919876"^^xsd:int;
+ex:population1990 "22836234"^^xsd:int;
+ex:population1980 "22125224"^^xsd:int;
+ex:population1970 "19922618"^^xsd:int;
+dbo:areaTotal "238391"^^xsd:int;
+dbo:populationDensity "82.4665"^^xsd:double;
+ex:growthRate "1.0171"^^xsd:double;
+ex:populationShare "0.25"^^xsd:double .
+<http://example.org/country/RUS> rdf:type dbo:Country ;
+ dbo:countryRank "9"^^xsd:int;
+dbo:isoCode ex:iso_RUS;
+rdfs:label "Russia";
+dbo:capital ex:Moscow;
+dbo:continent ex:Europe;
+dbo:populationTotal "144713314"^^xsd:int;
+ex:population2020 "145617329"^^xsd:int;
+ex:population2015 "144668389"^^xsd:int;
+ex:population2010 "143242599"^^xsd:int;
+ex:population2000 "146844839"^^xsd:int;
+ex:population1990 "148005704"^^xsd:int;
+ex:population1980 "138257420"^^xsd:int;
+ex:population1970 "130093010"^^xsd:int;
+dbo:areaTotal "17098242"^^xsd:int;
+dbo:populationDensity "8.4636"^^xsd:double;
+ex:growthRate "0.9973"^^xsd:double;
+ex:populationShare "1.81"^^xsd:double .
+<http://example.org/country/RWA> rdf:type dbo:Country ;
+ dbo:countryRank "76"^^xsd:int;
+dbo:isoCode ex:iso_RWA;
+rdfs:label "Rwanda";
+dbo:capital ex:Kigali;
+dbo:continent ex:Africa;
+dbo:populationTotal "13776698"^^xsd:int;
+ex:population2020 "13146362"^^xsd:int;
+ex:population2015 "11642959"^^xsd:int;
+ex:population2010 "10309031"^^xsd:int;
+ex:population2000 "8109989"^^xsd:int;
+ex:population1990 "7319962"^^xsd:int;
+ex:population1980 "5247532"^^xsd:int;
+ex:population1970 "3896367"^^xsd:int;
+dbo:areaTotal "26338"^^xsd:int;
+dbo:populationDensity "523.0731"^^xsd:double;
+ex:growthRate "1.0234"^^xsd:double;
+ex:populationShare "0.17"^^xsd:double .
+<http://example.org/country/BLM> rdf:type dbo:Country ;
+ dbo:countryRank "228"^^xsd:int;
+dbo:isoCode ex:iso_BLM;
+rdfs:label "Saint Barthelemy";
+dbo:capital ex:Gustavia;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "10967"^^xsd:int;
+ex:population2020 "10681"^^xsd:int;
+ex:population2015 "9643"^^xsd:int;
+ex:population2010 "8988"^^xsd:int;
+ex:population2000 "7082"^^xsd:int;
+ex:population1990 "5168"^^xsd:int;
+ex:population1980 "2983"^^xsd:int;
+ex:population1970 "2417"^^xsd:int;
+dbo:areaTotal "21"^^xsd:int;
+dbo:populationDensity "522.2381"^^xsd:double;
+ex:growthRate "1.0098"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/KNA> rdf:type dbo:Country ;
+ ex:population2020 "47642"^^xsd:int;
+ex:population2015 "47790"^^xsd:int;
+ex:population2010 "47403"^^xsd:int;
+ex:population2000 "45461"^^xsd:int;
+ex:population1990 "40636"^^xsd:int;
+ex:population1980 "43097"^^xsd:int;
+ex:population1970 "44968"^^xsd:int;
+dbo:areaTotal "261"^^xsd:int;
+dbo:populationDensity "182.5939"^^xsd:double;
+ex:growthRate "1.0011"^^xsd:double;
+dbo:countryRank "211"^^xsd:int;
+dbo:isoCode ex:iso_KNA;
+rdfs:label "Saint Kitts and Nevis";
+dbo:capital ex:Basseterre;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "47657"^^xsd:int;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/LCA> rdf:type dbo:Country ;
+ rdfs:label "Saint Lucia";
+dbo:isoCode ex:iso_LCA;
+dbo:countryRank "190"^^xsd:int;
+dbo:capital ex:Castries;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "179857"^^xsd:int;
+ex:population2020 "179237"^^xsd:int;
+ex:population2015 "175623"^^xsd:int;
+ex:population2010 "170935"^^xsd:int;
+ex:population2000 "159500"^^xsd:int;
+ex:population1990 "142301"^^xsd:int;
+ex:population1980 "121633"^^xsd:int;
+ex:population1970 "103090"^^xsd:int;
+dbo:areaTotal "616"^^xsd:int;
+dbo:populationDensity "291.9756"^^xsd:double;
+ex:growthRate "1.0011"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/MAF> rdf:type dbo:Country ;
+ ex:populationShare "0"^^xsd:double;
+ex:growthRate "0.9951"^^xsd:double;
+ex:population2020 "32552"^^xsd:int;
+ex:population2015 "35020"^^xsd:int;
+ex:population2010 "36458"^^xsd:int;
+ex:population2000 "29610"^^xsd:int;
+ex:population1990 "28127"^^xsd:int;
+ex:population1980 "7776"^^xsd:int;
+ex:population1970 "5802"^^xsd:int;
+dbo:countryRank "220"^^xsd:int;
+dbo:isoCode ex:iso_MAF;
+rdfs:label "Saint Martin";
+dbo:capital ex:Marigot;
+dbo:continent ex:North_America
+;
+dbo:areaTotal "53"^^xsd:int;
+dbo:populationTotal "31791"^^xsd:int;
+dbo:populationDensity "599.8302"^^xsd:double .
+<http://example.org/country/SPM> rdf:type dbo:Country ;
+ dbo:countryRank "229"^^xsd:int;
+dbo:isoCode ex:iso_SPM;
+rdfs:label "Saint Pierre and Miquelon";
+dbo:capital ex:Saint_Pierre;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "5862"^^xsd:int;
+ex:population2020 "5906"^^xsd:int;
+ex:population2015 "5978"^^xsd:int;
+ex:population2010 "6052"^^xsd:int;
+ex:population2000 "6274"^^xsd:int;
+ex:population1990 "6324"^^xsd:int;
+ex:population1980 "6106"^^xsd:int;
+ex:population1970 "5537"^^xsd:int;
+dbo:areaTotal "242"^^xsd:int;
+dbo:populationDensity "24.2231"^^xsd:double;
+ex:growthRate "0.9964"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/VCT> rdf:type dbo:Country ;
+ dbo:countryRank "199"^^xsd:int;
+dbo:isoCode ex:iso_VCT;
+rdfs:label "Saint Vincent and the Grenadines";
+dbo:capital ex:Kingstown;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "103948"^^xsd:int;
+ex:population2020 "104632"^^xsd:int;
+ex:population2015 "106482"^^xsd:int;
+ex:population2010 "109308"^^xsd:int;
+ex:population2000 "113813"^^xsd:int;
+ex:population1990 "112487"^^xsd:int;
+ex:population1980 "107480"^^xsd:int;
+ex:population1970 "98459"^^xsd:int;
+dbo:areaTotal "389"^^xsd:int;
+dbo:populationDensity "267.2185"^^xsd:double;
+ex:growthRate "0.9963"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/WSM> rdf:type dbo:Country ;
+ dbo:countryRank "188"^^xsd:int;
+dbo:isoCode ex:iso_WSM;
+rdfs:label "Samoa";
+dbo:capital ex:Apia;
+dbo:continent ex:Oceania;
+dbo:populationTotal "222382"^^xsd:int;
+ex:population2020 "214929"^^xsd:int;
+ex:population2015 "203571"^^xsd:int;
+ex:population2010 "194672"^^xsd:int;
+ex:population2000 "184008"^^xsd:int;
+ex:population1990 "168186"^^xsd:int;
+ex:population1980 "164905"^^xsd:int;
+ex:population1970 "142771"^^xsd:int;
+dbo:areaTotal "2842"^^xsd:int;
+dbo:populationDensity "78.2484"^^xsd:double;
+ex:growthRate "1.0165"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/SMR> rdf:type dbo:Country ;
+ dbo:countryRank "218"^^xsd:int;
+dbo:isoCode ex:iso_SMR;
+rdfs:label "San Marino";
+dbo:capital ex:San_Marino;
+dbo:continent ex:Europe;
+dbo:populationTotal "33660"^^xsd:int;
+ex:population2020 "34007"^^xsd:int;
+ex:population2015 "33570"^^xsd:int;
+ex:population2010 "31608"^^xsd:int;
+ex:population2000 "26823"^^xsd:int;
+ex:population1990 "23132"^^xsd:int;
+ex:population1980 "21346"^^xsd:int;
+ex:population1970 "18169"^^xsd:int;
+dbo:areaTotal "61"^^xsd:int;
+dbo:populationDensity "551.8033"^^xsd:double;
+ex:growthRate "0.9975"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/STP> rdf:type dbo:Country ;
+ dbo:isoCode ex:iso_STP;
+dbo:capital ex:Sao_Tome;
+rdfs:label "Sao Tome and Principe";
+dbo:countryRank "187"^^xsd:int;
+dbo:continent ex:Africa;
+dbo:populationTotal "227380"^^xsd:int;
+ex:population2020 "218641"^^xsd:int;
+ex:population2015 "201124"^^xsd:int;
+ex:population2010 "182138"^^xsd:int;
+ex:population2000 "143714"^^xsd:int;
+ex:population1990 "120343"^^xsd:int;
+ex:population1980 "97210"^^xsd:int;
+ex:population1970 "77583"^^xsd:int;
+dbo:areaTotal "964"^^xsd:int;
+dbo:populationDensity "235.8714"^^xsd:double;
+ex:growthRate "1.0192"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/SAU> rdf:type dbo:Country ;
+ dbo:countryRank "41"^^xsd:int;
+dbo:isoCode ex:iso_SAU;
+rdfs:label "Saudi Arabia";
+dbo:capital ex:Riyadh;
+dbo:continent ex:Asia;
+dbo:populationTotal "36408820"^^xsd:int;
+ex:population2020 "35997107"^^xsd:int;
+ex:population2015 "32749848"^^xsd:int;
+ex:population2010 "29411929"^^xsd:int;
+ex:population2000 "21547390"^^xsd:int;
+ex:population1990 "16004763"^^xsd:int;
+ex:population1980 "10171710"^^xsd:int;
+ex:population1970 "6106191"^^xsd:int;
+dbo:areaTotal "2149690"^^xsd:int;
+dbo:populationDensity "16.9368"^^xsd:double;
+ex:growthRate "1.0128"^^xsd:double;
+ex:populationShare "0.46"^^xsd:double .
+<http://example.org/country/SEN> rdf:type dbo:Country ;
+ ex:population2015 "14356181"^^xsd:int;
+ex:population2020 "16436119"^^xsd:int;
+dbo:continent ex:Africa;
+dbo:populationTotal "17316449"^^xsd:int;
+dbo:capital ex:Dakar;
+rdfs:label "Senegal";
+dbo:countryRank "72"^^xsd:int;
+dbo:isoCode ex:iso_SEN;
+ex:population2010 "12530121"^^xsd:int;
+ex:population2000 "9704287"^^xsd:int;
+ex:population1990 "7536001"^^xsd:int;
+ex:population1980 "5703869"^^xsd:int;
+ex:population1970 "4367744"^^xsd:int;
+dbo:areaTotal "196722"^^xsd:int;
+dbo:populationDensity "88.025"^^xsd:double;
+ex:growthRate "1.0261"^^xsd:double;
+ex:populationShare "0.22"^^xsd:double .
+<http://example.org/country/SRB> rdf:type dbo:Country ;
+ dbo:countryRank "105"^^xsd:int;
+dbo:isoCode ex:iso_SRB;
+rdfs:label "Serbia";
+dbo:capital ex:Belgrade;
+dbo:continent ex:Europe;
+dbo:populationTotal "7221365"^^xsd:int;
+ex:population2020 "7358005"^^xsd:int;
+ex:population2015 "7519496"^^xsd:int;
+ex:population2010 "7653748"^^xsd:int;
+ex:population2000 "7935022"^^xsd:int;
+ex:population1990 "7987529"^^xsd:int;
+ex:population1980 "7777010"^^xsd:int;
+ex:population1970 "7193533"^^xsd:int;
+dbo:areaTotal "88361"^^xsd:int;
+dbo:populationDensity "81.7257"^^xsd:double;
+ex:growthRate "0.9897"^^xsd:double;
+ex:populationShare "0.09"^^xsd:double .
+<http://example.org/country/SYC> rdf:type dbo:Country ;
+ dbo:countryRank "196"^^xsd:int;
+dbo:isoCode ex:iso_SYC;
+dbo:capital ex:Victoria;
+dbo:continent ex:Africa;
+ex:population2020 "105530"^^xsd:int;
+dbo:populationTotal "107118"^^xsd:int;
+rdfs:label "Seychelles";
+ex:population2015 "99240"^^xsd:int;
+ex:population2010 "92409"^^xsd:int;
+ex:population2000 "80060"^^xsd:int;
+ex:population1990 "71057"^^xsd:int;
+ex:population1980 "65290"^^xsd:int;
+ex:population1970 "54379"^^xsd:int;
+dbo:areaTotal "452"^^xsd:int;
+dbo:populationDensity "236.9867"^^xsd:double;
+ex:growthRate "1.0061"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/SLE> rdf:type dbo:Country ;
+ dbo:countryRank "102"^^xsd:int;
+dbo:isoCode ex:iso_SLE;
+rdfs:label "Sierra Leone";
+dbo:capital ex:Freetown;
+dbo:continent ex:Africa;
+dbo:populationTotal "8605718"^^xsd:int;
+ex:population2020 "8233969"^^xsd:int;
+ex:population2015 "7314773"^^xsd:int;
+ex:population2010 "6436698"^^xsd:int;
+ex:population2000 "4584067"^^xsd:int;
+ex:population1990 "4325388"^^xsd:int;
+ex:population1980 "3367477"^^xsd:int;
+ex:population1970 "2778557"^^xsd:int;
+dbo:areaTotal "71740"^^xsd:int;
+dbo:populationDensity "119.957"^^xsd:double;
+ex:growthRate "1.022"^^xsd:double;
+ex:populationShare "0.11"^^xsd:double .
+<http://example.org/country/SGP> rdf:type dbo:Country ;
+ ex:population2020 "5909869"^^xsd:int;
+dbo:populationTotal "5975689"^^xsd:int;
+rdfs:label "Singapore";
+dbo:capital ex:Singapore;
+dbo:continent ex:Asia;
+dbo:isoCode ex:iso_SGP;
+dbo:countryRank "113"^^xsd:int;
+ex:population2015 "5650018"^^xsd:int;
+ex:population2010 "5163590"^^xsd:int;
+ex:population2000 "4053602"^^xsd:int;
+ex:population1990 "3022209"^^xsd:int;
+ex:population1980 "2400729"^^xsd:int;
+ex:population1970 "2061831"^^xsd:int;
+dbo:areaTotal "710"^^xsd:int;
+dbo:populationDensity "8416.4634"^^xsd:double;
+ex:growthRate "1.0058"^^xsd:double;
+ex:populationShare "0.07"^^xsd:double .
+<http://example.org/country/SXM> rdf:type dbo:Country ;
+ ex:population2015 "40205"^^xsd:int;
+ex:population2010 "33034"^^xsd:int;
+ex:population2000 "30489"^^xsd:int;
+ex:population1990 "27845"^^xsd:int;
+ex:population1980 "12243"^^xsd:int;
+dbo:populationDensity "1299.2647"^^xsd:double;
+ex:population1970 "6260"^^xsd:int;
+dbo:areaTotal "34"^^xsd:int;
+dbo:countryRank "214"^^xsd:int;
+dbo:isoCode ex:iso_SXM;
+rdfs:label "Sint Maarten";
+dbo:capital ex:Philipsburg;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "44175"^^xsd:int;
+ex:population2020 "43621"^^xsd:int;
+ex:growthRate "1.003"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/SVK> rdf:type dbo:Country ;
+ dbo:countryRank "116"^^xsd:int;
+dbo:isoCode ex:iso_SVK;
+rdfs:label "Slovakia";
+dbo:capital ex:Bratislava;
+dbo:continent ex:Europe;
+dbo:populationTotal "5643453"^^xsd:int;
+ex:population2020 "5456681"^^xsd:int;
+ex:population2015 "5424444"^^xsd:int;
+ex:population2010 "5396424"^^xsd:int;
+ex:population2000 "5376690"^^xsd:int;
+ex:population1990 "5261305"^^xsd:int;
+ex:population1980 "4973883"^^xsd:int;
+ex:population1970 "4522867"^^xsd:int;
+dbo:areaTotal "49037"^^xsd:int;
+dbo:populationDensity "115.0856"^^xsd:double;
+ex:growthRate "1.0359"^^xsd:double;
+ex:populationShare "0.07"^^xsd:double .
+<http://example.org/country/SVN> rdf:type dbo:Country ;
+ dbo:countryRank "148"^^xsd:int;
+dbo:isoCode ex:iso_SVN;
+rdfs:label "Slovenia";
+dbo:capital ex:Ljubljana;
+dbo:continent ex:Europe;
+dbo:populationTotal "2119844"^^xsd:int;
+ex:population2020 "2117641"^^xsd:int;
+ex:population2015 "2080862"^^xsd:int;
+ex:population2010 "2057286"^^xsd:int;
+ex:population2000 "1984339"^^xsd:int;
+ex:population1990 "1986024"^^xsd:int;
+ex:population1980 "1901570"^^xsd:int;
+ex:population1970 "1741286"^^xsd:int;
+dbo:areaTotal "20273"^^xsd:int;
+dbo:populationDensity "104.5649"^^xsd:double;
+ex:growthRate "1.0002"^^xsd:double;
+ex:populationShare "0.03"^^xsd:double .
+<http://example.org/country/SLB> rdf:type dbo:Country ;
+ ex:growthRate "1.0232"^^xsd:double;
+ex:population1970 "172833"^^xsd:int;
+dbo:areaTotal "28896"^^xsd:int;
+ex:population1980 "233668"^^xsd:int;
+ex:population2000 "429978"^^xsd:int;
+dbo:populationTotal "724273"^^xsd:int;
+ex:population2015 "612660"^^xsd:int;
+ex:population2020 "691191"^^xsd:int;
+dbo:continent ex:Oceania;
+dbo:countryRank "166"^^xsd:int;
+dbo:isoCode ex:iso_SLB;
+dbo:capital ex:Honiara;
+rdfs:label "Solomon Islands";
+ex:population2010 "540394"^^xsd:int;
+ex:population1990 "324171"^^xsd:int;
+dbo:populationDensity "25.0648"^^xsd:double;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/SOM> rdf:type dbo:Country ;
+ dbo:countryRank "70"^^xsd:int;
+dbo:isoCode ex:iso_SOM;
+rdfs:label "Somalia";
+dbo:capital ex:Mogadishu;
+dbo:continent ex:Africa;
+dbo:populationTotal "17597511"^^xsd:int;
+ex:population2020 "16537016"^^xsd:int;
+ex:population2015 "13763906"^^xsd:int;
+ex:population2010 "12026649"^^xsd:int;
+ex:population2000 "8721465"^^xsd:int;
+ex:population1990 "6999096"^^xsd:int;
+ex:population1980 "5892224"^^xsd:int;
+ex:population1970 "3720977"^^xsd:int;
+dbo:areaTotal "637657"^^xsd:int;
+dbo:populationDensity "27.5971"^^xsd:double;
+ex:growthRate "1.0312"^^xsd:double;
+ex:populationShare "0.22"^^xsd:double .
+<http://example.org/country/ZAF> rdf:type dbo:Country ;
+ dbo:countryRank "24"^^xsd:int;
+dbo:isoCode ex:iso_ZAF;
+rdfs:label "South Africa";
+dbo:capital ex:Pretoria;
+dbo:continent ex:Africa;
+dbo:populationTotal "59893885"^^xsd:int;
+ex:population2020 "58801927"^^xsd:int;
+ex:population2015 "55876504"^^xsd:int;
+ex:population2010 "51784921"^^xsd:int;
+ex:population2000 "46813266"^^xsd:int;
+ex:population1990 "39877570"^^xsd:int;
+ex:population1980 "29463549"^^xsd:int;
+ex:population1970 "22368306"^^xsd:int;
+dbo:areaTotal "1221037"^^xsd:int;
+dbo:populationDensity "49.0517"^^xsd:double;
+ex:growthRate "1.0084"^^xsd:double;
+ex:populationShare "0.75"^^xsd:double .
+<http://example.org/country/KOR> rdf:type dbo:Country ;
+ dbo:areaTotal "100210"^^xsd:int;
+ex:population1970 "32601143"^^xsd:int;
+dbo:continent ex:Asia;
+dbo:capital ex:Seoul;
+rdfs:label "South Korea";
+dbo:isoCode ex:iso_KOR;
+ex:population2020 "51844690"^^xsd:int;
+ex:population2000 "46788591"^^xsd:int;
+ex:population1980 "38170501"^^xsd:int;
+ex:population1990 "44120039"^^xsd:int;
+ex:population2010 "48813042"^^xsd:int;
+ex:population2015 "50994401"^^xsd:int;
+dbo:countryRank "29"^^xsd:int;
+dbo:populationTotal "51815810"^^xsd:int;
+dbo:populationDensity "517.0722"^^xsd:double;
+ex:growthRate "0.9997"^^xsd:double;
+ex:populationShare "0.65"^^xsd:double .
+<http://example.org/country/SSD> rdf:type dbo:Country ;
+ dbo:countryRank "86"^^xsd:int;
+dbo:isoCode ex:iso_SSD;
+rdfs:label "South Sudan";
+dbo:capital ex:Juba;
+dbo:continent ex:Africa;
+dbo:populationTotal "10913164"^^xsd:int;
+ex:population2020 "10606227"^^xsd:int;
+ex:population2015 "11194299"^^xsd:int;
+ex:population2010 "9714419"^^xsd:int;
+ex:population2000 "6114440"^^xsd:int;
+ex:population1990 "4750817"^^xsd:int;
+ex:population1980 "4192011"^^xsd:int;
+ex:population1970 "3342410"^^xsd:int;
+dbo:areaTotal "619745"^^xsd:int;
+dbo:populationDensity "17.6091"^^xsd:double;
+ex:growthRate "1.0153"^^xsd:double;
+ex:populationShare "0.14"^^xsd:double .
+<http://example.org/country/ESP> rdf:type dbo:Country ;
+ ex:population2000 "40741651"^^xsd:int;
+dbo:populationTotal "47558630"^^xsd:int;
+ex:population2010 "46572772"^^xsd:int;
+dbo:countryRank "30"^^xsd:int;
+ex:population1970 "33792617"^^xsd:int;
+ex:growthRate "1.0015"^^xsd:double;
+dbo:isoCode ex:iso_ESP;
+rdfs:label "Spain";
+dbo:capital ex:Madrid;
+ex:population2015 "46431342"^^xsd:int;
+dbo:populationDensity "93.9909"^^xsd:double;
+dbo:continent ex:Europe;
+ex:population1980 "37491666"^^xsd:int;
+ex:population1990 "38889889"^^xsd:int;
+ex:population2020 "47363807"^^xsd:int;
+dbo:areaTotal "505992"^^xsd:int;
+ex:populationShare "0.6"^^xsd:double .
+<http://example.org/country/LKA> rdf:type dbo:Country ;
+ dbo:areaTotal "65610"^^xsd:int;
+ex:population1970 "12388769"^^xsd:int;
+ex:population2020 "21715079"^^xsd:int;
+ex:population2010 "20668557"^^xsd:int;
+ex:population1990 "17204094"^^xsd:int;
+ex:population2000 "18776371"^^xsd:int;
+ex:population2015 "21336697"^^xsd:int;
+dbo:populationTotal "21832143"^^xsd:int;
+dbo:countryRank "61"^^xsd:int;
+dbo:isoCode ex:iso_LKA;
+rdfs:label "Sri Lanka";
+dbo:capital ex:Colombo;
+dbo:continent ex:Asia;
+ex:population1980 "14943645"^^xsd:int;
+dbo:populationDensity "332.7563"^^xsd:double;
+ex:growthRate "1.0027"^^xsd:double;
+ex:populationShare "0.27"^^xsd:double .
+<http://example.org/country/SDN> rdf:type dbo:Country ;
+ dbo:countryRank "32"^^xsd:int;
+dbo:isoCode ex:iso_SDN;
+rdfs:label "Sudan";
+dbo:capital ex:Khartoum;
+dbo:continent ex:Africa;
+dbo:populationTotal "46874204"^^xsd:int;
+ex:population2020 "44440486"^^xsd:int;
+ex:population2015 "38171178"^^xsd:int;
+ex:population2010 "33739933"^^xsd:int;
+ex:population2000 "26298773"^^xsd:int;
+ex:population1990 "21090886"^^xsd:int;
+ex:population1980 "16673586"^^xsd:int;
+ex:population1970 "11305206"^^xsd:int;
+dbo:areaTotal "1886068"^^xsd:int;
+dbo:populationDensity "24.8529"^^xsd:double;
+ex:growthRate "1.0267"^^xsd:double;
+ex:populationShare "0.59"^^xsd:double .
+<http://example.org/country/SUR> rdf:type dbo:Country ;
+ dbo:countryRank "170"^^xsd:int;
+dbo:isoCode ex:iso_SUR;
+rdfs:label "Suriname";
+dbo:capital ex:Paramaribo;
+dbo:continent ex:South_America
+;
+dbo:populationTotal "618040"^^xsd:int;
+ex:population2020 "607065"^^xsd:int;
+ex:population2015 "575475"^^xsd:int;
+ex:population2010 "546080"^^xsd:int;
+ex:population2000 "478998"^^xsd:int;
+ex:population1990 "412756"^^xsd:int;
+ex:population1980 "375112"^^xsd:int;
+ex:population1970 "379918"^^xsd:int;
+dbo:areaTotal "163820"^^xsd:int;
+dbo:populationDensity "3.7727"^^xsd:double;
+ex:growthRate "1.0082"^^xsd:double;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/SWE> rdf:type dbo:Country ;
+ ex:population2000 "8871043"^^xsd:int;
+ex:population2010 "9381729"^^xsd:int;
+dbo:countryRank "87"^^xsd:int;
+ex:population2015 "9849349"^^xsd:int;
+dbo:isoCode ex:iso_SWE;
+rdfs:label "Sweden";
+dbo:capital ex:Stockholm;
+dbo:continent ex:Europe;
+ex:population2020 "10368969"^^xsd:int;
+dbo:populationTotal "10549347"^^xsd:int;
+ex:population1990 "8548406"^^xsd:int;
+ex:population1980 "8311763"^^xsd:int;
+ex:population1970 "8027702"^^xsd:int;
+dbo:areaTotal "450295"^^xsd:int;
+dbo:populationDensity "23.4276"^^xsd:double;
+ex:growthRate "1.0079"^^xsd:double;
+ex:populationShare "0.13"^^xsd:double .
+<http://example.org/country/CHE> rdf:type dbo:Country ;
+ dbo:countryRank "101"^^xsd:int;
+dbo:isoCode ex:iso_CHE;
+rdfs:label "Switzerland";
+dbo:capital ex:Bern;
+dbo:continent ex:Europe;
+dbo:populationTotal "8740472"^^xsd:int;
+ex:population2020 "8638613"^^xsd:int;
+ex:population2015 "8281732"^^xsd:int;
+ex:population2010 "7822435"^^xsd:int;
+ex:population2000 "7182059"^^xsd:int;
+ex:population1990 "6711693"^^xsd:int;
+ex:population1980 "6319113"^^xsd:int;
+ex:population1970 "6181227"^^xsd:int;
+dbo:areaTotal "41284"^^xsd:int;
+dbo:populationDensity "211.7157"^^xsd:double;
+ex:growthRate "1.0056"^^xsd:double;
+ex:populationShare "0.11"^^xsd:double .
+<http://example.org/country/SYR> rdf:type dbo:Country ;
+ ex:population1980 "8898954"^^xsd:int;
+ex:population1970 "6319199"^^xsd:int;
+ex:population1990 "12408996"^^xsd:int;
+ex:population2000 "16307654"^^xsd:int;
+dbo:continent ex:Asia;
+ex:population2010 "22337563"^^xsd:int;
+dbo:populationTotal "22125249"^^xsd:int;
+ex:population2015 "19205178"^^xsd:int;
+ex:population2020 "20772595"^^xsd:int;
+dbo:capital ex:Damascus;
+rdfs:label "Syria";
+dbo:isoCode ex:iso_SYR;
+dbo:countryRank "60"^^xsd:int;
+dbo:areaTotal "185180"^^xsd:int;
+dbo:populationDensity "119.4797"^^xsd:double;
+ex:growthRate "1.0376"^^xsd:double;
+ex:populationShare "0.28"^^xsd:double .
+<http://example.org/country/TWN> rdf:type dbo:Country ;
+ dbo:countryRank "57"^^xsd:int;
+dbo:isoCode ex:iso_TWN;
+rdfs:label "Taiwan";
+dbo:capital ex:Taipei;
+dbo:continent ex:Asia;
+dbo:populationTotal "23893394"^^xsd:int;
+ex:population2020 "23821464"^^xsd:int;
+ex:population2015 "23512136"^^xsd:int;
+ex:population2010 "23083083"^^xsd:int;
+ex:population2000 "22194731"^^xsd:int;
+ex:population1990 "20586174"^^xsd:int;
+ex:population1980 "18100281"^^xsd:int;
+ex:population1970 "14957870"^^xsd:int;
+dbo:areaTotal "36193"^^xsd:int;
+dbo:populationDensity "660.1662"^^xsd:double;
+ex:growthRate "1.0014"^^xsd:double;
+ex:populationShare "0.3"^^xsd:double .
+<http://example.org/country/TJK> rdf:type dbo:Country ;
+ rdfs:label "Tajikistan";
+dbo:isoCode ex:iso_TJK;
+dbo:countryRank "95"^^xsd:int;
+dbo:capital ex:Dushanbe;
+dbo:continent ex:Asia;
+dbo:populationTotal "9952787"^^xsd:int;
+ex:population2020 "9543207"^^xsd:int;
+ex:population2015 "8524063"^^xsd:int;
+ex:population2010 "7621779"^^xsd:int;
+ex:population2000 "6272998"^^xsd:int;
+ex:population1990 "5417860"^^xsd:int;
+ex:population1980 "4045965"^^xsd:int;
+ex:population1970 "2993019"^^xsd:int;
+dbo:areaTotal "143100"^^xsd:int;
+dbo:populationDensity "69.5513"^^xsd:double;
+ex:growthRate "1.0208"^^xsd:double;
+ex:populationShare "0.12"^^xsd:double .
+<http://example.org/country/TZA> rdf:type dbo:Country ;
+ dbo:countryRank "22"^^xsd:int;
+dbo:isoCode ex:iso_TZA;
+rdfs:label "Tanzania";
+dbo:capital ex:Dodoma;
+dbo:continent ex:Africa;
+dbo:populationTotal "65497748"^^xsd:int;
+ex:population2020 "61704518"^^xsd:int;
+ex:population2015 "52542823"^^xsd:int;
+ex:population2010 "45110527"^^xsd:int;
+ex:population2000 "34463704"^^xsd:int;
+ex:population1990 "26206012"^^xsd:int;
+ex:population1980 "19297659"^^xsd:int;
+ex:population1970 "13618192"^^xsd:int;
+dbo:areaTotal "945087"^^xsd:int;
+dbo:populationDensity "69.3034"^^xsd:double;
+ex:growthRate "1.03"^^xsd:double;
+ex:populationShare "0.82"^^xsd:double .
+<http://example.org/country/THA> rdf:type dbo:Country ;
+ ex:population2020 "71475664"^^xsd:int;
+dbo:continent ex:Asia;
+dbo:countryRank "20"^^xsd:int;
+dbo:capital ex:Bangkok;
+rdfs:label "Thailand";
+dbo:isoCode ex:iso_THA;
+dbo:populationTotal "71697030"^^xsd:int;
+ex:population2015 "70294397"^^xsd:int;
+ex:population2010 "68270489"^^xsd:int;
+ex:population2000 "63066603"^^xsd:int;
+ex:population1990 "55228410"^^xsd:int;
+ex:population1980 "45737753"^^xsd:int;
+ex:population1970 "35791728"^^xsd:int;
+dbo:areaTotal "513120"^^xsd:int;
+dbo:populationDensity "139.7276"^^xsd:double;
+ex:growthRate "1.0013"^^xsd:double;
+ex:populationShare "0.9"^^xsd:double .
+<http://example.org/country/TLS> rdf:type dbo:Country ;
+ dbo:countryRank "155"^^xsd:int;
+dbo:isoCode ex:iso_TLS;
+rdfs:label "Timor-Leste";
+dbo:capital ex:Dili;
+dbo:continent ex:Asia;
+dbo:populationTotal "1341296"^^xsd:int;
+ex:population2020 "1299995"^^xsd:int;
+ex:population2015 "1205813"^^xsd:int;
+ex:population2010 "1088486"^^xsd:int;
+ex:population2000 "878360"^^xsd:int;
+ex:population1990 "758106"^^xsd:int;
+ex:population1980 "642224"^^xsd:int;
+ex:population1970 "554021"^^xsd:int;
+dbo:areaTotal "14874"^^xsd:int;
+dbo:populationDensity "90.1772"^^xsd:double;
+ex:growthRate "1.0154"^^xsd:double;
+ex:populationShare "0.02"^^xsd:double .
+<http://example.org/country/TGO> rdf:type dbo:Country ;
+ dbo:isoCode ex:iso_TGO;
+dbo:capital ex:Lome;
+rdfs:label "Togo";
+dbo:countryRank "100"^^xsd:int;
+dbo:continent ex:Africa;
+dbo:populationTotal "8848699"^^xsd:int;
+ex:population2015 "7473229"^^xsd:int;
+ex:population1980 "2838110"^^xsd:int;
+ex:population2000 "5008035"^^xsd:int;
+ex:population1990 "3875947"^^xsd:int;
+ex:population2010 "6571855"^^xsd:int;
+ex:population2020 "8442580"^^xsd:int;
+ex:population1970 "2197383"^^xsd:int;
+dbo:areaTotal "56785"^^xsd:int;
+dbo:populationDensity "155.8281"^^xsd:double;
+ex:growthRate "1.0236"^^xsd:double;
+ex:populationShare "0.11"^^xsd:double .
+<http://example.org/country/TKL> rdf:type dbo:Country ;
+ dbo:countryRank "233"^^xsd:int;
+dbo:isoCode ex:iso_TKL;
+rdfs:label "Tokelau";
+dbo:capital ex:Nukunonu;
+dbo:continent ex:Oceania;
+dbo:populationTotal "1871"^^xsd:int;
+ex:population2020 "1827"^^xsd:int;
+ex:population2015 "1454"^^xsd:int;
+ex:population2010 "1367"^^xsd:int;
+ex:population2000 "1666"^^xsd:int;
+ex:population1990 "1669"^^xsd:int;
+ex:population1980 "1647"^^xsd:int;
+ex:population1970 "1714"^^xsd:int;
+dbo:areaTotal "12"^^xsd:int;
+dbo:populationDensity "155.9167"^^xsd:double;
+ex:growthRate "1.0119"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/TON> rdf:type dbo:Country ;
+ dbo:countryRank "197"^^xsd:int;
+dbo:populationDensity "143.0495"^^xsd:double;
+ex:population2000 "102603"^^xsd:int;
+ex:population1990 "98727"^^xsd:int;
+ex:population1980 "96708"^^xsd:int;
+dbo:areaTotal "747"^^xsd:int;
+ex:population1970 "86484"^^xsd:int;
+dbo:isoCode ex:iso_TON;
+rdfs:label "Tonga";
+ex:population2010 "107383"^^xsd:int;
+dbo:capital ex:Nuku_alofa;
+ex:population2015 "106122"^^xsd:int;
+dbo:continent ex:Oceania;
+ex:population2020 "105254"^^xsd:int;
+dbo:populationTotal "106858"^^xsd:int;
+ex:growthRate "1.0079"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/TTO> rdf:type dbo:Country ;
+ ex:populationShare "0.02"^^xsd:double;
+ex:growthRate "1.0035"^^xsd:double;
+dbo:countryRank "153"^^xsd:int;
+dbo:isoCode ex:iso_TTO;
+rdfs:label "Trinidad and Tobago";
+dbo:capital ex:Port_of_Spain;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "1531044"^^xsd:int;
+ex:population2020 "1518147"^^xsd:int;
+ex:population2015 "1460177"^^xsd:int;
+ex:population2010 "1410296"^^xsd:int;
+ex:population2000 "1332203"^^xsd:int;
+ex:population1990 "1266518"^^xsd:int;
+ex:population1980 "1127852"^^xsd:int;
+ex:population1970 "988890"^^xsd:int;
+dbo:areaTotal "5130"^^xsd:int;
+dbo:populationDensity "298.4491"^^xsd:double .
+<http://example.org/country/TUN> rdf:type dbo:Country ;
+ dbo:countryRank "79"^^xsd:int;
+dbo:isoCode ex:iso_TUN;
+rdfs:label "Tunisia";
+dbo:capital ex:Tunis;
+dbo:continent ex:Africa;
+dbo:populationTotal "12356117"^^xsd:int;
+ex:population2020 "12161723"^^xsd:int;
+ex:population2015 "11557779"^^xsd:int;
+ex:population2010 "10895063"^^xsd:int;
+ex:population2000 "9893316"^^xsd:int;
+ex:population1990 "8440023"^^xsd:int;
+ex:population1980 "6578156"^^xsd:int;
+ex:population1970 "5047404"^^xsd:int;
+dbo:areaTotal "163610"^^xsd:int;
+dbo:populationDensity "75.5218"^^xsd:double;
+ex:growthRate "1.0076"^^xsd:double;
+ex:populationShare "0.15"^^xsd:double .
+<http://example.org/country/TUR> rdf:type dbo:Country ;
+ dbo:countryRank "18"^^xsd:int;
+dbo:isoCode ex:iso_TUR;
+rdfs:label "Turkey";
+dbo:capital ex:Ankara;
+dbo:continent ex:Asia;
+dbo:populationTotal "85341241"^^xsd:int;
+ex:population2020 "84135428"^^xsd:int;
+ex:population2015 "79646178"^^xsd:int;
+ex:population2010 "73195345"^^xsd:int;
+ex:population2000 "64113547"^^xsd:int;
+ex:population1990 "54324142"^^xsd:int;
+ex:population1980 "44089069"^^xsd:int;
+ex:population1970 "35540990"^^xsd:int;
+dbo:areaTotal "783562"^^xsd:int;
+dbo:populationDensity "108.9145"^^xsd:double;
+ex:growthRate "1.0067"^^xsd:double;
+ex:populationShare "1.07"^^xsd:double .
+<http://example.org/country/TKM> rdf:type dbo:Country ;
+ rdfs:label "Turkmenistan";
+dbo:isoCode ex:iso_TKM;
+dbo:countryRank "111"^^xsd:int;
+dbo:capital ex:Ashgabat;
+dbo:continent ex:Asia;
+dbo:populationTotal "6430770"^^xsd:int;
+ex:population2020 "6250438"^^xsd:int;
+ex:population2015 "5766431"^^xsd:int;
+ex:population2010 "5267970"^^xsd:int;
+ex:population2000 "4569132"^^xsd:int;
+ex:population1990 "3720278"^^xsd:int;
+ex:population1980 "2862903"^^xsd:int;
+ex:population1970 "2201432"^^xsd:int;
+dbo:areaTotal "488100"^^xsd:int;
+dbo:populationDensity "13.1751"^^xsd:double;
+ex:growthRate "1.014"^^xsd:double;
+ex:populationShare "0.08"^^xsd:double .
+<http://example.org/country/TCA> rdf:type dbo:Country ;
+ dbo:countryRank "212"^^xsd:int;
+dbo:isoCode ex:iso_TCA;
+rdfs:label "Turks and Caicos Islands";
+dbo:capital ex:Cockburn_Town;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "45703"^^xsd:int;
+ex:population2020 "44276"^^xsd:int;
+ex:population2015 "36538"^^xsd:int;
+ex:population2010 "29726"^^xsd:int;
+ex:population2000 "18744"^^xsd:int;
+ex:population1990 "11709"^^xsd:int;
+ex:population1980 "7598"^^xsd:int;
+ex:population1970 "5665"^^xsd:int;
+dbo:areaTotal "948"^^xsd:int;
+dbo:populationDensity "48.2099"^^xsd:double;
+ex:growthRate "1.0131"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/TUV> rdf:type dbo:Country ;
+ ex:populationShare "0"^^xsd:double;
+dbo:countryRank "227"^^xsd:int;
+dbo:isoCode ex:iso_TUV;
+rdfs:label "Tuvalu";
+dbo:capital ex:Funafuti;
+dbo:continent ex:Oceania;
+dbo:populationTotal "11312"^^xsd:int;
+ex:population2020 "11069"^^xsd:int;
+ex:population2015 "10877"^^xsd:int;
+ex:population2010 "10550"^^xsd:int;
+ex:population2000 "9638"^^xsd:int;
+ex:population1990 "9182"^^xsd:int;
+ex:population1980 "7731"^^xsd:int;
+ex:population1970 "5814"^^xsd:int;
+dbo:areaTotal "26"^^xsd:int;
+dbo:populationDensity "435.0769"^^xsd:double;
+ex:growthRate "1.0096"^^xsd:double .
+<http://example.org/country/UGA> rdf:type dbo:Country ;
+ dbo:areaTotal "241550"^^xsd:int;
+ex:population2000 "24020697"^^xsd:int;
+ex:population2015 "37477356"^^xsd:int;
+ex:population2010 "32341728"^^xsd:int;
+ex:population2020 "44404611"^^xsd:int;
+dbo:populationTotal "47249585"^^xsd:int;
+ex:population1970 "10317212"^^xsd:int;
+ex:population1980 "13284026"^^xsd:int;
+dbo:continent ex:Africa;
+dbo:capital ex:Kampala;
+ex:population1990 "17586630"^^xsd:int;
+dbo:countryRank "31"^^xsd:int;
+rdfs:label "Uganda";
+dbo:isoCode ex:iso_UGA;
+dbo:populationDensity "195.61"^^xsd:double;
+ex:growthRate "1.0304"^^xsd:double;
+ex:populationShare "0.59"^^xsd:double .
+<http://example.org/country/UKR> rdf:type dbo:Country ;
+ dbo:countryRank "38"^^xsd:int;
+dbo:isoCode ex:iso_UKR;
+rdfs:label "Ukraine";
+dbo:capital ex:Kiev;
+dbo:continent ex:Europe;
+dbo:populationTotal "39701739"^^xsd:int;
+ex:population2020 "43909666"^^xsd:int;
+ex:population2015 "44982564"^^xsd:int;
+ex:population2010 "45683020"^^xsd:int;
+ex:population2000 "48879755"^^xsd:int;
+ex:population1990 "51589817"^^xsd:int;
+ex:population1980 "49973920"^^xsd:int;
+ex:population1970 "47279086"^^xsd:int;
+dbo:areaTotal "603500"^^xsd:int;
+dbo:populationDensity "65.7858"^^xsd:double;
+ex:growthRate "0.912"^^xsd:double;
+ex:populationShare "0.5"^^xsd:double .
+<http://example.org/country/ARE> rdf:type dbo:Country ;
+ ex:population2000 "3275333"^^xsd:int;
+ex:population2015 "8916899"^^xsd:int;
+dbo:populationTotal "9441129"^^xsd:int;
+rdfs:label "United Arab Emirates";
+dbo:continent ex:Asia;
+dbo:isoCode ex:iso_ARE;
+dbo:capital ex:Abu_Dhabi;
+dbo:countryRank "97"^^xsd:int;
+ex:population2020 "9287289"^^xsd:int;
+ex:population2010 "8481771"^^xsd:int;
+ex:population1990 "1900151"^^xsd:int;
+ex:population1980 "1014048"^^xsd:int;
+ex:population1970 "298084"^^xsd:int;
+dbo:areaTotal "83600"^^xsd:int;
+dbo:populationDensity "112.9322"^^xsd:double;
+ex:growthRate "1.0081"^^xsd:double;
+ex:populationShare "0.12"^^xsd:double .
+<http://example.org/country/GBR> rdf:type dbo:Country ;
+ dbo:countryRank "21"^^xsd:int;
+dbo:isoCode ex:iso_GBR;
+rdfs:label "United Kingdom";
+dbo:capital ex:London;
+dbo:continent ex:Europe;
+dbo:populationTotal "67508936"^^xsd:int;
+ex:population2020 "67059474"^^xsd:int;
+ex:population2015 "65224364"^^xsd:int;
+ex:population2010 "62760039"^^xsd:int;
+ex:population2000 "58850043"^^xsd:int;
+ex:population1990 "57210442"^^xsd:int;
+ex:population1980 "56326328"^^xsd:int;
+ex:population1970 "55650166"^^xsd:int;
+dbo:areaTotal "242900"^^xsd:int;
+dbo:populationDensity "277.9289"^^xsd:double;
+ex:growthRate "1.0034"^^xsd:double;
+ex:populationShare "0.85"^^xsd:double .
+<http://example.org/country/USA> rdf:type dbo:Country ;
+ ex:growthRate "1.0038"^^xsd:double;
+ex:population2000 "282398554"^^xsd:int;
+ex:population1990 "248083732"^^xsd:int;
+ex:population1980 "223140018"^^xsd:int;
+ex:population1970 "200328340"^^xsd:int;
+dbo:populationDensity "36.0935"^^xsd:double;
+dbo:areaTotal "9372610"^^xsd:int;
+dbo:countryRank "3"^^xsd:int;
+dbo:isoCode ex:iso_USA;
+rdfs:label "United States";
+dbo:capital ex:Washington_DC;
+dbo:continent ex:North_America
+;
+dbo:populationTotal "338289857"^^xsd:int;
+ex:population2020 "335942003"^^xsd:int;
+ex:population2015 "324607776"^^xsd:int;
+ex:population2010 "311182845"^^xsd:int;
+ex:populationShare "4.24"^^xsd:double .
+<http://example.org/country/VIR> rdf:type dbo:Country ;
+ ex:population2015 "102803"^^xsd:int;
+dbo:populationTotal "99465"^^xsd:int;
+ex:population2020 "100442"^^xsd:int;
+dbo:continent ex:North_America
+;
+dbo:capital ex:Charlotte_Amalie;
+dbo:isoCode ex:iso_VIR;
+dbo:countryRank "200"^^xsd:int;
+rdfs:label "United States Virgin Islands";
+ex:population2010 "106142"^^xsd:int;
+ex:population2000 "108185"^^xsd:int;
+ex:population1990 "100685"^^xsd:int;
+ex:population1980 "96640"^^xsd:int;
+ex:population1970 "63446"^^xsd:int;
+dbo:areaTotal "347"^^xsd:int;
+dbo:populationDensity "286.6427"^^xsd:double;
+ex:growthRate "0.9937"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/URY> rdf:type dbo:Country ;
+ dbo:populationDensity "18.9069"^^xsd:double;
+ex:population1970 "2790265"^^xsd:int;
+dbo:areaTotal "181034"^^xsd:int;
+dbo:countryRank "133"^^xsd:int;
+dbo:isoCode ex:iso_URY;
+ex:growthRate "0.999"^^xsd:double;
+rdfs:label "Uruguay";
+dbo:capital ex:Montevideo;
+dbo:continent ex:South_America
+;
+dbo:populationTotal "3422794"^^xsd:int;
+ex:population2020 "3429086"^^xsd:int;
+ex:population2015 "3402818"^^xsd:int;
+ex:population2010 "3352651"^^xsd:int;
+ex:population2000 "3292224"^^xsd:int;
+ex:population1990 "3117012"^^xsd:int;
+ex:population1980 "2953750"^^xsd:int;
+ex:populationShare "0.04"^^xsd:double .
+<http://example.org/country/UZB> rdf:type dbo:Country ;
+ dbo:countryRank "43"^^xsd:int;
+dbo:isoCode ex:iso_UZB;
+rdfs:label "Uzbekistan";
+dbo:capital ex:Tashkent;
+dbo:continent ex:Asia;
+dbo:populationTotal "34627652"^^xsd:int;
+ex:population2020 "33526656"^^xsd:int;
+ex:population2015 "30949417"^^xsd:int;
+ex:population2010 "28614227"^^xsd:int;
+ex:population2000 "24925554"^^xsd:int;
+ex:population1990 "20579100"^^xsd:int;
+ex:population1980 "15947129"^^xsd:int;
+ex:population1970 "12011361"^^xsd:int;
+dbo:areaTotal "447400"^^xsd:int;
+dbo:populationDensity "77.3975"^^xsd:double;
+ex:growthRate "1.016"^^xsd:double;
+ex:populationShare "0.43"^^xsd:double .
+<http://example.org/country/VUT> rdf:type dbo:Country ;
+ dbo:countryRank "181"^^xsd:int;
+dbo:isoCode ex:iso_VUT;
+dbo:capital ex:Port_Vila;
+rdfs:label "Vanuatu";
+dbo:continent ex:Oceania;
+dbo:populationTotal "326740"^^xsd:int;
+ex:population2020 "311685"^^xsd:int;
+ex:population2015 "276438"^^xsd:int;
+ex:population2010 "245453"^^xsd:int;
+ex:population2000 "192074"^^xsd:int;
+ex:population1990 "150882"^^xsd:int;
+ex:population1980 "118156"^^xsd:int;
+ex:population1970 "87019"^^xsd:int;
+dbo:areaTotal "12189"^^xsd:int;
+dbo:populationDensity "26.8061"^^xsd:double;
+ex:growthRate "1.0238"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/VAT> rdf:type dbo:Country ;
+ dbo:countryRank "234"^^xsd:int;
+dbo:isoCode ex:iso_VAT;
+rdfs:label "Vatican City";
+dbo:capital ex:Vatican_City;
+dbo:continent ex:Europe;
+dbo:populationTotal "510"^^xsd:int;
+ex:population2020 "520"^^xsd:int;
+ex:population2015 "564"^^xsd:int;
+ex:population2010 "596"^^xsd:int;
+ex:population2000 "651"^^xsd:int;
+ex:population1990 "700"^^xsd:int;
+ex:population1980 "733"^^xsd:int;
+ex:population1970 "752"^^xsd:int;
+dbo:areaTotal "1"^^xsd:int;
+dbo:populationDensity "510"^^xsd:double;
+ex:growthRate "0.998"^^xsd:double;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/VEN> rdf:type dbo:Country ;
+ ex:populationShare "0.35"^^xsd:double;
+ex:growthRate "1.0036"^^xsd:double;
+dbo:populationDensity "30.882"^^xsd:double;
+dbo:countryRank "51"^^xsd:int;
+ex:population1970 "11355475"^^xsd:int;
+dbo:areaTotal "916445"^^xsd:int;
+ex:population1980 "15210443"^^xsd:int;
+ex:population1990 "19750579"^^xsd:int;
+ex:population2000 "24427729"^^xsd:int;
+ex:population2010 "28715022"^^xsd:int;
+ex:population2015 "30529716"^^xsd:int;
+ex:population2020 "28490453"^^xsd:int;
+dbo:isoCode ex:iso_VEN;
+rdfs:label "Venezuela";
+dbo:capital ex:Caracas;
+dbo:populationTotal "28301696"^^xsd:int;
+dbo:continent ex:South_America
+ .
+<http://example.org/country/VNM> rdf:type dbo:Country ;
+ dbo:countryRank "16"^^xsd:int;
+dbo:isoCode ex:iso_VNM;
+rdfs:label "Vietnam";
+dbo:capital ex:Hanoi;
+dbo:continent ex:Asia;
+dbo:populationTotal "98186856"^^xsd:int;
+ex:population2020 "96648685"^^xsd:int;
+ex:population2015 "92191398"^^xsd:int;
+ex:population2010 "87411012"^^xsd:int;
+ex:population2000 "79001142"^^xsd:int;
+ex:population1990 "66912613"^^xsd:int;
+ex:population1980 "52968270"^^xsd:int;
+ex:population1970 "41928849"^^xsd:int;
+dbo:areaTotal "331212"^^xsd:int;
+dbo:populationDensity "296.4472"^^xsd:double;
+ex:growthRate "1.0074"^^xsd:double;
+ex:populationShare "1.23"^^xsd:double .
+<http://example.org/country/WLF> rdf:type dbo:Country ;
+ ex:population2020 "11655"^^xsd:int;
+ex:population2015 "12182"^^xsd:int;
+ex:population2010 "13142"^^xsd:int;
+ex:population2000 "14723"^^xsd:int;
+ex:growthRate "0.9953"^^xsd:double;
+ex:population1990 "13454"^^xsd:int;
+ex:population1980 "11315"^^xsd:int;
+dbo:areaTotal "142"^^xsd:int;
+ex:population1970 "9377"^^xsd:int;
+dbo:countryRank "226"^^xsd:int;
+dbo:populationDensity "81.493"^^xsd:double;
+dbo:isoCode ex:iso_WLF;
+rdfs:label "Wallis and Futuna";
+dbo:capital ex:Mata_Utu;
+dbo:continent ex:Oceania;
+dbo:populationTotal "11572"^^xsd:int;
+ex:populationShare "0"^^xsd:double .
+<http://example.org/country/ESH> rdf:type dbo:Country ;
+ dbo:capital ex:El_Aaiun;
+dbo:isoCode ex:iso_ESH;
+dbo:countryRank "172"^^xsd:int;
+rdfs:label "Western Sahara";
+dbo:continent ex:Africa;
+dbo:populationTotal "575986"^^xsd:int;
+ex:population2020 "556048"^^xsd:int;
+ex:population2015 "491824"^^xsd:int;
+ex:population2010 "413296"^^xsd:int;
+ex:population2000 "270375"^^xsd:int;
+ex:population1990 "178529"^^xsd:int;
+ex:population1980 "116775"^^xsd:int;
+ex:population1970 "76371"^^xsd:int;
+dbo:areaTotal "266000"^^xsd:int;
+dbo:populationDensity "2.1654"^^xsd:double;
+ex:growthRate "1.0184"^^xsd:double;
+ex:populationShare "0.01"^^xsd:double .
+<http://example.org/country/YEM> rdf:type dbo:Country ;
+ dbo:countryRank "46"^^xsd:int;
+dbo:isoCode ex:iso_YEM;
+rdfs:label "Yemen";
+dbo:capital ex:Sanaa;
+dbo:continent ex:Asia;
+dbo:populationTotal "33696614"^^xsd:int;
+ex:population2020 "32284046"^^xsd:int;
+ex:population2015 "28516545"^^xsd:int;
+ex:population2010 "24743946"^^xsd:int;
+ex:population2000 "18628700"^^xsd:int;
+ex:population1990 "13375121"^^xsd:int;
+ex:population1980 "9204938"^^xsd:int;
+ex:population1970 "6843607"^^xsd:int;
+dbo:areaTotal "527968"^^xsd:int;
+dbo:populationDensity "63.8232"^^xsd:double;
+ex:growthRate "1.0217"^^xsd:double;
+ex:populationShare "0.42"^^xsd:double .
+<http://example.org/country/ZMB> rdf:type dbo:Country ;
+ ex:population2020 "18927715"^^xsd:int;
+ex:population2015 "16248230"^^xsd:int;
+ex:population2010 "13792086"^^xsd:int;
+ex:population1990 "7686401"^^xsd:int;
+ex:population2000 "9891136"^^xsd:int;
+dbo:continent ex:Africa;
+dbo:countryRank "63"^^xsd:int;
+dbo:capital ex:Lusaka;
+rdfs:label "Zambia";
+dbo:isoCode ex:iso_ZMB;
+dbo:populationTotal "20017675"^^xsd:int;
+ex:population1980 "5720438"^^xsd:int;
+ex:population1970 "4281671"^^xsd:int;
+dbo:areaTotal "752612"^^xsd:int;
+dbo:populationDensity "26.5976"^^xsd:double;
+ex:growthRate "1.028"^^xsd:double;
+ex:populationShare "0.25"^^xsd:double .
+<http://example.org/country/ZWE> rdf:type dbo:Country ;
+ dbo:countryRank "74"^^xsd:int;
+dbo:isoCode ex:iso_ZWE;
+rdfs:label "Zimbabwe";
+dbo:capital ex:Harare;
+dbo:continent ex:Africa;
+dbo:populationTotal "16320537"^^xsd:int;
+ex:population2020 "15669666"^^xsd:int;
+ex:population2015 "14154937"^^xsd:int;
+ex:population2010 "12839771"^^xsd:int;
+ex:population2000 "11834676"^^xsd:int;
+ex:population1990 "10113893"^^xsd:int;
+ex:population1980 "7049926"^^xsd:int;
+ex:population1970 "5202918"^^xsd:int;
+dbo:areaTotal "390757"^^xsd:int;
+dbo:populationDensity "41.7665"^^xsd:double;
+ex:growthRate "1.0204"^^xsd:double;
+ex:populationShare "0.2"^^xsd:double .
+
+
+
+### --- ISO Codes ---
+ex:iso_ABW a dbo:Identifier; rdfs:label "ABW".
+ex:iso_AFG a dbo:Identifier; rdfs:label "AFG".
+ex:iso_AGO a dbo:Identifier; rdfs:label "AGO".
+ex:iso_AIA a dbo:Identifier; rdfs:label "AIA".
+ex:iso_ALB a dbo:Identifier; rdfs:label "ALB".
+ex:iso_AND a dbo:Identifier; rdfs:label "AND".
+ex:iso_ARE a dbo:Identifier; rdfs:label "ARE".
+ex:iso_ARG a dbo:Identifier; rdfs:label "ARG".
+ex:iso_ARM a dbo:Identifier; rdfs:label "ARM".
+ex:iso_ASM a dbo:Identifier; rdfs:label "ASM".
+ex:iso_ATG a dbo:Identifier; rdfs:label "ATG".
+ex:iso_AUS a dbo:Identifier; rdfs:label "AUS".
+ex:iso_AUT a dbo:Identifier; rdfs:label "AUT".
+ex:iso_AZE a dbo:Identifier; rdfs:label "AZE".
+ex:iso_BDI a dbo:Identifier; rdfs:label "BDI".
+ex:iso_BEL a dbo:Identifier; rdfs:label "BEL".
+ex:iso_BEN a dbo:Identifier; rdfs:label "BEN".
+ex:iso_BFA a dbo:Identifier; rdfs:label "BFA".
+ex:iso_BGD a dbo:Identifier; rdfs:label "BGD".
+ex:iso_BGR a dbo:Identifier; rdfs:label "BGR".
+ex:iso_BHR a dbo:Identifier; rdfs:label "BHR".
+ex:iso_BHS a dbo:Identifier; rdfs:label "BHS".
+ex:iso_BIH a dbo:Identifier; rdfs:label "BIH".
+ex:iso_BLM a dbo:Identifier; rdfs:label "BLM".
+ex:iso_BLR a dbo:Identifier; rdfs:label "BLR".
+ex:iso_BLZ a dbo:Identifier; rdfs:label "BLZ".
+ex:iso_BMU a dbo:Identifier; rdfs:label "BMU".
+ex:iso_BOL a dbo:Identifier; rdfs:label "BOL".
+ex:iso_BRA a dbo:Identifier; rdfs:label "BRA".
+ex:iso_BRB a dbo:Identifier; rdfs:label "BRB".
+ex:iso_BRN a dbo:Identifier; rdfs:label "BRN".
+ex:iso_BTN a dbo:Identifier; rdfs:label "BTN".
+ex:iso_BWA a dbo:Identifier; rdfs:label "BWA".
+ex:iso_CAF a dbo:Identifier; rdfs:label "CAF".
+ex:iso_CAN a dbo:Identifier; rdfs:label "CAN".
+ex:iso_CHE a dbo:Identifier; rdfs:label "CHE".
+ex:iso_CHL a dbo:Identifier; rdfs:label "CHL".
+ex:iso_CHN a dbo:Identifier; rdfs:label "CHN".
+ex:iso_CIV a dbo:Identifier; rdfs:label "CIV".
+ex:iso_CMR a dbo:Identifier; rdfs:label "CMR".
+ex:iso_COD a dbo:Identifier; rdfs:label "COD".
+ex:iso_COG a dbo:Identifier; rdfs:label "COG".
+ex:iso_COK a dbo:Identifier; rdfs:label "COK".
+ex:iso_COL a dbo:Identifier; rdfs:label "COL".
+ex:iso_COM a dbo:Identifier; rdfs:label "COM".
+ex:iso_CPV a dbo:Identifier; rdfs:label "CPV".
+ex:iso_CRI a dbo:Identifier; rdfs:label "CRI".
+ex:iso_CUB a dbo:Identifier; rdfs:label "CUB".
+ex:iso_CUW a dbo:Identifier; rdfs:label "CUW".
+ex:iso_CYM a dbo:Identifier; rdfs:label "CYM".
+ex:iso_CYP a dbo:Identifier; rdfs:label "CYP".
+ex:iso_CZE a dbo:Identifier; rdfs:label "CZE".
+ex:iso_DEU a dbo:Identifier; rdfs:label "DEU".
+ex:iso_DJI a dbo:Identifier; rdfs:label "DJI".
+ex:iso_DMA a dbo:Identifier; rdfs:label "DMA".
+ex:iso_DNK a dbo:Identifier; rdfs:label "DNK".
+ex:iso_DOM a dbo:Identifier; rdfs:label "DOM".
+ex:iso_DZA a dbo:Identifier; rdfs:label "DZA".
+ex:iso_ECU a dbo:Identifier; rdfs:label "ECU".
+ex:iso_EGY a dbo:Identifier; rdfs:label "EGY".
+ex:iso_ERI a dbo:Identifier; rdfs:label "ERI".
+ex:iso_ESH a dbo:Identifier; rdfs:label "ESH".
+ex:iso_ESP a dbo:Identifier; rdfs:label "ESP".
+ex:iso_EST a dbo:Identifier; rdfs:label "EST".
+ex:iso_ETH a dbo:Identifier; rdfs:label "ETH".
+ex:iso_FIN a dbo:Identifier; rdfs:label "FIN".
+ex:iso_FJI a dbo:Identifier; rdfs:label "FJI".
+ex:iso_FLK a dbo:Identifier; rdfs:label "FLK".
+ex:iso_FRA a dbo:Identifier; rdfs:label "FRA".
+ex:iso_FRO a dbo:Identifier; rdfs:label "FRO".
+ex:iso_FSM a dbo:Identifier; rdfs:label "FSM".
+ex:iso_GAB a dbo:Identifier; rdfs:label "GAB".
+ex:iso_GBR a dbo:Identifier; rdfs:label "GBR".
+ex:iso_GEO a dbo:Identifier; rdfs:label "GEO".
+ex:iso_GGY a dbo:Identifier; rdfs:label "GGY".
+ex:iso_GHA a dbo:Identifier; rdfs:label "GHA".
+ex:iso_GIB a dbo:Identifier; rdfs:label "GIB".
+ex:iso_GIN a dbo:Identifier; rdfs:label "GIN".
+ex:iso_GLP a dbo:Identifier; rdfs:label "GLP".
+ex:iso_GMB a dbo:Identifier; rdfs:label "GMB".
+ex:iso_GNB a dbo:Identifier; rdfs:label "GNB".
+ex:iso_GNQ a dbo:Identifier; rdfs:label "GNQ".
+ex:iso_GRC a dbo:Identifier; rdfs:label "GRC".
+ex:iso_GRD a dbo:Identifier; rdfs:label "GRD".
+ex:iso_GRL a dbo:Identifier; rdfs:label "GRL".
+ex:iso_GTM a dbo:Identifier; rdfs:label "GTM".
+ex:iso_GUF a dbo:Identifier; rdfs:label "GUF".
+ex:iso_GUM a dbo:Identifier; rdfs:label "GUM".
+ex:iso_GUY a dbo:Identifier; rdfs:label "GUY".
+ex:iso_HKG a dbo:Identifier; rdfs:label "HKG".
+ex:iso_HND a dbo:Identifier; rdfs:label "HND".
+ex:iso_HRV a dbo:Identifier; rdfs:label "HRV".
+ex:iso_HTI a dbo:Identifier; rdfs:label "HTI".
+ex:iso_HUN a dbo:Identifier; rdfs:label "HUN".
+ex:iso_IDN a dbo:Identifier; rdfs:label "IDN".
+ex:iso_IMN a dbo:Identifier; rdfs:label "IMN".
+ex:iso_IND a dbo:Identifier; rdfs:label "IND".
+ex:iso_IRL a dbo:Identifier; rdfs:label "IRL".
+ex:iso_IRN a dbo:Identifier; rdfs:label "IRN".
+ex:iso_IRQ a dbo:Identifier; rdfs:label "IRQ".
+ex:iso_ISL a dbo:Identifier; rdfs:label "ISL".
+ex:iso_ISR a dbo:Identifier; rdfs:label "ISR".
+ex:iso_ITA a dbo:Identifier; rdfs:label "ITA".
+ex:iso_JAM a dbo:Identifier; rdfs:label "JAM".
+ex:iso_JEY a dbo:Identifier; rdfs:label "JEY".
+ex:iso_JOR a dbo:Identifier; rdfs:label "JOR".
+ex:iso_JPN a dbo:Identifier; rdfs:label "JPN".
+ex:iso_KAZ a dbo:Identifier; rdfs:label "KAZ".
+ex:iso_KEN a dbo:Identifier; rdfs:label "KEN".
+ex:iso_KGZ a dbo:Identifier; rdfs:label "KGZ".
+ex:iso_KHM a dbo:Identifier; rdfs:label "KHM".
+ex:iso_KIR a dbo:Identifier; rdfs:label "KIR".
+ex:iso_KNA a dbo:Identifier; rdfs:label "KNA".
+ex:iso_KOR a dbo:Identifier; rdfs:label "KOR".
+ex:iso_KWT a dbo:Identifier; rdfs:label "KWT".
+ex:iso_LAO a dbo:Identifier; rdfs:label "LAO".
+ex:iso_LBN a dbo:Identifier; rdfs:label "LBN".
+ex:iso_LBR a dbo:Identifier; rdfs:label "LBR".
+ex:iso_LBY a dbo:Identifier; rdfs:label "LBY".
+ex:iso_LCA a dbo:Identifier; rdfs:label "LCA".
+ex:iso_LIE a dbo:Identifier; rdfs:label "LIE".
+ex:iso_LKA a dbo:Identifier; rdfs:label "LKA".
+ex:iso_LSO a dbo:Identifier; rdfs:label "LSO".
+ex:iso_LTU a dbo:Identifier; rdfs:label "LTU".
+ex:iso_LUX a dbo:Identifier; rdfs:label "LUX".
+ex:iso_LVA a dbo:Identifier; rdfs:label "LVA".
+ex:iso_MAC a dbo:Identifier; rdfs:label "MAC".
+ex:iso_MAF a dbo:Identifier; rdfs:label "MAF".
+ex:iso_MAR a dbo:Identifier; rdfs:label "MAR".
+ex:iso_MCO a dbo:Identifier; rdfs:label "MCO".
+ex:iso_MDA a dbo:Identifier; rdfs:label "MDA".
+ex:iso_MDG a dbo:Identifier; rdfs:label "MDG".
+ex:iso_MDV a dbo:Identifier; rdfs:label "MDV".
+ex:iso_MEX a dbo:Identifier; rdfs:label "MEX".
+ex:iso_MHL a dbo:Identifier; rdfs:label "MHL".
+ex:iso_MKD a dbo:Identifier; rdfs:label "MKD".
+ex:iso_MLI a dbo:Identifier; rdfs:label "MLI".
+ex:iso_MLT a dbo:Identifier; rdfs:label "MLT".
+ex:iso_MMR a dbo:Identifier; rdfs:label "MMR".
+ex:iso_MNE a dbo:Identifier; rdfs:label "MNE".
+ex:iso_MNG a dbo:Identifier; rdfs:label "MNG".
+ex:iso_MOZ a dbo:Identifier; rdfs:label "MOZ".
+ex:iso_MRT a dbo:Identifier; rdfs:label "MRT".
+ex:iso_MSR a dbo:Identifier; rdfs:label "MSR".
+ex:iso_MTQ a dbo:Identifier; rdfs:label "MTQ".
+ex:iso_MUS a dbo:Identifier; rdfs:label "MUS".
+ex:iso_MWI a dbo:Identifier; rdfs:label "MWI".
+ex:iso_MYS a dbo:Identifier; rdfs:label "MYS".
+ex:iso_MYT a dbo:Identifier; rdfs:label "MYT".
+ex:iso_NAM a dbo:Identifier; rdfs:label "NAM".
+ex:iso_NCL a dbo:Identifier; rdfs:label "NCL".
+ex:iso_NER a dbo:Identifier; rdfs:label "NER".
+ex:iso_NFK a dbo:Identifier; rdfs:label "NFK".
+ex:iso_NGA a dbo:Identifier; rdfs:label "NGA".
+ex:iso_NIC a dbo:Identifier; rdfs:label "NIC".
+ex:iso_NIU a dbo:Identifier; rdfs:label "NIU".
+ex:iso_NLD a dbo:Identifier; rdfs:label "NLD".
+ex:iso_NOR a dbo:Identifier; rdfs:label "NOR".
+ex:iso_NPL a dbo:Identifier; rdfs:label "NPL".
+ex:iso_NRU a dbo:Identifier; rdfs:label "NRU".
+ex:iso_NZL a dbo:Identifier; rdfs:label "NZL".
+ex:iso_OMN a dbo:Identifier; rdfs:label "OMN".
+ex:iso_PAK a dbo:Identifier; rdfs:label "PAK".
+ex:iso_PAN a dbo:Identifier; rdfs:label "PAN".
+ex:iso_PER a dbo:Identifier; rdfs:label "PER".
+ex:iso_PHL a dbo:Identifier; rdfs:label "PHL".
+ex:iso_PLW a dbo:Identifier; rdfs:label "PLW".
+ex:iso_PNG a dbo:Identifier; rdfs:label "PNG".
+ex:iso_POL a dbo:Identifier; rdfs:label "POL".
+ex:iso_PRI a dbo:Identifier; rdfs:label "PRI".
+ex:iso_PRK a dbo:Identifier; rdfs:label "PRK".
+ex:iso_PRT a dbo:Identifier; rdfs:label "PRT".
+ex:iso_PRY a dbo:Identifier; rdfs:label "PRY".
+ex:iso_PSE a dbo:Identifier; rdfs:label "PSE".
+ex:iso_PYF a dbo:Identifier; rdfs:label "PYF".
+ex:iso_QAT a dbo:Identifier; rdfs:label "QAT".
+ex:iso_REU a dbo:Identifier; rdfs:label "REU".
+ex:iso_ROU a dbo:Identifier; rdfs:label "ROU".
+ex:iso_RUS a dbo:Identifier; rdfs:label "RUS".
+ex:iso_RWA a dbo:Identifier; rdfs:label "RWA".
+ex:iso_SAU a dbo:Identifier; rdfs:label "SAU".
+ex:iso_SDN a dbo:Identifier; rdfs:label "SDN".
+ex:iso_SEN a dbo:Identifier; rdfs:label "SEN".
+ex:iso_SGP a dbo:Identifier; rdfs:label "SGP".
+ex:iso_SLB a dbo:Identifier; rdfs:label "SLB".
+ex:iso_SLE a dbo:Identifier; rdfs:label "SLE".
+ex:iso_SLV a dbo:Identifier; rdfs:label "SLV".
+ex:iso_SMR a dbo:Identifier; rdfs:label "SMR".
+ex:iso_SOM a dbo:Identifier; rdfs:label "SOM".
+ex:iso_SPM a dbo:Identifier; rdfs:label "SPM".
+ex:iso_SRB a dbo:Identifier; rdfs:label "SRB".
+ex:iso_SSD a dbo:Identifier; rdfs:label "SSD".
+ex:iso_STP a dbo:Identifier; rdfs:label "STP".
+ex:iso_SUR a dbo:Identifier; rdfs:label "SUR".
+ex:iso_SVK a dbo:Identifier; rdfs:label "SVK".
+ex:iso_SVN a dbo:Identifier; rdfs:label "SVN".
+ex:iso_SWE a dbo:Identifier; rdfs:label "SWE".
+ex:iso_SWZ a dbo:Identifier; rdfs:label "SWZ".
+ex:iso_SXM a dbo:Identifier; rdfs:label "SXM".
+ex:iso_SYC a dbo:Identifier; rdfs:label "SYC".
+ex:iso_SYR a dbo:Identifier; rdfs:label "SYR".
+ex:iso_TCA a dbo:Identifier; rdfs:label "TCA".
+ex:iso_TCD a dbo:Identifier; rdfs:label "TCD".
+ex:iso_TGO a dbo:Identifier; rdfs:label "TGO".
+ex:iso_THA a dbo:Identifier; rdfs:label "THA".
+ex:iso_TJK a dbo:Identifier; rdfs:label "TJK".
+ex:iso_TKL a dbo:Identifier; rdfs:label "TKL".
+ex:iso_TKM a dbo:Identifier; rdfs:label "TKM".
+ex:iso_TLS a dbo:Identifier; rdfs:label "TLS".
+ex:iso_TON a dbo:Identifier; rdfs:label "TON".
+ex:iso_TTO a dbo:Identifier; rdfs:label "TTO".
+ex:iso_TUN a dbo:Identifier; rdfs:label "TUN".
+ex:iso_TUR a dbo:Identifier; rdfs:label "TUR".
+ex:iso_TUV a dbo:Identifier; rdfs:label "TUV".
+ex:iso_TWN a dbo:Identifier; rdfs:label "TWN".
+ex:iso_TZA a dbo:Identifier; rdfs:label "TZA".
+ex:iso_UGA a dbo:Identifier; rdfs:label "UGA".
+ex:iso_UKR a dbo:Identifier; rdfs:label "UKR".
+ex:iso_URY a dbo:Identifier; rdfs:label "URY".
+ex:iso_USA a dbo:Identifier; rdfs:label "USA".
+ex:iso_UZB a dbo:Identifier; rdfs:label "UZB".
+ex:iso_VAT a dbo:Identifier; rdfs:label "VAT".
+ex:iso_VCT a dbo:Identifier; rdfs:label "VCT".
+ex:iso_VEN a dbo:Identifier; rdfs:label "VEN".
+ex:iso_VGB a dbo:Identifier; rdfs:label "VGB".
+ex:iso_VIR a dbo:Identifier; rdfs:label "VIR".
+ex:iso_VNM a dbo:Identifier; rdfs:label "VNM".
+ex:iso_VUT a dbo:Identifier; rdfs:label "VUT".
+ex:iso_WLF a dbo:Identifier; rdfs:label "WLF".
+ex:iso_WSM a dbo:Identifier; rdfs:label "WSM".
+ex:iso_YEM a dbo:Identifier; rdfs:label "YEM".
+ex:iso_ZAF a dbo:Identifier; rdfs:label "ZAF".
+ex:iso_ZMB a dbo:Identifier; rdfs:label "ZMB".
+ex:iso_ZWE a dbo:Identifier; rdfs:label "ZWE".
+
+### --- Capitales ---
+ex:Abu_Dhabi a dbo:PopulatedPlace; rdfs:label "Abu Dhabi".
+ex:Abuja a dbo:PopulatedPlace; rdfs:label "Abuja".
+ex:Accra a dbo:PopulatedPlace; rdfs:label "Accra".
+ex:Addis_Ababa a dbo:PopulatedPlace; rdfs:label "Addis Ababa".
+ex:Algiers a dbo:PopulatedPlace; rdfs:label "Algiers".
+ex:Alofi a dbo:PopulatedPlace; rdfs:label "Alofi".
+ex:Amman a dbo:PopulatedPlace; rdfs:label "Amman".
+ex:Amsterdam a dbo:PopulatedPlace; rdfs:label "Amsterdam".
+ex:Andorra_la_Vella a dbo:PopulatedPlace; rdfs:label "Andorra la Vella".
+ex:Ankara a dbo:PopulatedPlace; rdfs:label "Ankara".
+ex:Antananarivo a dbo:PopulatedPlace; rdfs:label "Antananarivo".
+ex:Apia a dbo:PopulatedPlace; rdfs:label "Apia".
+ex:Ashgabat a dbo:PopulatedPlace; rdfs:label "Ashgabat".
+ex:Asmara a dbo:PopulatedPlace; rdfs:label "Asmara".
+ex:Asuncion a dbo:PopulatedPlace; rdfs:label "Asunción".
+ex:Athens a dbo:PopulatedPlace; rdfs:label "Athens".
+ex:Avarua a dbo:PopulatedPlace; rdfs:label "Avarua".
+ex:Baghdad a dbo:PopulatedPlace; rdfs:label "Baghdad".
+ex:Baku a dbo:PopulatedPlace; rdfs:label "Baku".
+ex:Bamako a dbo:PopulatedPlace; rdfs:label "Bamako".
+ex:Bandar_Seri_Begawan a dbo:PopulatedPlace; rdfs:label "Bandar Seri Begawan".
+ex:Bangkok a dbo:PopulatedPlace; rdfs:label "Bangkok".
+ex:Bangui a dbo:PopulatedPlace; rdfs:label "Bangui".
+ex:Banjul a dbo:PopulatedPlace; rdfs:label "Banjul".
+ex:Basse_Terre a dbo:PopulatedPlace; rdfs:label "Basse-Terre".
+ex:Basseterre a dbo:PopulatedPlace; rdfs:label "Basseterre".
+ex:Beijing a dbo:PopulatedPlace; rdfs:label "Beijing".
+ex:Beirut a dbo:PopulatedPlace; rdfs:label "Beirut".
+ex:Belgrade a dbo:PopulatedPlace; rdfs:label "Belgrade".
+ex:Belmopan a dbo:PopulatedPlace; rdfs:label "Belmopan".
+ex:Berlin a dbo:PopulatedPlace; rdfs:label "Berlin".
+ex:Bern a dbo:PopulatedPlace; rdfs:label "Bern".
+ex:Bishkek a dbo:PopulatedPlace; rdfs:label "Bishkek".
+ex:Bissau a dbo:PopulatedPlace; rdfs:label "Bissau".
+ex:Bogota a dbo:PopulatedPlace; rdfs:label "Bogota".
+ex:Brades a dbo:PopulatedPlace; rdfs:label "Brades".
+ex:Brasilia a dbo:PopulatedPlace; rdfs:label "Brasilia".
+ex:Bratislava a dbo:PopulatedPlace; rdfs:label "Bratislava".
+ex:Brazzaville a dbo:PopulatedPlace; rdfs:label "Brazzaville".
+ex:Bridgetown a dbo:PopulatedPlace; rdfs:label "Bridgetown".
+ex:Brussels a dbo:PopulatedPlace; rdfs:label "Brussels".
+ex:Bucharest a dbo:PopulatedPlace; rdfs:label "Bucharest".
+ex:Budapest a dbo:PopulatedPlace; rdfs:label "Budapest".
+ex:Buenos_Aires a dbo:PopulatedPlace; rdfs:label "Buenos Aires".
+ex:Bujumbura a dbo:PopulatedPlace; rdfs:label "Bujumbura".
+ex:Cairo a dbo:PopulatedPlace; rdfs:label "Cairo".
+ex:Canberra a dbo:PopulatedPlace; rdfs:label "Canberra".
+ex:Caracas a dbo:PopulatedPlace; rdfs:label "Caracas".
+ex:Castries a dbo:PopulatedPlace; rdfs:label "Castries".
+ex:Cayenne a dbo:PopulatedPlace; rdfs:label "Cayenne".
+ex:Charlotte_Amalie a dbo:PopulatedPlace; rdfs:label "Charlotte Amalie".
+ex:Chisinau a dbo:PopulatedPlace; rdfs:label "Chisinau".
+ex:Cockburn_Town a dbo:PopulatedPlace; rdfs:label "Cockburn Town".
+ex:Colombo a dbo:PopulatedPlace; rdfs:label "Colombo".
+ex:Conakry a dbo:PopulatedPlace; rdfs:label "Conakry".
+ex:Concelho_de_Macau a dbo:PopulatedPlace; rdfs:label "Concelho de Macau".
+ex:Copenhagen a dbo:PopulatedPlace; rdfs:label "Copenhagen".
+ex:Dakar a dbo:PopulatedPlace; rdfs:label "Dakar".
+ex:Damascus a dbo:PopulatedPlace; rdfs:label "Damascus".
+ex:Dhaka a dbo:PopulatedPlace; rdfs:label "Dhaka".
+ex:Dili a dbo:PopulatedPlace; rdfs:label "Dili".
+ex:Djibouti a dbo:PopulatedPlace; rdfs:label "Djibouti".
+ex:Dodoma a dbo:PopulatedPlace; rdfs:label "Dodoma".
+ex:Doha a dbo:PopulatedPlace; rdfs:label "Doha".
+ex:Douglas a dbo:PopulatedPlace; rdfs:label "Douglas".
+ex:Dublin a dbo:PopulatedPlace; rdfs:label "Dublin".
+ex:Dushanbe a dbo:PopulatedPlace; rdfs:label "Dushanbe".
+ex:El_Aaiun a dbo:PopulatedPlace; rdfs:label "El Aaiún".
+ex:Fort_de_France a dbo:PopulatedPlace; rdfs:label "Fort-de-France".
+ex:Freetown a dbo:PopulatedPlace; rdfs:label "Freetown".
+ex:Funafuti a dbo:PopulatedPlace; rdfs:label "Funafuti".
+ex:Gaborone a dbo:PopulatedPlace; rdfs:label "Gaborone".
+ex:George_Town a dbo:PopulatedPlace; rdfs:label "George Town".
+ex:Georgetown a dbo:PopulatedPlace; rdfs:label "Georgetown".
+ex:Gibraltar a dbo:PopulatedPlace; rdfs:label "Gibraltar".
+ex:Guatemala_City a dbo:PopulatedPlace; rdfs:label "Guatemala City".
+ex:Gustavia a dbo:PopulatedPlace; rdfs:label "Gustavia".
+ex:Hagatna a dbo:PopulatedPlace; rdfs:label "Hagåtña".
+ex:Hamilton a dbo:PopulatedPlace; rdfs:label "Hamilton".
+ex:Hanoi a dbo:PopulatedPlace; rdfs:label "Hanoi".
+ex:Harare a dbo:PopulatedPlace; rdfs:label "Harare".
+ex:Havana a dbo:PopulatedPlace; rdfs:label "Havana".
+ex:Helsinki a dbo:PopulatedPlace; rdfs:label "Helsinki".
+ex:Hong_Kong a dbo:PopulatedPlace; rdfs:label "Hong Kong".
+ex:Honiara a dbo:PopulatedPlace; rdfs:label "Honiara".
+ex:Islamabad a dbo:PopulatedPlace; rdfs:label "Islamabad".
+ex:Jakarta a dbo:PopulatedPlace; rdfs:label "Jakarta".
+ex:Jerusalem a dbo:PopulatedPlace; rdfs:label "Jerusalem".
+ex:Juba a dbo:PopulatedPlace; rdfs:label "Juba".
+ex:Kabul a dbo:PopulatedPlace; rdfs:label "Kabul".
+ex:Kampala a dbo:PopulatedPlace; rdfs:label "Kampala".
+ex:Kathmandu a dbo:PopulatedPlace; rdfs:label "Kathmandu".
+ex:Khartoum a dbo:PopulatedPlace; rdfs:label "Khartoum".
+ex:Kiev a dbo:PopulatedPlace; rdfs:label "Kiev".
+ex:Kigali a dbo:PopulatedPlace; rdfs:label "Kigali".
+ex:Kingston a dbo:PopulatedPlace; rdfs:label "Kingston".
+ex:Kingstown a dbo:PopulatedPlace; rdfs:label "Kingstown".
+ex:Kinshasa a dbo:PopulatedPlace; rdfs:label "Kinshasa".
+ex:Kuala_Lumpur a dbo:PopulatedPlace; rdfs:label "Kuala Lumpur".
+ex:Kuwait_City a dbo:PopulatedPlace; rdfs:label "Kuwait City".
+ex:Libreville a dbo:PopulatedPlace; rdfs:label "Libreville".
+ex:Lilongwe a dbo:PopulatedPlace; rdfs:label "Lilongwe".
+ex:Lima a dbo:PopulatedPlace; rdfs:label "Lima".
+ex:Lisbon a dbo:PopulatedPlace; rdfs:label "Lisbon".
+ex:Ljubljana a dbo:PopulatedPlace; rdfs:label "Ljubljana".
+ex:Lome a dbo:PopulatedPlace; rdfs:label "Lomé".
+ex:London a dbo:PopulatedPlace; rdfs:label "London".
+ex:Luanda a dbo:PopulatedPlace; rdfs:label "Luanda".
+ex:Lusaka a dbo:PopulatedPlace; rdfs:label "Lusaka".
+ex:Luxembourg a dbo:PopulatedPlace; rdfs:label "Luxembourg".
+ex:Madrid a dbo:PopulatedPlace; rdfs:label "Madrid".
+ex:Majuro a dbo:PopulatedPlace; rdfs:label "Majuro".
+ex:Malabo a dbo:PopulatedPlace; rdfs:label "Malabo".
+ex:Male a dbo:PopulatedPlace; rdfs:label "Malé".
+ex:Mamoudzou a dbo:PopulatedPlace; rdfs:label "Mamoudzou".
+ex:Managua a dbo:PopulatedPlace; rdfs:label "Managua".
+ex:Manama a dbo:PopulatedPlace; rdfs:label "Manama".
+ex:Manila a dbo:PopulatedPlace; rdfs:label "Manila".
+ex:Maputo a dbo:PopulatedPlace; rdfs:label "Maputo".
+ex:Marigot a dbo:PopulatedPlace; rdfs:label "Marigot".
+ex:Maseru a dbo:PopulatedPlace; rdfs:label "Maseru".
+ex:Mata_Utu a dbo:PopulatedPlace; rdfs:label "Mata-Utu".
+ex:Mbabane a dbo:PopulatedPlace; rdfs:label "Mbabane".
+ex:Mexico_City a dbo:PopulatedPlace; rdfs:label "Mexico City".
+ex:Minsk a dbo:PopulatedPlace; rdfs:label "Minsk".
+ex:Mogadishu a dbo:PopulatedPlace; rdfs:label "Mogadishu".
+ex:Monaco a dbo:PopulatedPlace; rdfs:label "Monaco".
+ex:Monrovia a dbo:PopulatedPlace; rdfs:label "Monrovia".
+ex:Montevideo a dbo:PopulatedPlace; rdfs:label "Montevideo".
+ex:Moroni a dbo:PopulatedPlace; rdfs:label "Moroni".
+ex:Moscow a dbo:PopulatedPlace; rdfs:label "Moscow".
+ex:Muscat a dbo:PopulatedPlace; rdfs:label "Muscat".
+ex:Ndjamena a dbo:PopulatedPlace; rdfs:label "N'Djamena".
+ex:Nairobi a dbo:PopulatedPlace; rdfs:label "Nairobi".
+ex:Nassau a dbo:PopulatedPlace; rdfs:label "Nassau".
+ex:Nay_Pyi_Taw a dbo:PopulatedPlace; rdfs:label "Nay Pyi Taw".
+ex:New_Delhi a dbo:PopulatedPlace; rdfs:label "New Delhi".
+ex:Ngerulmud a dbo:PopulatedPlace; rdfs:label "Ngerulmud".
+ex:Niamey a dbo:PopulatedPlace; rdfs:label "Niamey".
+ex:Nicosia a dbo:PopulatedPlace; rdfs:label "Nicosia".
+ex:Nouakchott a dbo:PopulatedPlace; rdfs:label "Nouakchott".
+ex:Noumea a dbo:PopulatedPlace; rdfs:label "Nouméa".
+ex:Nuku_alofa a dbo:PopulatedPlace; rdfs:label "Nuku'alofa".
+ex:Nukunonu a dbo:PopulatedPlace; rdfs:label "Nukunonu".
+ex:Nursultan a dbo:PopulatedPlace; rdfs:label "Nursultan".
+ex:Nuuk a dbo:PopulatedPlace; rdfs:label "Nuuk".
+ex:Oranjestad a dbo:PopulatedPlace; rdfs:label "Oranjestad".
+ex:Oslo a dbo:PopulatedPlace; rdfs:label "Oslo".
+ex:Ottawa a dbo:PopulatedPlace; rdfs:label "Ottawa".
+ex:Ouagadougou a dbo:PopulatedPlace; rdfs:label "Ouagadougou".
+ex:Pago_Pago a dbo:PopulatedPlace; rdfs:label "Pago Pago".
+ex:Palikir a dbo:PopulatedPlace; rdfs:label "Palikir".
+ex:Panama_City a dbo:PopulatedPlace; rdfs:label "Panama City".
+ex:Papeete a dbo:PopulatedPlace; rdfs:label "Papeete".
+ex:Paramaribo a dbo:PopulatedPlace; rdfs:label "Paramaribo".
+ex:Paris a dbo:PopulatedPlace; rdfs:label "Paris".
+ex:Philipsburg a dbo:PopulatedPlace; rdfs:label "Philipsburg".
+ex:Phnom_Penh a dbo:PopulatedPlace; rdfs:label "Phnom Penh".
+ex:Podgorica a dbo:PopulatedPlace; rdfs:label "Podgorica".
+ex:Port_Vila a dbo:PopulatedPlace; rdfs:label "Port-Vila".
+ex:Port_au_Prince a dbo:PopulatedPlace; rdfs:label "Port-au-Prince".
+ex:Port_of_Spain a dbo:PopulatedPlace; rdfs:label "Port-of-Spain".
+ex:Port_Louis a dbo:PopulatedPlace; rdfs:label "Port Louis".
+ex:Port_Moresby a dbo:PopulatedPlace; rdfs:label "Port Moresby".
+ex:Porto_Novo a dbo:PopulatedPlace; rdfs:label "Porto-Novo".
+ex:Prague a dbo:PopulatedPlace; rdfs:label "Prague".
+ex:Praia a dbo:PopulatedPlace; rdfs:label "Praia".
+ex:Pretoria a dbo:PopulatedPlace; rdfs:label "Pretoria".
+ex:Pyongyang a dbo:PopulatedPlace; rdfs:label "Pyongyang".
+ex:Quito a dbo:PopulatedPlace; rdfs:label "Quito".
+ex:Rabat a dbo:PopulatedPlace; rdfs:label "Rabat".
+ex:Ramallah a dbo:PopulatedPlace; rdfs:label "Ramallah".
+ex:Reykjavik a dbo:PopulatedPlace; rdfs:label "Reykjavík".
+ex:Riga a dbo:PopulatedPlace; rdfs:label "Riga".
+ex:Riyadh a dbo:PopulatedPlace; rdfs:label "Riyadh".
+ex:Road_Town a dbo:PopulatedPlace; rdfs:label "Road Town".
+ex:Rome a dbo:PopulatedPlace; rdfs:label "Rome".
+ex:Roseau a dbo:PopulatedPlace; rdfs:label "Roseau".
+ex:Saint_Denis a dbo:PopulatedPlace; rdfs:label "Saint-Denis".
+ex:Saint_Pierre a dbo:PopulatedPlace; rdfs:label "Saint-Pierre".
+ex:Saint_George a dbo:PopulatedPlace; rdfs:label "Saint George".
+ex:Saint_Helier a dbo:PopulatedPlace; rdfs:label "Saint Helier".
+ex:Saint_John a dbo:PopulatedPlace; rdfs:label "Saint John's".
+ex:Saint_Peter_Port a dbo:PopulatedPlace; rdfs:label "Saint Peter Port".
+ex:Saipan a dbo:PopulatedPlace; rdfs:label "Saipan".
+ex:San_Jose a dbo:PopulatedPlace; rdfs:label "San José".
+ex:San_Juan a dbo:PopulatedPlace; rdfs:label "San Juan".
+ex:San_Marino a dbo:PopulatedPlace; rdfs:label "San Marino".
+ex:San_Salvador a dbo:PopulatedPlace; rdfs:label "San Salvador".
+ex:Sanaa a dbo:PopulatedPlace; rdfs:label "Sanaa".
+ex:Santiago a dbo:PopulatedPlace; rdfs:label "Santiago".
+ex:Santo_Domingo a dbo:PopulatedPlace; rdfs:label "Santo Domingo".
+ex:Sarajevo a dbo:PopulatedPlace; rdfs:label "Sarajevo".
+ex:Seoul a dbo:PopulatedPlace; rdfs:label "Seoul".
+ex:Singapore a dbo:PopulatedPlace; rdfs:label "Singapore".
+ex:Skopje a dbo:PopulatedPlace; rdfs:label "Skopje".
+ex:Sofia a dbo:PopulatedPlace; rdfs:label "Sofia".
+ex:Stanley a dbo:PopulatedPlace; rdfs:label "Stanley".
+ex:Stockholm a dbo:PopulatedPlace; rdfs:label "Stockholm".
+ex:Sucre a dbo:PopulatedPlace; rdfs:label "Sucre".
+ex:Suva a dbo:PopulatedPlace; rdfs:label "Suva".
+ex:Sao_Tome a dbo:PopulatedPlace; rdfs:label "São Tomé".
+ex:Taipei a dbo:PopulatedPlace; rdfs:label "Taipei".
+ex:Tallinn a dbo:PopulatedPlace; rdfs:label "Tallinn".
+ex:Tarawa a dbo:PopulatedPlace; rdfs:label "Tarawa".
+ex:Tashkent a dbo:PopulatedPlace; rdfs:label "Tashkent".
+ex:Tbilisi a dbo:PopulatedPlace; rdfs:label "Tbilisi".
+ex:Tegucigalpa a dbo:PopulatedPlace; rdfs:label "Tegucigalpa".
+ex:Tehran a dbo:PopulatedPlace; rdfs:label "Tehran".
+ex:The_Valley a dbo:PopulatedPlace; rdfs:label "The Valley".
+ex:Thimphu a dbo:PopulatedPlace; rdfs:label "Thimphu".
+ex:Tirana a dbo:PopulatedPlace; rdfs:label "Tirana".
+ex:Tokyo a dbo:PopulatedPlace; rdfs:label "Tokyo".
+ex:Tripoli a dbo:PopulatedPlace; rdfs:label "Tripoli".
+ex:Tunis a dbo:PopulatedPlace; rdfs:label "Tunis".
+ex:Torshavn a dbo:PopulatedPlace; rdfs:label "Tórshavn".
+ex:Ulaanbaatar a dbo:PopulatedPlace; rdfs:label "Ulaanbaatar".
+ex:Vaduz a dbo:PopulatedPlace; rdfs:label "Vaduz".
+ex:Valletta a dbo:PopulatedPlace; rdfs:label "Valletta".
+ex:Vatican_City a dbo:PopulatedPlace; rdfs:label "Vatican City".
+ex:Victoria a dbo:PopulatedPlace; rdfs:label "Victoria".
+ex:Vienna a dbo:PopulatedPlace; rdfs:label "Vienna".
+ex:Vientiane a dbo:PopulatedPlace; rdfs:label "Vientiane".
+ex:Vilnius a dbo:PopulatedPlace; rdfs:label "Vilnius".
+ex:Warsaw a dbo:PopulatedPlace; rdfs:label "Warsaw".
+ex:Washington_DC a dbo:PopulatedPlace; rdfs:label "Washington DC".
+ex:Wellington a dbo:PopulatedPlace; rdfs:label "Wellington".
+ex:Willemstad a dbo:PopulatedPlace; rdfs:label "Willemstad".
+ex:Windhoek a dbo:PopulatedPlace; rdfs:label "Windhoek".
+ex:Yamoussoukro a dbo:PopulatedPlace; rdfs:label "Yamoussoukro".
+ex:Yaounde a dbo:PopulatedPlace; rdfs:label "Yaounde".
+ex:Yaren a dbo:PopulatedPlace; rdfs:label "Yaren".
+ex:Yerevan a dbo:PopulatedPlace; rdfs:label "Yerevan".
+ex:Zagreb a dbo:PopulatedPlace; rdfs:label "Zagreb".
+
+### --- Continents ---
+ex:Africa a dbo:Continent; rdfs:label "Africa".
+ex:Asia a dbo:Continent; rdfs:label "Asia".
+ex:Europe a dbo:Continent; rdfs:label "Europe".
+ex:North_America a dbo:Continent; rdfs:label "North America".
+ex:Oceania a dbo:Continent; rdfs:label "Oceania".
+ex:South_America a dbo:Continent; rdfs:label "South America".
+
+
