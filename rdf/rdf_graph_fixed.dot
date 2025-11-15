@@ -1,0 +1,87 @@
+digraph RDFGraph {
+  rankdir=LR;
+  node [shape=box, style=filled, fillcolor=lightblue];
+  edge [color=gray];
+
+  // Entités principales
+  "ex:Y1990" [label="Y1990\n(Year)"];
+  "ex:Y2000" [label="Y2000\n(Year)"];
+  "ex:Afghanistan" [label="Afghanistan\n(Country)"];
+  "ex:Angola" [label="Angola\n(Country)"];
+  "ex:Obs_AFG_1990" [label="Obs_AFG_1990\n(PollutionObservation)"];
+  "ex:Obs_AGO_1990" [label="Obs_AGO_1990\n(PollutionObservation)"];
+  "ex:Obs_AFG_2000" [label="Obs_AFG_2000\n(PollutionObservation)"];
+
+  // Classes
+  "ex:Year" [label="ex:Year", fillcolor=lightgreen];
+  "ex:Country" [label="ex:Country", fillcolor=lightgreen];
+  "ex:PollutionObservation" [label="ex:PollutionObservation", fillcolor=lightgreen];
+
+  // Littéraux (labels et valeurs)
+  "lit_1990_label" [label="\"1990\"", shape=ellipse, fillcolor=yellow];
+  "lit_1990_value" [label="\"1990\"^^xsd:gYear", shape=ellipse, fillcolor=yellow];
+  "lit_2000_label" [label="\"2000\"", shape=ellipse, fillcolor=yellow];
+  "lit_2000_value" [label="\"2000\"^^xsd:gYear", shape=ellipse, fillcolor=yellow];
+  "lit_afg_label" [label="\"Afghanistan\"", shape=ellipse, fillcolor=yellow];
+  "lit_afg_code" [label="\"AFG\"", shape=ellipse, fillcolor=yellow];
+  "lit_ago_label" [label="\"ANGOLA\"", shape=ellipse, fillcolor=yellow];
+  "lit_ago_code" [label="\"AGO\"", shape=ellipse, fillcolor=yellow];
+
+  // Littéraux pour métriques (exemples abrégés pour clarté)
+  "lit_afg_ozone_90" [label="\"5.616442\"^^xsd:decimal", shape=ellipse, fillcolor=orange];
+  "lit_afg_matter_90" [label="\"46.446509\"^^xsd:decimal", shape=ellipse, fillcolor=orange];
+  "lit_afg_house_90" [label="\"250.362391\"^^xsd:decimal", shape=ellipse, fillcolor=orange];
+  "lit_afg_deaths_90" [label="\"293.477380\"^^xsd:decimal", shape=ellipse, fillcolor=orange];
+  "lit_ago_ozone_90" [label="\"6.512399\"^^xsd:decimal", shape=ellipse, fillcolor=orange];
+  "lit_ago_matter_90" [label="\"26.258998\"^^xsd:decimal", shape=ellipse, fillcolor=orange];
+  "lit_ago_house_90" [label="\"139.927248\"^^xsd:decimal", shape=ellipse, fillcolor=orange];
+  "lit_ago_deaths_90" [label="\"224.508617\"^^xsd:decimal", shape=ellipse, fillcolor=orange];
+  "lit_afg_ozone_00" [label="\"5.800000\"^^xsd:decimal", shape=ellipse, fillcolor=orange];
+  "lit_afg_matter_00" [label="\"45.000000\"^^xsd:decimal", shape=ellipse, fillcolor=orange];
+  "lit_afg_house_00" [label="\"240.000000\"^^xsd:decimal", shape=ellipse, fillcolor=orange];
+  "lit_afg_deaths_00" [label="\"280.000000\"^^xsd:decimal", shape=ellipse, fillcolor=orange];
+
+  // Liens rdf:type (en pointillés)
+  "ex:Y1990" -> "ex:Year" [label="rdf:type", style=dashed, color=green];
+  "ex:Y2000" -> "ex:Year" [label="rdf:type", style=dashed, color=green];
+  "ex:Afghanistan" -> "ex:Country" [label="rdf:type", style=dashed, color=green];
+  "ex:Angola" -> "ex:Country" [label="rdf:type", style=dashed, color=green];
+  "ex:Obs_AFG_1990" -> "ex:PollutionObservation" [label="rdf:type", style=dashed, color=green];
+  "ex:Obs_AGO_1990" -> "ex:PollutionObservation" [label="rdf:type", style=dashed, color=green];
+  "ex:Obs_AFG_2000" -> "ex:PollutionObservation" [label="rdf:type", style=dashed, color=green];
+
+  // Liens pour années
+  "ex:Y1990" -> "lit_1990_label" [label="rdfs:label"];
+  "ex:Y1990" -> "lit_1990_value" [label="ex:value"];
+  "ex:Y2000" -> "lit_2000_label" [label="rdfs:label"];
+  "ex:Y2000" -> "lit_2000_value" [label="ex:value"];
+
+  // Liens pour pays
+  "ex:Afghanistan" -> "lit_afg_label" [label="rdfs:label"];
+  "ex:Afghanistan" -> "lit_afg_code" [label="ex:codeOfCountry"];
+  "ex:Angola" -> "lit_ago_label" [label="rdfs:label"];
+  "ex:Angola" -> "lit_ago_code" [label="ex:codeOfCountry"];
+
+  // Liens pour observations 1990
+  "ex:Obs_AFG_1990" -> "ex:Afghanistan" [label="ex:country"];
+  "ex:Obs_AFG_1990" -> "ex:Y1990" [label="ex:year"];
+  "ex:Obs_AFG_1990" -> "lit_afg_ozone_90" [label="ex:ambientOzonePollution"];
+  "ex:Obs_AFG_1990" -> "lit_afg_matter_90" [label="ex:ambientMatterPollution"];
+  "ex:Obs_AFG_1990" -> "lit_afg_house_90" [label="ex:householdPollution"];
+  "ex:Obs_AFG_1990" -> "lit_afg_deaths_90" [label="ex:deaths"];
+
+  "ex:Obs_AGO_1990" -> "ex:Angola" [label="ex:country"];
+  "ex:Obs_AGO_1990" -> "ex:Y1990" [label="ex:year"];
+  "ex:Obs_AGO_1990" -> "lit_ago_ozone_90" [label="ex:ambientOzonePollution"];
+  "ex:Obs_AGO_1990" -> "lit_ago_matter_90" [label="ex:ambientMatterPollution"];
+  "ex:Obs_AGO_1990" -> "lit_ago_house_90" [label="ex:householdPollution"];
+  "ex:Obs_AGO_1990" -> "lit_ago_deaths_90" [label="ex:deaths"];
+
+  // Liens pour observation 2000
+  "ex:Obs_AFG_2000" -> "ex:Afghanistan" [label="ex:country"];
+  "ex:Obs_AFG_2000" -> "ex:Y2000" [label="ex:year"];
+  "ex:Obs_AFG_2000" -> "lit_afg_ozone_00" [label="ex:ambientOzonePollution"];
+  "ex:Obs_AFG_2000" -> "lit_afg_matter_00" [label="ex:ambientMatterPollution"];
+  "ex:Obs_AFG_2000" -> "lit_afg_house_00" [label="ex:householdPollution"];
+  "ex:Obs_AFG_2000" -> "lit_afg_deaths_00" [label="ex:deaths"];
+}
