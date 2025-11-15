@@ -1,424 +1,144 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="895pt" height="952pt" viewBox="0.00 0.00 895.00 952.00">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 948)">
-<title>RDFGraph</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-948 891.16,-948 891.16,4 -4,4"/>
-<!-- ex:Y1990 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="785pt" height="387pt" viewBox="0.00 0.00 785.00 387.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 382.76)">
+<title>RDFObservationGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-382.76 780.77,-382.76 780.77,4 -4,4"/>
+<!-- schema:Observation -->
 <g id="node1" class="node">
-<title>ex:Y1990</title>
-<polygon fill="lightblue" stroke="black" points="479.53,-707.8 425.42,-707.8 425.42,-666.2 479.53,-666.2 479.53,-707.8"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-691.2" font-family="Times,serif" font-size="14.00">Y1990</text>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-674.4" font-family="Times,serif" font-size="14.00">(Year)</text>
+<title>schema:Observation</title>
+<polygon fill="lightgreen" stroke="black" points="489.51,-366 359.21,-366 359.21,-330 489.51,-330 489.51,-366"/>
+<text xml:space="preserve" text-anchor="middle" x="424.36" y="-343.8" font-family="Times,serif" font-size="14.00">schema:Observation</text>
 </g>
-<!-- ex:Year -->
-<g id="node8" class="node">
-<title>ex:Year</title>
-<polygon fill="lightgreen" stroke="black" points="830.32,-647 770.02,-647 770.02,-611 830.32,-611 830.32,-647"/>
-<text xml:space="preserve" text-anchor="middle" x="800.17" y="-624.8" font-family="Times,serif" font-size="14.00">ex:Year</text>
-</g>
-<!-- ex:Y1990&#45;&gt;ex:Year -->
-<g id="edge1" class="edge">
-<title>ex:Y1990-&gt;ex:Year</title>
-<path fill="none" stroke="green" stroke-dasharray="5,2" d="M480.03,-682.55C540.08,-672.47 686.69,-647.87 758.37,-635.85"/>
-<polygon fill="green" stroke="green" points="758.84,-639.32 768.12,-634.21 757.68,-632.41 758.84,-639.32"/>
-<text xml:space="preserve" text-anchor="middle" x="643.09" y="-667.39" font-family="Times,serif" font-size="14.00">rdf:type</text>
-</g>
-<!-- lit_1990_label -->
-<g id="node11" class="node">
-<title>lit_1990_label</title>
-<ellipse fill="yellow" stroke="black" cx="800.17" cy="-739" rx="38.23" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="800.17" y="-734.8" font-family="Times,serif" font-size="14.00">"1990"</text>
-</g>
-<!-- ex:Y1990&#45;&gt;lit_1990_label -->
-<g id="edge8" class="edge">
-<title>ex:Y1990-&gt;lit_1990_label</title>
-<path fill="none" stroke="gray" d="M480.03,-690.99C538.33,-699.76 678.21,-720.8 751.91,-731.89"/>
-<polygon fill="gray" stroke="gray" points="751.24,-735.33 761.65,-733.36 752.28,-728.41 751.24,-735.33"/>
-<text xml:space="preserve" text-anchor="middle" x="643.09" y="-726.38" font-family="Times,serif" font-size="14.00">rdfs:label</text>
-</g>
-<!-- lit_1990_value -->
-<g id="node12" class="node">
-<title>lit_1990_value</title>
-<ellipse fill="yellow" stroke="black" cx="800.17" cy="-685" rx="86.99" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="800.17" y="-680.8" font-family="Times,serif" font-size="14.00">"1990"^^xsd:gYear</text>
-</g>
-<!-- ex:Y1990&#45;&gt;lit_1990_value -->
-<g id="edge9" class="edge">
-<title>ex:Y1990-&gt;lit_1990_value</title>
-<path fill="none" stroke="gray" d="M480.03,-686.85C526.8,-686.58 626.06,-686 701.54,-685.56"/>
-<polygon fill="gray" stroke="gray" points="701.47,-689.07 711.45,-685.51 701.43,-682.07 701.47,-689.07"/>
-<text xml:space="preserve" text-anchor="middle" x="643.09" y="-690.38" font-family="Times,serif" font-size="14.00">ex:value</text>
-</g>
-<!-- ex:Y2000 -->
+<!-- schema:Country -->
 <g id="node2" class="node">
-<title>ex:Y2000</title>
-<polygon fill="lightblue" stroke="black" points="479.53,-95.8 425.42,-95.8 425.42,-54.2 479.53,-54.2 479.53,-95.8"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-79.2" font-family="Times,serif" font-size="14.00">Y2000</text>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-62.4" font-family="Times,serif" font-size="14.00">(Year)</text>
+<title>schema:Country</title>
+<polygon fill="lightgreen" stroke="black" points="764.52,-363 656.77,-363 656.77,-327 764.52,-327 764.52,-363"/>
+<text xml:space="preserve" text-anchor="middle" x="710.65" y="-340.8" font-family="Times,serif" font-size="14.00">schema:Country</text>
 </g>
-<!-- ex:Y2000&#45;&gt;ex:Year -->
-<g id="edge2" class="edge">
-<title>ex:Y2000-&gt;ex:Year</title>
-<path fill="none" stroke="green" stroke-dasharray="5,2" d="M480.02,-73.37C507.86,-73.26 550.62,-77.97 572.99,-105 616.99,-158.16 547,-361.83 590.99,-415 621.43,-451.79 663.74,-405.27 695.19,-441.2 741.68,-494.31 669.11,-543.86 713.19,-599 724.25,-612.85 742.12,-620.32 758.71,-624.35"/>
-<polygon fill="green" stroke="green" points="757.91,-627.75 768.41,-626.32 759.3,-620.89 757.91,-627.75"/>
-<text xml:space="preserve" text-anchor="middle" x="643.09" y="-445.4" font-family="Times,serif" font-size="14.00">rdf:type</text>
+<!-- ex:0 -->
+<g id="node3" class="node">
+<title>ex:0</title>
+<polygon fill="lightblue" stroke="black" points="93.75,-200.8 0,-200.8 0,-159.2 93.75,-159.2 93.75,-200.8"/>
+<text xml:space="preserve" text-anchor="middle" x="46.88" y="-184.2" font-family="Times,serif" font-size="14.00">ex:0</text>
+<text xml:space="preserve" text-anchor="middle" x="46.88" y="-167.4" font-family="Times,serif" font-size="14.00">(Observation)</text>
 </g>
-<!-- lit_2000_label -->
-<g id="node13" class="node">
-<title>lit_2000_label</title>
-<ellipse fill="yellow" stroke="black" cx="800.17" cy="-102" rx="38.23" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="800.17" y="-97.8" font-family="Times,serif" font-size="14.00">"2000"</text>
-</g>
-<!-- ex:Y2000&#45;&gt;lit_2000_label -->
-<g id="edge10" class="edge">
-<title>ex:Y2000-&gt;lit_2000_label</title>
-<path fill="none" stroke="gray" d="M480.03,-77.07C538.03,-81.6 676.77,-92.44 750.76,-98.22"/>
-<polygon fill="gray" stroke="gray" points="750.31,-101.69 760.55,-98.98 750.85,-94.72 750.31,-101.69"/>
-<text xml:space="preserve" text-anchor="middle" x="643.09" y="-97.47" font-family="Times,serif" font-size="14.00">rdfs:label</text>
-</g>
-<!-- lit_2000_value -->
-<g id="node14" class="node">
-<title>lit_2000_value</title>
-<ellipse fill="yellow" stroke="black" cx="800.17" cy="-48" rx="86.99" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="800.17" y="-43.8" font-family="Times,serif" font-size="14.00">"2000"^^xsd:gYear</text>
-</g>
-<!-- ex:Y2000&#45;&gt;lit_2000_value -->
-<g id="edge11" class="edge">
-<title>ex:Y2000-&gt;lit_2000_value</title>
-<path fill="none" stroke="gray" d="M480.03,-72.93C527.95,-69.18 630.97,-61.14 707.07,-55.19"/>
-<polygon fill="gray" stroke="gray" points="706.88,-58.72 716.58,-54.45 706.34,-51.74 706.88,-58.72"/>
-<text xml:space="preserve" text-anchor="middle" x="643.09" y="-68.12" font-family="Times,serif" font-size="14.00">ex:value</text>
+<!-- ex:0&#45;&gt;schema:Observation -->
+<g id="edge1" class="edge">
+<title>ex:0-&gt;schema:Observation</title>
+<path fill="none" stroke="green" stroke-dasharray="5,2" d="M51.31,-201.23C57.48,-231.91 73.58,-287.91 111.75,-315 180.36,-363.69 279.78,-365.6 347.76,-359.47"/>
+<polygon fill="green" stroke="green" points="347.7,-363 357.3,-358.53 347.01,-356.03 347.7,-363"/>
+<text xml:space="preserve" text-anchor="middle" x="215.56" y="-366.16" font-family="Times,serif" font-size="14.00">rdf:type</text>
 </g>
 <!-- ex:Afghanistan -->
-<g id="node3" class="node">
-<title>ex:Afghanistan</title>
-<polygon fill="lightblue" stroke="black" points="494.69,-539.8 410.26,-539.8 410.26,-498.2 494.69,-498.2 494.69,-539.8"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-523.2" font-family="Times,serif" font-size="14.00">Afghanistan</text>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-506.4" font-family="Times,serif" font-size="14.00">(Country)</text>
-</g>
-<!-- ex:Country -->
-<g id="node9" class="node">
-<title>ex:Country</title>
-<polygon fill="lightgreen" stroke="black" points="839.67,-453 760.67,-453 760.67,-417 839.67,-417 839.67,-453"/>
-<text xml:space="preserve" text-anchor="middle" x="800.17" y="-430.8" font-family="Times,serif" font-size="14.00">ex:Country</text>
-</g>
-<!-- ex:Afghanistan&#45;&gt;ex:Country -->
-<g id="edge3" class="edge">
-<title>ex:Afghanistan-&gt;ex:Country</title>
-<path fill="none" stroke="green" stroke-dasharray="5,2" d="M495.17,-508.87C559.05,-493.35 680.9,-463.74 749.34,-447.11"/>
-<polygon fill="green" stroke="green" points="749.89,-450.58 758.78,-444.81 748.24,-443.78 749.89,-450.58"/>
-<text xml:space="preserve" text-anchor="middle" x="643.09" y="-488.72" font-family="Times,serif" font-size="14.00">rdf:type</text>
-</g>
-<!-- lit_afg_label -->
-<g id="node15" class="node">
-<title>lit_afg_label</title>
-<ellipse fill="yellow" stroke="black" cx="800.17" cy="-572" rx="66.12" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="800.17" y="-567.8" font-family="Times,serif" font-size="14.00">"Afghanistan"</text>
-</g>
-<!-- ex:Afghanistan&#45;&gt;lit_afg_label -->
-<g id="edge12" class="edge">
-<title>ex:Afghanistan-&gt;lit_afg_label</title>
-<path fill="none" stroke="gray" d="M495.17,-525.39C553.52,-534.34 660.24,-550.7 730.44,-561.46"/>
-<polygon fill="gray" stroke="gray" points="729.9,-564.92 740.31,-562.98 730.96,-558 729.9,-564.92"/>
-<text xml:space="preserve" text-anchor="middle" x="643.09" y="-559.06" font-family="Times,serif" font-size="14.00">rdfs:label</text>
-</g>
-<!-- lit_afg_code -->
-<g id="node16" class="node">
-<title>lit_afg_code</title>
-<ellipse fill="yellow" stroke="black" cx="800.17" cy="-518" rx="38.24" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="800.17" y="-513.8" font-family="Times,serif" font-size="14.00">"AFG"</text>
-</g>
-<!-- ex:Afghanistan&#45;&gt;lit_afg_code -->
-<g id="edge13" class="edge">
-<title>ex:Afghanistan-&gt;lit_afg_code</title>
-<path fill="none" stroke="gray" d="M495.17,-518.88C559.34,-518.69 682.01,-518.34 750.27,-518.14"/>
-<polygon fill="gray" stroke="gray" points="750.05,-521.64 760.04,-518.11 750.03,-514.64 750.05,-521.64"/>
-<text xml:space="preserve" text-anchor="middle" x="643.09" y="-522.79" font-family="Times,serif" font-size="14.00">ex:codeOfCountry</text>
-</g>
-<!-- ex:Angola -->
 <g id="node4" class="node">
-<title>ex:Angola</title>
-<polygon fill="lightblue" stroke="black" points="488.08,-371.8 416.87,-371.8 416.87,-330.2 488.08,-330.2 488.08,-371.8"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-355.2" font-family="Times,serif" font-size="14.00">Angola</text>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-338.4" font-family="Times,serif" font-size="14.00">(Country)</text>
+<title>ex:Afghanistan</title>
+<polygon fill="lightblue" stroke="black" points="475.12,-311.8 373.59,-311.8 373.59,-270.2 475.12,-270.2 475.12,-311.8"/>
+<text xml:space="preserve" text-anchor="middle" x="424.36" y="-295.2" font-family="Times,serif" font-size="14.00">ex:Afghanistan</text>
+<text xml:space="preserve" text-anchor="middle" x="424.36" y="-278.4" font-family="Times,serif" font-size="14.00">(Country)</text>
 </g>
-<!-- ex:Angola&#45;&gt;ex:Country -->
-<g id="edge4" class="edge">
-<title>ex:Angola-&gt;ex:Country</title>
-<path fill="none" stroke="green" stroke-dasharray="5,2" d="M488.27,-356.14C535.57,-363.5 622.59,-378.38 695.19,-398.2 713.39,-403.17 732.99,-409.77 750.21,-416"/>
-<polygon fill="green" stroke="green" points="748.58,-419.13 759.17,-419.3 750.99,-412.56 748.58,-419.13"/>
-<text xml:space="preserve" text-anchor="middle" x="643.09" y="-402.4" font-family="Times,serif" font-size="14.00">rdf:type</text>
+<!-- ex:0&#45;&gt;ex:Afghanistan -->
+<g id="edge3" class="edge">
+<title>ex:0-&gt;ex:Afghanistan</title>
+<path fill="none" stroke="gray" d="M61.41,-201.19C72.8,-217.12 90.6,-238.02 111.75,-249 191.04,-290.18 296.32,-295.87 361.94,-294.62"/>
+<polygon fill="gray" stroke="gray" points="361.9,-298.12 371.81,-294.36 361.72,-291.12 361.9,-298.12"/>
+<text xml:space="preserve" text-anchor="middle" x="215.56" y="-298.35" font-family="Times,serif" font-size="14.00">schema:observationAbout</text>
 </g>
-<!-- lit_ago_label -->
-<g id="node17" class="node">
-<title>lit_ago_label</title>
-<ellipse fill="yellow" stroke="black" cx="800.17" cy="-351" rx="59.69" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="800.17" y="-346.8" font-family="Times,serif" font-size="14.00">"ANGOLA"</text>
-</g>
-<!-- ex:Angola&#45;&gt;lit_ago_label -->
-<g id="edge14" class="edge">
-<title>ex:Angola-&gt;lit_ago_label</title>
-<path fill="none" stroke="gray" d="M488.53,-351C544.66,-351 655.8,-351 728.8,-351"/>
-<polygon fill="gray" stroke="gray" points="728.66,-354.5 738.66,-351 728.66,-347.5 728.66,-354.5"/>
-<text xml:space="preserve" text-anchor="middle" x="643.09" y="-355.2" font-family="Times,serif" font-size="14.00">rdfs:label</text>
-</g>
-<!-- lit_ago_code -->
-<g id="node18" class="node">
-<title>lit_ago_code</title>
-<ellipse fill="yellow" stroke="black" cx="800.17" cy="-297" rx="39.84" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="800.17" y="-292.8" font-family="Times,serif" font-size="14.00">"AGO"</text>
-</g>
-<!-- ex:Angola&#45;&gt;lit_ago_code -->
-<g id="edge15" class="edge">
-<title>ex:Angola-&gt;lit_ago_code</title>
-<path fill="none" stroke="gray" d="M488.53,-345.53C550.64,-335.82 680.12,-315.6 750.72,-304.57"/>
-<polygon fill="gray" stroke="gray" points="751.11,-308.05 760.45,-303.05 750.03,-301.13 751.11,-308.05"/>
-<text xml:space="preserve" text-anchor="middle" x="643.09" y="-333.04" font-family="Times,serif" font-size="14.00">ex:codeOfCountry</text>
-</g>
-<!-- ex:Obs_AFG_1990 -->
+<!-- lit_date_1990 -->
 <g id="node5" class="node">
-<title>ex:Obs_AFG_1990</title>
-<polygon fill="lightblue" stroke="black" points="145.1,-798.8 0,-798.8 0,-757.2 145.1,-757.2 145.1,-798.8"/>
-<text xml:space="preserve" text-anchor="middle" x="72.55" y="-782.2" font-family="Times,serif" font-size="14.00">Obs_AFG_1990</text>
-<text xml:space="preserve" text-anchor="middle" x="72.55" y="-765.4" font-family="Times,serif" font-size="14.00">(PollutionObservation)</text>
+<title>lit_date_1990</title>
+<ellipse fill="yellow" stroke="black" cx="424.36" cy="-234" rx="86.99" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="424.36" y="-229.8" font-family="Times,serif" font-size="14.00">"1990"^^xsd:gYear</text>
 </g>
-<!-- ex:Obs_AFG_1990&#45;&gt;ex:Y1990 -->
-<g id="edge17" class="edge">
-<title>ex:Obs_AFG_1990-&gt;ex:Y1990</title>
-<path fill="none" stroke="gray" d="M134.45,-756.72C143.98,-753.68 153.77,-750.73 163.1,-748.2 169.19,-746.55 337.3,-711.07 413.98,-694.9"/>
-<polygon fill="gray" stroke="gray" points="414.49,-698.37 423.55,-692.88 413.05,-691.52 414.49,-698.37"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-752.4" font-family="Times,serif" font-size="14.00">ex:year</text>
+<!-- ex:0&#45;&gt;lit_date_1990 -->
+<g id="edge4" class="edge">
+<title>ex:0-&gt;lit_date_1990</title>
+<path fill="none" stroke="gray" d="M93.96,-196.43C99.89,-198.16 105.93,-199.75 111.75,-201 183.35,-216.38 265.82,-224.71 327.92,-229.15"/>
+<polygon fill="gray" stroke="gray" points="327.55,-232.63 337.77,-229.83 328.03,-225.65 327.55,-232.63"/>
+<text xml:space="preserve" text-anchor="middle" x="215.56" y="-232.67" font-family="Times,serif" font-size="14.00">schema:observationDate</text>
 </g>
-<!-- ex:Obs_AFG_1990&#45;&gt;ex:Afghanistan -->
-<g id="edge16" class="edge">
-<title>ex:Obs_AFG_1990-&gt;ex:Afghanistan</title>
-<path fill="none" stroke="gray" d="M76.08,-756.91C82.36,-714.73 102.78,-620.18 163.1,-575.2 190.19,-555 281.2,-564.32 313.96,-556 322.28,-553.89 323.78,-551.61 331.96,-549 353.64,-542.09 377.94,-535.74 398.94,-530.69"/>
-<polygon fill="gray" stroke="gray" points="399.51,-534.15 408.44,-528.44 397.9,-527.34 399.51,-534.15"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-579.4" font-family="Times,serif" font-size="14.00">ex:country</text>
+<!-- lit_death_air -->
+<g id="node8" class="node">
+<title>lit_death_air</title>
+<ellipse fill="orange" stroke="black" cx="424.36" cy="-180" rx="47.25" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="424.36" y="-175.8" font-family="Times,serif" font-size="14.00">299.4773</text>
 </g>
-<!-- ex:PollutionObservation -->
-<g id="node10" class="node">
-<title>ex:PollutionObservation</title>
-<polygon fill="lightgreen" stroke="black" points="528.91,-594 376.04,-594 376.04,-558 528.91,-558 528.91,-594"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-571.8" font-family="Times,serif" font-size="14.00">ex:PollutionObservation</text>
-</g>
-<!-- ex:Obs_AFG_1990&#45;&gt;ex:PollutionObservation -->
+<!-- ex:0&#45;&gt;lit_death_air -->
 <g id="edge5" class="edge">
-<title>ex:Obs_AFG_1990-&gt;ex:PollutionObservation</title>
-<path fill="none" stroke="green" stroke-dasharray="5,2" d="M89.93,-757.03C106.25,-737.78 133.14,-710.18 163.1,-696.2 224.4,-667.59 263.6,-721.17 313.96,-676 338.84,-653.69 308.1,-626.4 331.96,-603 341.12,-594.01 352.6,-587.77 364.8,-583.46"/>
-<polygon fill="green" stroke="green" points="365.67,-586.86 374.22,-580.6 363.63,-580.16 365.67,-586.86"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-700.4" font-family="Times,serif" font-size="14.00">rdf:type</text>
+<title>ex:0-&gt;lit_death_air</title>
+<path fill="none" stroke="gray" d="M93.92,-180C162.37,-180 290.91,-180 365.59,-180"/>
+<polygon fill="gray" stroke="gray" points="365.13,-183.5 375.13,-180 365.13,-176.5 365.13,-183.5"/>
+<text xml:space="preserve" text-anchor="middle" x="215.56" y="-184.2" font-family="Times,serif" font-size="14.00">ex:deathAirPollution</text>
 </g>
-<!-- lit_afg_ozone_90 -->
-<g id="node19" class="node">
-<title>lit_afg_ozone_90</title>
-<ellipse fill="orange" stroke="black" cx="452.48" cy="-926" rx="110.86" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-921.8" font-family="Times,serif" font-size="14.00">"5.616442"^^xsd:decimal</text>
+<!-- lit_death_house -->
+<g id="node9" class="node">
+<title>lit_death_house</title>
+<ellipse fill="orange" stroke="black" cx="424.36" cy="-126" rx="47.25" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="424.36" y="-121.8" font-family="Times,serif" font-size="14.00">250.3630</text>
 </g>
-<!-- ex:Obs_AFG_1990&#45;&gt;lit_afg_ozone_90 -->
-<g id="edge18" class="edge">
-<title>ex:Obs_AFG_1990-&gt;lit_afg_ozone_90</title>
-<path fill="none" stroke="gray" d="M84.95,-799.12C99.55,-823.9 127.29,-864.12 163.1,-884 213.68,-912.09 276.62,-923.47 330.78,-927.46"/>
-<polygon fill="gray" stroke="gray" points="330.49,-930.94 340.69,-928.1 330.94,-923.96 330.49,-930.94"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-930.15" font-family="Times,serif" font-size="14.00">ex:ambientOzonePollution</text>
-</g>
-<!-- lit_afg_matter_90 -->
-<g id="node20" class="node">
-<title>lit_afg_matter_90</title>
-<ellipse fill="orange" stroke="black" cx="452.48" cy="-872" rx="115.69" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-867.8" font-family="Times,serif" font-size="14.00">"46.446509"^^xsd:decimal</text>
-</g>
-<!-- ex:Obs_AFG_1990&#45;&gt;lit_afg_matter_90 -->
-<g id="edge19" class="edge">
-<title>ex:Obs_AFG_1990-&gt;lit_afg_matter_90</title>
-<path fill="none" stroke="gray" d="M102.76,-799.28C119.59,-810.5 141.62,-823.46 163.1,-831 216.21,-849.66 277.67,-859.84 330.17,-865.39"/>
-<polygon fill="gray" stroke="gray" points="329.77,-868.87 340.07,-866.39 330.47,-861.91 329.77,-868.87"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-867.26" font-family="Times,serif" font-size="14.00">ex:ambientMatterPollution</text>
-</g>
-<!-- lit_afg_house_90 -->
-<g id="node21" class="node">
-<title>lit_afg_house_90</title>
-<ellipse fill="orange" stroke="black" cx="452.48" cy="-818" rx="120.52" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-813.8" font-family="Times,serif" font-size="14.00">"250.362391"^^xsd:decimal</text>
-</g>
-<!-- ex:Obs_AFG_1990&#45;&gt;lit_afg_house_90 -->
-<g id="edge20" class="edge">
-<title>ex:Obs_AFG_1990-&gt;lit_afg_house_90</title>
-<path fill="none" stroke="gray" d="M145.29,-792.33C151.3,-793.31 157.29,-794.22 163.1,-795 216.66,-802.2 276.15,-807.41 327.12,-811.03"/>
-<polygon fill="gray" stroke="gray" points="326.8,-814.52 337.02,-811.72 327.29,-807.54 326.8,-814.52"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-814.14" font-family="Times,serif" font-size="14.00">ex:householdPollution</text>
-</g>
-<!-- lit_afg_deaths_90 -->
-<g id="node22" class="node">
-<title>lit_afg_deaths_90</title>
-<ellipse fill="orange" stroke="black" cx="452.48" cy="-764" rx="120.52" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-759.8" font-family="Times,serif" font-size="14.00">"293.477380"^^xsd:decimal</text>
-</g>
-<!-- ex:Obs_AFG_1990&#45;&gt;lit_afg_deaths_90 -->
-<g id="edge21" class="edge">
-<title>ex:Obs_AFG_1990-&gt;lit_afg_deaths_90</title>
-<path fill="none" stroke="gray" d="M145.52,-775.33C195.72,-773.47 264.08,-770.94 323.45,-768.74"/>
-<polygon fill="gray" stroke="gray" points="323.43,-772.25 333.3,-768.38 323.18,-765.25 323.43,-772.25"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-778.82" font-family="Times,serif" font-size="14.00">ex:deaths</text>
-</g>
-<!-- ex:Obs_AGO_1990 -->
-<g id="node6" class="node">
-<title>ex:Obs_AGO_1990</title>
-<polygon fill="lightblue" stroke="black" points="145.1,-478.8 0,-478.8 0,-437.2 145.1,-437.2 145.1,-478.8"/>
-<text xml:space="preserve" text-anchor="middle" x="72.55" y="-462.2" font-family="Times,serif" font-size="14.00">Obs_AGO_1990</text>
-<text xml:space="preserve" text-anchor="middle" x="72.55" y="-445.4" font-family="Times,serif" font-size="14.00">(PollutionObservation)</text>
-</g>
-<!-- ex:Obs_AGO_1990&#45;&gt;ex:Y1990 -->
-<g id="edge23" class="edge">
-<title>ex:Obs_AGO_1990-&gt;ex:Y1990</title>
-<path fill="none" stroke="gray" d="M77.5,-479.22C85.86,-517.54 109.15,-597.84 163.1,-636 190.69,-655.52 280.69,-649.25 313.96,-655.2 348.05,-661.29 386.4,-670.35 413.93,-677.24"/>
-<polygon fill="gray" stroke="gray" points="413,-680.62 423.55,-679.68 414.72,-673.83 413,-680.62"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-659.4" font-family="Times,serif" font-size="14.00">ex:year</text>
-</g>
-<!-- ex:Obs_AGO_1990&#45;&gt;ex:Angola -->
-<g id="edge22" class="edge">
-<title>ex:Obs_AGO_1990-&gt;ex:Angola</title>
-<path fill="none" stroke="gray" d="M98.92,-436.75C116,-423.58 139.62,-407.46 163.1,-398.2 244.34,-366.17 346.72,-355.88 405.07,-352.57"/>
-<polygon fill="gray" stroke="gray" points="405.16,-356.07 414.97,-352.05 404.8,-349.08 405.16,-356.07"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-402.4" font-family="Times,serif" font-size="14.00">ex:country</text>
-</g>
-<!-- ex:Obs_AGO_1990&#45;&gt;ex:PollutionObservation -->
+<!-- ex:0&#45;&gt;lit_death_house -->
 <g id="edge6" class="edge">
-<title>ex:Obs_AGO_1990-&gt;ex:PollutionObservation</title>
-<path fill="none" stroke="green" stroke-dasharray="5,2" d="M99.76,-479.23C116.8,-491.92 140.07,-507.24 163.1,-516 226.5,-540.13 249.68,-517.5 313.96,-539.2 322.59,-542.11 323.44,-545.79 331.96,-549 342.33,-552.91 353.44,-556.35 364.55,-559.34"/>
-<polygon fill="green" stroke="green" points="363.61,-562.71 374.16,-561.81 365.35,-555.93 363.61,-562.71"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-543.4" font-family="Times,serif" font-size="14.00">rdf:type</text>
+<title>ex:0-&gt;lit_death_house</title>
+<path fill="none" stroke="gray" d="M93.97,-163.74C99.9,-162.02 105.94,-160.44 111.75,-159.2 199.15,-140.53 302.7,-132.15 365.68,-128.54"/>
+<polygon fill="gray" stroke="gray" points="365.65,-132.05 375.44,-128 365.26,-125.06 365.65,-132.05"/>
+<text xml:space="preserve" text-anchor="middle" x="215.56" y="-163.4" font-family="Times,serif" font-size="14.00">ex:deathHouseholdPollution</text>
 </g>
-<!-- lit_ago_ozone_90 -->
-<g id="node23" class="node">
-<title>lit_ago_ozone_90</title>
-<ellipse fill="orange" stroke="black" cx="452.48" cy="-408" rx="110.86" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-403.8" font-family="Times,serif" font-size="14.00">"6.512399"^^xsd:decimal</text>
+<!-- lit_death_part -->
+<g id="node10" class="node">
+<title>lit_death_part</title>
+<ellipse fill="orange" stroke="black" cx="424.36" cy="-72" rx="42.42" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="424.36" y="-67.8" font-family="Times,serif" font-size="14.00">46.4466</text>
 </g>
-<!-- ex:Obs_AGO_1990&#45;&gt;lit_ago_ozone_90 -->
-<g id="edge24" class="edge">
-<title>ex:Obs_AGO_1990-&gt;lit_ago_ozone_90</title>
-<path fill="none" stroke="gray" d="M145.24,-440.5C151.26,-439.29 157.27,-438.17 163.1,-437.2 220.68,-427.64 285.29,-420.74 338.73,-416.07"/>
-<polygon fill="gray" stroke="gray" points="338.79,-419.58 348.45,-415.23 338.19,-412.6 338.79,-419.58"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-441.4" font-family="Times,serif" font-size="14.00">ex:ambientOzonePollution</text>
-</g>
-<!-- lit_ago_matter_90 -->
-<g id="node24" class="node">
-<title>lit_ago_matter_90</title>
-<ellipse fill="orange" stroke="black" cx="452.48" cy="-630" rx="115.69" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-625.8" font-family="Times,serif" font-size="14.00">"26.258998"^^xsd:decimal</text>
-</g>
-<!-- ex:Obs_AGO_1990&#45;&gt;lit_ago_matter_90 -->
-<g id="edge25" class="edge">
-<title>ex:Obs_AGO_1990-&gt;lit_ago_matter_90</title>
-<path fill="none" stroke="gray" d="M80.6,-479.05C92.32,-510.38 118.95,-568.55 163.1,-596 178.06,-605.3 262.71,-614.59 336.45,-621.1"/>
-<polygon fill="gray" stroke="gray" points="335.94,-624.57 346.2,-621.95 336.55,-617.59 335.94,-624.57"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-622.81" font-family="Times,serif" font-size="14.00">ex:ambientMatterPollution</text>
-</g>
-<!-- lit_ago_house_90 -->
-<g id="node25" class="node">
-<title>lit_ago_house_90</title>
-<ellipse fill="orange" stroke="black" cx="452.48" cy="-462" rx="120.52" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-457.8" font-family="Times,serif" font-size="14.00">"139.927248"^^xsd:decimal</text>
-</g>
-<!-- ex:Obs_AGO_1990&#45;&gt;lit_ago_house_90 -->
-<g id="edge26" class="edge">
-<title>ex:Obs_AGO_1990-&gt;lit_ago_house_90</title>
-<path fill="none" stroke="gray" d="M145.35,-458.07C193.13,-458.19 257.3,-458.48 313.96,-459.2 316.48,-459.23 319.03,-459.27 321.6,-459.3"/>
-<polygon fill="gray" stroke="gray" points="321.4,-462.8 331.45,-459.45 321.5,-455.8 321.4,-462.8"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-463.4" font-family="Times,serif" font-size="14.00">ex:householdPollution</text>
-</g>
-<!-- lit_ago_deaths_90 -->
-<g id="node26" class="node">
-<title>lit_ago_deaths_90</title>
-<ellipse fill="orange" stroke="black" cx="452.48" cy="-294" rx="120.52" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-289.8" font-family="Times,serif" font-size="14.00">"224.508617"^^xsd:decimal</text>
-</g>
-<!-- ex:Obs_AGO_1990&#45;&gt;lit_ago_deaths_90 -->
-<g id="edge27" class="edge">
-<title>ex:Obs_AGO_1990-&gt;lit_ago_deaths_90</title>
-<path fill="none" stroke="gray" d="M77.97,-436.78C86.85,-400.23 110.68,-326.34 163.1,-295.2 229.25,-255.9 319.91,-263.36 381.8,-275.59"/>
-<polygon fill="gray" stroke="gray" points="381.03,-279 391.53,-277.61 382.45,-272.15 381.03,-279"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-299.4" font-family="Times,serif" font-size="14.00">ex:deaths</text>
-</g>
-<!-- ex:Obs_AFG_2000 -->
-<g id="node7" class="node">
-<title>ex:Obs_AFG_2000</title>
-<polygon fill="lightblue" stroke="black" points="145.1,-206.8 0,-206.8 0,-165.2 145.1,-165.2 145.1,-206.8"/>
-<text xml:space="preserve" text-anchor="middle" x="72.55" y="-190.2" font-family="Times,serif" font-size="14.00">Obs_AFG_2000</text>
-<text xml:space="preserve" text-anchor="middle" x="72.55" y="-173.4" font-family="Times,serif" font-size="14.00">(PollutionObservation)</text>
-</g>
-<!-- ex:Obs_AFG_2000&#45;&gt;ex:Y2000 -->
-<g id="edge29" class="edge">
-<title>ex:Obs_AFG_2000-&gt;ex:Y2000</title>
-<path fill="none" stroke="gray" d="M97.7,-164.98C114.82,-151.22 138.95,-134.03 163.1,-124.2 248.3,-89.52 357.29,-79.29 413.76,-76.27"/>
-<polygon fill="gray" stroke="gray" points="413.65,-79.77 423.47,-75.8 413.31,-72.78 413.65,-79.77"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-128.4" font-family="Times,serif" font-size="14.00">ex:year</text>
-</g>
-<!-- ex:Obs_AFG_2000&#45;&gt;ex:Afghanistan -->
-<g id="edge28" class="edge">
-<title>ex:Obs_AFG_2000-&gt;ex:Afghanistan</title>
-<path fill="none" stroke="gray" d="M82.46,-207.24C95.64,-235.9 123.16,-286.28 163.1,-312 220.52,-348.97 267.39,-291.25 313.96,-341.2 359.09,-389.6 288.17,-439.38 331.96,-489 348.5,-507.75 374.85,-515.63 398.6,-518.66"/>
-<polygon fill="gray" stroke="gray" points="398.2,-522.14 408.5,-519.64 398.89,-515.17 398.2,-522.14"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-345.4" font-family="Times,serif" font-size="14.00">ex:country</text>
-</g>
-<!-- ex:Obs_AFG_2000&#45;&gt;ex:PollutionObservation -->
+<!-- ex:0&#45;&gt;lit_death_part -->
 <g id="edge7" class="edge">
-<title>ex:Obs_AFG_2000-&gt;ex:PollutionObservation</title>
-<path fill="none" stroke="green" stroke-dasharray="5,2" d="M79.69,-206.95C99.03,-272.79 157.71,-471.48 163.1,-476 214.84,-519.49 261.71,-452.32 313.96,-495.2 333.45,-511.2 313.26,-532.09 331.96,-549 341.36,-557.5 352.85,-563.5 364.96,-567.71"/>
-<polygon fill="green" stroke="green" points="363.68,-570.98 374.26,-570.53 365.71,-564.28 363.68,-570.98"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-499.4" font-family="Times,serif" font-size="14.00">rdf:type</text>
+<title>ex:0-&gt;lit_death_part</title>
+<path fill="none" stroke="gray" d="M61.39,-158.82C72.78,-142.91 90.58,-122.06 111.75,-111.2 195.05,-68.48 306.78,-65.43 371.33,-68.06"/>
+<polygon fill="gray" stroke="gray" points="370.77,-71.53 380.92,-68.51 371.1,-64.54 370.77,-71.53"/>
+<text xml:space="preserve" text-anchor="middle" x="215.56" y="-115.4" font-family="Times,serif" font-size="14.00">ex:deathAmbientParticulatePollution</text>
 </g>
-<!-- lit_afg_ozone_00 -->
-<g id="node27" class="node">
-<title>lit_afg_ozone_00</title>
-<ellipse fill="orange" stroke="black" cx="452.48" cy="-18" rx="110.86" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-13.8" font-family="Times,serif" font-size="14.00">"5.800000"^^xsd:decimal</text>
+<!-- lit_death_ozone -->
+<g id="node11" class="node">
+<title>lit_death_ozone</title>
+<ellipse fill="orange" stroke="black" cx="424.36" cy="-18" rx="37.59" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="424.36" y="-13.8" font-family="Times,serif" font-size="14.00">5.6164</text>
 </g>
-<!-- ex:Obs_AFG_2000&#45;&gt;lit_afg_ozone_00 -->
-<g id="edge30" class="edge">
-<title>ex:Obs_AFG_2000-&gt;lit_afg_ozone_00</title>
-<path fill="none" stroke="gray" d="M83.12,-164.71C96.69,-137.15 124.29,-89.85 163.1,-66.2 212.67,-35.99 275.5,-23.16 329.86,-18.2"/>
-<polygon fill="gray" stroke="gray" points="330.13,-21.69 339.81,-17.38 329.56,-14.71 330.13,-21.69"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-70.4" font-family="Times,serif" font-size="14.00">ex:ambientOzonePollution</text>
+<!-- ex:0&#45;&gt;lit_death_ozone -->
+<g id="edge8" class="edge">
+<title>ex:0-&gt;lit_death_ozone</title>
+<path fill="none" stroke="gray" d="M51.43,-158.79C57.73,-128.47 73.95,-73.5 111.75,-47.2 191.9,8.57 313.08,0.43 378.19,-9.37"/>
+<polygon fill="gray" stroke="gray" points="377.37,-12.79 387.79,-10.91 378.47,-5.87 377.37,-12.79"/>
+<text xml:space="preserve" text-anchor="middle" x="215.56" y="-51.4" font-family="Times,serif" font-size="14.00">ex:deathAmbientOzonePollution</text>
 </g>
-<!-- lit_afg_matter_00 -->
-<g id="node28" class="node">
-<title>lit_afg_matter_00</title>
-<ellipse fill="orange" stroke="black" cx="452.48" cy="-240" rx="115.69" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-235.8" font-family="Times,serif" font-size="14.00">"45.000000"^^xsd:decimal</text>
+<!-- ex:Afghanistan&#45;&gt;schema:Country -->
+<g id="edge2" class="edge">
+<title>ex:Afghanistan-&gt;schema:Country</title>
+<path fill="none" stroke="green" stroke-dasharray="5,2" d="M475.57,-301.33C492.62,-304.79 511.8,-308.62 529.34,-312 567.67,-319.38 610.65,-327.26 645.03,-333.47"/>
+<polygon fill="green" stroke="green" points="644.39,-336.91 654.86,-335.24 645.63,-330.02 644.39,-336.91"/>
+<text xml:space="preserve" text-anchor="middle" x="577.93" y="-333.62" font-family="Times,serif" font-size="14.00">rdf:type</text>
 </g>
-<!-- ex:Obs_AFG_2000&#45;&gt;lit_afg_matter_00 -->
-<g id="edge31" class="edge">
-<title>ex:Obs_AFG_2000-&gt;lit_afg_matter_00</title>
-<path fill="none" stroke="gray" d="M145.25,-203.59C151.27,-204.83 157.28,-205.99 163.1,-207 220.69,-217.01 285.3,-224.73 338.74,-230.17"/>
-<polygon fill="gray" stroke="gray" points="338.16,-233.63 348.46,-231.15 338.86,-226.66 338.16,-233.63"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-231.56" font-family="Times,serif" font-size="14.00">ex:ambientMatterPollution</text>
+<!-- lit_name_afg -->
+<g id="node6" class="node">
+<title>lit_name_afg</title>
+<ellipse fill="yellow" stroke="black" cx="710.65" cy="-291" rx="66.12" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="710.65" y="-286.8" font-family="Times,serif" font-size="14.00">"Afghanistan"</text>
 </g>
-<!-- lit_afg_house_00 -->
-<g id="node29" class="node">
-<title>lit_afg_house_00</title>
-<ellipse fill="orange" stroke="black" cx="452.48" cy="-186" rx="120.52" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-181.8" font-family="Times,serif" font-size="14.00">"240.000000"^^xsd:decimal</text>
+<!-- ex:Afghanistan&#45;&gt;lit_name_afg -->
+<g id="edge9" class="edge">
+<title>ex:Afghanistan-&gt;lit_name_afg</title>
+<path fill="none" stroke="gray" d="M475.53,-291C519.08,-291 582.82,-291 632.8,-291"/>
+<polygon fill="gray" stroke="gray" points="632.7,-294.5 642.7,-291 632.7,-287.5 632.7,-294.5"/>
+<text xml:space="preserve" text-anchor="middle" x="577.93" y="-295.2" font-family="Times,serif" font-size="14.00">schema:name</text>
 </g>
-<!-- ex:Obs_AFG_2000&#45;&gt;lit_afg_house_00 -->
-<g id="edge32" class="edge">
-<title>ex:Obs_AFG_2000-&gt;lit_afg_house_00</title>
-<path fill="none" stroke="gray" d="M145.52,-186C194.92,-186 261.89,-186 320.59,-186"/>
-<polygon fill="gray" stroke="gray" points="320.31,-189.5 330.31,-186 320.31,-182.5 320.31,-189.5"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-190.2" font-family="Times,serif" font-size="14.00">ex:householdPollution</text>
+<!-- lit_id_afg -->
+<g id="node7" class="node">
+<title>lit_id_afg</title>
+<ellipse fill="yellow" stroke="black" cx="710.65" cy="-237" rx="38.24" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="710.65" y="-232.8" font-family="Times,serif" font-size="14.00">"AFG"</text>
 </g>
-<!-- lit_afg_deaths_00 -->
-<g id="node30" class="node">
-<title>lit_afg_deaths_00</title>
-<ellipse fill="orange" stroke="black" cx="452.48" cy="-132" rx="120.52" ry="18"/>
-<text xml:space="preserve" text-anchor="middle" x="452.48" y="-127.8" font-family="Times,serif" font-size="14.00">"280.000000"^^xsd:decimal</text>
-</g>
-<!-- ex:Obs_AFG_2000&#45;&gt;lit_afg_deaths_00 -->
-<g id="edge33" class="edge">
-<title>ex:Obs_AFG_2000-&gt;lit_afg_deaths_00</title>
-<path fill="none" stroke="gray" d="M145.25,-168.59C151.27,-167.36 157.28,-166.21 163.1,-165.2 219.77,-155.39 283.23,-147.73 336.16,-142.25"/>
-<polygon fill="gray" stroke="gray" points="336.19,-145.76 345.78,-141.27 335.48,-138.8 336.19,-145.76"/>
-<text xml:space="preserve" text-anchor="middle" x="238.53" y="-169.4" font-family="Times,serif" font-size="14.00">ex:deaths</text>
+<!-- ex:Afghanistan&#45;&gt;lit_id_afg -->
+<g id="edge10" class="edge">
+<title>ex:Afghanistan-&gt;lit_id_afg</title>
+<path fill="none" stroke="gray" d="M475.57,-280.79C492.63,-277.37 511.81,-273.57 529.34,-270.2 574.75,-261.48 626.69,-251.96 663.12,-245.36"/>
+<polygon fill="gray" stroke="gray" points="663.67,-248.82 672.89,-243.6 662.42,-241.93 663.67,-248.82"/>
+<text xml:space="preserve" text-anchor="middle" x="577.93" y="-274.4" font-family="Times,serif" font-size="14.00">schema:identifier</text>
 </g>
 </g>
 </svg>
