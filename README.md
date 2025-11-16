@@ -126,7 +126,44 @@ ORDER BY DESC(?maxDeathAir)
 LIMIT 20
 
 ```
-### 
+### Nombre total de morts due à la pollution de l'air par continent, et le nombre de joueurs chers de 2021 par continent 
 ```sh
+PREFIX schema: <http://schema.org/>
+PREFIX ex: <http://example.com/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
+SELECT ?continent 
+	(SUM(?deathAir) AS ?totalDeaths) 
+	(COUNT(DISTINCT ?player) AS ?numPlayers)
+WHERE {
+  GRAPH <http://example.com/graph/pollution> {
+    ?country a schema:Country ;
+             schema:name ?countryName .
+    ?obs a schema:Observation ;
+         schema:observationAbout ?country ;
+         schema:observationDate ?year ;
+         ex:deathAirPollution ?deathAir ;
+         ex:deathHouseholdPollution ?deathHousehold ;
+         ex:deathAmbientParticulatePollution ?deathAmbientParticulatePollution ;
+         ex:deathAmbientOzonePollution ?deathAmbientOzonePollution .
+  }
+  
+  GRAPH <http://example.com/graph/players> {
+    OPTIONAL{
+    	?player dbo:nationality ?country .
+    }
+  }
+      GRAPH <http://example.com/graph/population> {
+      ?x rdf:type dbo:Country ;
+         dbo:countryRank ?countryRank;
+         dbo:isoCode ?code;
+         rdfs:label ?countryName;
+         dbo:capital ?capital;
+         dbo:continent ?continent;
+         dbo:populationTotal ?pop22;
+         ex:population2010 ?pop10;
+    }
+} GROUP BY ?continent 
 ```
