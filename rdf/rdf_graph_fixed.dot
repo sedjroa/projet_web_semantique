@@ -1,0 +1,38 @@
+digraph RDFObservationGraph {
+  rankdir=LR;
+  node [shape=box, style=filled, fillcolor=lightblue];
+  edge [color=gray];
+
+  // Classes
+  "schema:Observation" [label="schema:Observation", fillcolor=lightgreen];
+  "schema:Country" [label="schema:Country", fillcolor=lightgreen];
+
+  // Entités principales
+  "ex:0" [label="ex:0\n(Observation)"];
+  "ex:Afghanistan" [label="ex:Afghanistan\n(Country)"];
+
+  // Littéraux
+  "lit_date_1990" [label="\"1990\"^^xsd:gYear", shape=ellipse, fillcolor=yellow];
+  "lit_name_afg" [label="\"Afghanistan\"", shape=ellipse, fillcolor=yellow];
+  "lit_id_afg" [label="\"AFG\"", shape=ellipse, fillcolor=yellow];
+  "lit_death_air" [label="299.4773", shape=ellipse, fillcolor=orange];  // Abrégé pour clarté
+  "lit_death_house" [label="250.3630", shape=ellipse, fillcolor=orange];
+  "lit_death_part" [label="46.4466", shape=ellipse, fillcolor=orange];
+  "lit_death_ozone" [label="5.6164", shape=ellipse, fillcolor=orange];
+
+  // Liens rdf:type (en pointillés)
+  "ex:0" -> "schema:Observation" [label="rdf:type", style=dashed, color=green];
+  "ex:Afghanistan" -> "schema:Country" [label="rdf:type", style=dashed, color=green];
+
+  // Liens pour l'observation
+  "ex:0" -> "ex:Afghanistan" [label="schema:observationAbout"];
+  "ex:0" -> "lit_date_1990" [label="schema:observationDate"];
+  "ex:0" -> "lit_death_air" [label="ex:deathAirPollution"];
+  "ex:0" -> "lit_death_house" [label="ex:deathHouseholdPollution"];
+  "ex:0" -> "lit_death_part" [label="ex:deathAmbientParticulatePollution"];
+  "ex:0" -> "lit_death_ozone" [label="ex:deathAmbientOzonePollution"];
+
+  // Liens pour le pays
+  "ex:Afghanistan" -> "lit_name_afg" [label="schema:name"];
+  "ex:Afghanistan" -> "lit_id_afg" [label="schema:identifier"];
+}

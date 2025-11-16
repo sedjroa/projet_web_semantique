@@ -23,7 +23,7 @@ Les données de [pollution](https://www.kaggle.com/datasets/pavan9065/air-pollut
 La transformation de la table de pollution de format csv en fichier RDF (.ttl) s'est fait avec OpenRefine pour le chargement des données et RDF (intégré à OpenRefine) pour la définition du
 squelette du fichier RDF (voir [pollution.ttl](data/pollution.ttl))
 
-![Squelette RDF](images/skeleton_rdf.PNG)
+![Squelette RDF](images/skeleton_rdf.png)
 
 ## Rêquetes SPARQL
 
