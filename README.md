@@ -1,8 +1,9 @@
 # projet_web_semantique
 L’objectif du projet est de transformer les données ouvertes sur la pollution en données sémantiques et de  lier ses données sémantiques au cloud.
 
-## Endpoint [federation](https://api.triplydb.com/datasets/Amosgandonou06/federation/sparql) de notre projet
+## Endpoint TriplyDB de notre projet
 
+Les graphes des différentes données sémantiques sont hébergés fsur ```TriplyDB``` (voir [federation](https://api.triplydb.com/s/QsDJXhv_Y)).
 
 ## Structure
 
