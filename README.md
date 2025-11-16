@@ -9,6 +9,7 @@ L’objectif du projet est de transformer les données ouvertes sur la pollution
 - `data/` : fichiers RDF/TTL
 - `queries/` : requêtes SPARQL
 - `scripts/` : scripts d'import/export ou automation
+- `rdf/`: contient l’image de la représentation du graphe X0 ainsi que le fichier .dot permettant de le générer sur [Graph online](https://dreampuf.github.io/GraphvizOnline/)
 - `images/` : images de la construction de squelette sous OPENREFINE
 
 
@@ -24,6 +25,8 @@ Les données de [pollution](https://www.kaggle.com/datasets/pavan9065/air-pollut
 
 La transformation de la table de pollution de format csv en fichier RDF (.ttl) s'est fait avec OpenRefine pour le chargement des données et RDF (intégré à OpenRefine) pour la définition du
 squelette du fichier RDF (voir [pollution.ttl](data/pollution.ttl))
+
+![Squelette RDF ](rdf/graphviz%20(1).svg)
 
 ![Squelette RDF](images/skeleton_rdf.png)
 
